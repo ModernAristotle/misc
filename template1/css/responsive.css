@@ -1,0 +1,126 @@
+@media all and (max-device-width: 480px) , (max-width: 480px) {
+    .rhtButn h3{font-size: 20px !important;}
+    .ulMainMenu li a{background-image: none !important;}
+    .signinformCont{width: 92%; max-width: 314px;}
+    .signinformCont input[type='text'], .signinformCont input[type='password']{width: 100%;}
+    .signinformCont table,
+    .signinformCont table tr,
+    .signinformCont table td,
+    .signinformCont table th,
+    .signinformCont table tbody,
+    .signinformCont table thead
+    {
+        display: block;
+        width: 100%;
+        text-align: left;
+    }
+}
+@media all and (min-width: 200px) and (max-width: 600px) {
+        .frmHdng h3{font-size: 17px; text-align: center; padding-top: 0px;}
+    .frmHdng h3 div{float: none;}
+    .frmcntnr{border: 0px !important;}
+    .newsHead{font-size: 14px; line-height: 18px;}
+    table.tblForm{width: 100% !important; min-width: 100% !important;}
+    .frmcntnr table textarea, .frmcntnr table input[type="text"], .frmcntnr table input[type="email"], .frmcntnr table select{
+        display: block !important;
+        width: 100% !important;
+    }
+    .frmcntnr table .idcrdNumber{
+        display: block !important;
+        width: 100% !important;
+    }
+    .hidInweb{display: block;}
+    .frmcntnrWdth{padding: 0px; width: 100%;}
+    .spnNri{width: 60px;}
+    .helpMsg{font-size: 13px;}
+    /*------------------------------------signupform --------------------------------*/
+    .cntnr{
+        border-radius: 0px;
+        -o-border-radius: 0px;
+        -ms-border-radius: 0px;
+        -moz-border-radius: 0px;
+        -webkit-border-radius: 0px;
+    }
+    .btnDonate{
+        padding: 1px 15px;
+        font-size: 20px;
+    }
+}
+@media all and (max-deivice-width: 768px) , (max-width: 768px){
+    .formStatusHid{display: none;}
+    .pdng5{padding: 0px !important;}
+    .frmcntnr{border: none;}
+    .form-group .form-control.frmElWdth5{width: 49.6% !important;}
+}
+@media all and (max-device-width: 992px) , (max-width: 992px) {
+    .entryGate, .signupformCont{width: 92%; padding: 5px;}
+.rhtContnr{margin-top: 20px !important; background: #ffffff; padding-top: 20px !important;}
+.ulFtrMain li h3{
+    background: #54D0AB;
+    cursor: pointer;
+    padding: 5px 5px 10px;
+    font-size: 16px;
+    margin: 5px 0px; 
+    text-shadow: -1px 3px 1px #000;
+    -o-text-shadow: -1px 3px 1px #000;
+    -ms-text-shadow: -1px 3px 1px #000;
+    -moz-text-shadow: -1px 3px 1px #000;
+    -webkit-text-shadow: -1px 3px 1px #000;
+}
+.ulFtrMain li h3:hover{text-decoration: underline}
+.ulFtrMain1, .ftrMenuCont{display: none;}
+.ftrMenuCont{overflow: hidden;}
+.ulFtrMain2, .ulftrMenu.ulSocial{display: block;}
+}
+@media all and (max-device-width: 1300px) , (max-width: 1300px) {
+    .ulMainMenu li a{font-size: 16px; padding: 5px 5px 5px 20px; background-size: auto 15px !important;}
+    .ulMainMenu li a.group{background-size: auto 12px;}
+}
+@media all and (max-device-width: 1200px) , (max-width: 1200px) {
+    .contSubscrib{position: absolute; padding: 10px; width: 270px; background: #ffffff;}
+  header{padding-left: 0px; padding-right: 0px;}
+    .maincontainer{color: #5E5E5E;}
+    .hidInMob{display: none;}
+    .showinMob{display: block !important;}
+	@media all and (-webkit-min-device-pixel-ratio:0){
+	.showinMob{display: block !important;}
+	}
+        .btnStyle{font-size: 13px; padding: 5px !important;}
+        .contSigninup.hidInMob{display: block;}
+    .hdrToolContnr.absPostn,
+    .hdrToolContnr{
+        width: 100%; 
+        position: static; 
+        background: #f4f4f4; 
+        padding: 5px;
+    }
+    .hanger{padding: 12px 0px;}
+    .hangerHdng{font-size: 16px; padding: 8px 30px;}
+    .ulMainMenu.absPostn{
+     background: #ffffff;
+     padding: 5px;
+     top: 16px;
+    }
+    .ulMainMenu>li{
+        position: relative !important;
+        display: block;
+        background: none;
+        width: 100%;
+        border-bottom: 1px solid #cecece;
+    }
+    .ulMainMenu>li:hover{
+        background: #E7E7E8 !important;
+    }
+    .ulMainMenu li a{font-size: 12px;}
+    .ulMainMenu>li .ulSub{
+        z-index: 100;
+        border-radius: 0px;
+        -o-border-radius: 0px;
+        -ms-border-radius: 0px;
+        -moz-border-radius: 0px;
+        -webkit-border-radius: 0px;
+        left: 40%;
+        width: 150px;
+        top: 1px;
+    }
+}
