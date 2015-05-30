@@ -1,0 +1,34 @@
+<!-- *******************  include rightpannel.php ************************ -->
+<div class="rhtContnr col-xs-12 col-sm-12 col-md-4">
+	<ul class="rhtButn mrgnpdng col-xs-12 col-md-12 col-sm-12" style="padding: 0px;">
+		{{#each RightSideMainUrls.links}}
+		<li class="col-sm-5 col-xs-12 col-md-12 col-sm-offset-1 col-md-offset-0"><a href='{{href}}' class="btnsgnupfn">
+				<div class='fltlft'>
+					<h5 class='mrgnpdng'>{{subtext}}</h5>
+					<h3 class='mrgnpdng'>{{text}}</h3>
+				</div> <span class='fltrht rhtArow fa fa-angle-right'></span>
+				<div class='clear'></div>
+		</a></li> {{/each}}
+
+	</ul>
+	<!--==================Facebook=====================-->
+	<div class="col-xs-12 col-sm-6 col-md-12" style="padding: 0px;">
+		<div class='socmrgnTop'>
+			<div class="hanger relPostn">
+				<h3 class="fltlft hangerHdng mrgnpdng absPostn">Facebook</h3>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="fbBlock">{{{FacebookBoxPlugin}}}</div>
+	</div>
+	<!--==================Twitter=====================-->
+	<div class="col-xs-12 col-sm-6 col-md-12" style="padding: 0px;">
+		<div class='socmrgnTop'>
+			<div class="hanger relPostn">
+				<h3 class="fltlft hangerHdng mrgnpdng absPostn">Twitter</h3>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class='twrBlock'>{{{TwitterBoxPlugin}}}</div>
+	</div>
+</div>
