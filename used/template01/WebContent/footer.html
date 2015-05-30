@@ -1,101 +1,103 @@
 <div class="footerContainer">
-	<div class="ftrContnr center">
-		<ul class="ulFtrMain ulFtrMain1 mrgnpdng">
-			<li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-				<h3>{{PartyUrls.title}}</h3>
-				<div class="ftrMenuCont">
-					<ul class="ulftrMenu mrgnpdng">
-					{{#each PartyUrls.urls}}
-					   <li><a href="{{href}}">{{title}}</a></li>
-					{{/each}}
-					</ul>
-				</div>
-			</li>
-			<li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-				<h3>{{MediaDataUrl.title}}</h3>
-				<div class="ftrMenuCont">
-					<ul class="ulftrMenu mrgnpdng">
-					{{#each MediaDataUrl.urls}}
-                       <li><a href="{{href}}">{{title}}</a></li>
-                    {{/each}}
-					</ul>
-				</div>
-			</li>
-			<li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-				<h3>Get Involved</h3>
-				<div class="ftrMenuCont">
-					<ul class="ulftrMenu  mrgnpdng">
-						<li><a href="javascript:void(0)">Join the party</a></li>
-						<li><a href="javascript:void(0)">Donate Now</a></li>
-					</ul>
-				</div>
-				<h3 class='contacth3'>Contact Us</h3>
-				<div class="ftrMenuCont">
-					<ul class="ulftrMenu  mrgnpdng">
-						<li><a href="javascript:void(0)">A-189, Sec-43, Noida, UP</a></li>
-						<li><a href="javascript:void(0)">+917210222333</a></li>
-					</ul>
-				</div>
-			</li>
-			<li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-				<ul class="ulftrMenu ulSocial mrgnpdng fltlft">
-					{{#each SocialUrls.urls}}
-                    <li><a href="{{href}}" class='{{class}}'> {{title}} <span>{{span}}</span>
-                    </a></li>
-                    {{/each}}
-					<div class="clear"></div>
-				</ul>
-			</li>
-			<div class='clear'></div>
-		</ul>
-		<ul class="ulFtrMain ulFtrMain2 mrgnpdng">
-			<li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-				<h3>{{PartyUrls.urls}}</h3>
-				<div class="ftrMenuCont">
-					<ul class="ulftrMenu mrgnpdng">
+    <div class="ftrContnr center">
+        <ul class="ulFtrMain ulFtrMain1 mrgnpdng">
+            <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <h3>{{PartyUrls.title}}</h3>
+                <div class="ftrMenuCont">
+                    <ul class="ulftrMenu mrgnpdng">
                     {{#each PartyUrls.urls}}
                        <li><a href="{{href}}">{{title}}</a></li>
                     {{/each}}
-					</ul>
-				</div>
-
-				<h3>{{MediaDataUrl.title}}</h3>
-				<div class="ftrMenuCont">
-					<ul class="ulftrMenu mrgnpdng">
-					{{#each MediaDataUrl.urls}}
+                    </ul>
+                </div>
+            </li>
+            <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <h3>{{MediaDataUrl.title}}</h3>
+                <div class="ftrMenuCont">
+                    <ul class="ulftrMenu mrgnpdng">
+                    {{#each MediaDataUrl.urls}}
                        <li><a href="{{href}}">{{title}}</a></li>
                     {{/each}}
-					</ul>
-				</div>
-
-				<h3>Get Involved</h3>
-				<div class="ftrMenuCont">
-					<ul class="ulftrMenu  mrgnpdng">
-						<li><a href="javascript:void(0)">Join the party</a></li>
-						<li><a href="javascript:void(0)">Donate Now</a></li>
-					</ul>
-				</div>
-				<h3 class='contacth3'>Contact Us</h3>
-				<div class="ftrMenuCont">
-					<ul class="ulftrMenu  mrgnpdng">
-						<li><a href="javascript:void(0)">A-189, Sec-43, Noida, UP</a></li>
-						<li><a href="javascript:void(0)">+917210222333</a></li>
-					</ul>
-				</div>
-			</li>
-			<li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-				<ul class="ulftrMenu ulSocial mrgnpdng fltlft">
-				{{#each SocialUrls.urls}}
+                    </ul>
+                </div>
+            </li>
+            <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <h3>{{GetInvolvedUrls.title}}</h3>
+                <div class="ftrMenuCont">
+                    <ul class="ulftrMenu  mrgnpdng">
+                    {{#each GetInvolvedUrls.urls}}
+                       <li><a href="{{href}}">{{title}}</a></li>
+                    {{/each}}
+                    </ul>
+                </div>
+                <h3 class='contacth3'>Contact Us</h3>
+                <div class="ftrMenuCont">
+                    <ul class="ulftrMenu  mrgnpdng">
+                        <li><a href="javascript:void(0)">A-189, Sec-43, Noida, UP</a></li>
+                        <li><a href="javascript:void(0)">+917210222333</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <ul class="ulftrMenu ulSocial mrgnpdng fltlft">
+                    {{#each SocialUrls.urls}}
                     <li><a href="{{href}}" class='{{class}}'> {{title}} <span>{{span}}</span>
                     </a></li>
                     {{/each}}
-				</ul>
-				<div class="clear"></div>
-			</li>
-		</ul>
-		<div class='clear'></div>
-		<p class='copyRight'>&copy; Swaraj Abhiyan. All Rights Reserved</p>
-	</div>
+                    <div class="clear"></div>
+                </ul>
+            </li>
+            <div class='clear'></div>
+        </ul>
+        <ul class="ulFtrMain ulFtrMain2 mrgnpdng">
+            <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <h3>{{PartyUrls.urls}}</h3>
+                <div class="ftrMenuCont">
+                    <ul class="ulftrMenu mrgnpdng">
+                    {{#each PartyUrls.urls}}
+                       <li><a href="{{href}}">{{title}}</a></li>
+                    {{/each}}
+                    </ul>
+                </div>
+
+                <h3>{{MediaDataUrl.title}}</h3>
+                <div class="ftrMenuCont">
+                    <ul class="ulftrMenu mrgnpdng">
+                    {{#each MediaDataUrl.urls}}
+                       <li><a href="{{href}}">{{title}}</a></li>
+                    {{/each}}
+                    </ul>
+                </div>
+
+                <h3>{{GetInvolvedUrls.title}}</h3>
+                <div class="ftrMenuCont">
+                    <ul class="ulftrMenu  mrgnpdng">
+                    {{#each GetInvolvedUrls.urls}}
+                       <li><a href="{{href}}">{{title}}</a></li>
+                    {{/each}}
+                    </ul>
+                </div>
+                <h3 class='contacth3'>Contact Us</h3>
+                <div class="ftrMenuCont">
+                    <ul class="ulftrMenu  mrgnpdng">
+                        <li><a href="javascript:void(0)">A-189, Sec-43, Noida, UP</a></li>
+                        <li><a href="javascript:void(0)">+917210222333</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <ul class="ulftrMenu ulSocial mrgnpdng fltlft">
+                {{#each SocialUrls.urls}}
+                    <li><a href="{{href}}" class='{{class}}'> {{title}} <span>{{span}}</span>
+                    </a></li>
+                    {{/each}}
+                </ul>
+                <div class="clear"></div>
+            </li>
+        </ul>
+        <div class='clear'></div>
+        <p class='copyRight'>&copy; Swaraj Abhiyan. All Rights Reserved</p>
+    </div>
 </div>
 
 
