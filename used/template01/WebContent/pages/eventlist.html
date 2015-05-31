@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+[[META_TAGS]] [[RESOURCES]]
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script type="text/javascript"
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDz1Btzrgtb0YEtHFgjZLEGaw-ggjnWlrc&sensor=false&region=IN">
+    
+</script>
+
+<script>
+    function initialize() {
+        var mapOptions = {
+            center : new google.maps.LatLng(23.934102635197338, 78.310546875),
+            zoom : 4
+        };
+        var map = new google.maps.Map(document.getElementById("map-canvas"),
+                mapOptions);
+        
+        {{#each EventListPlugin}}
+        createMarker(
+                map,
+                {{lattitude}},
+                {{longitude}},
+                '{{title}}',
+                '{{date}}-{{month}}-{{year}} {{time}}',
+                '{{title}}');
+        {{/each}}
+        
+        
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+    function createMarker(map, lattitude, longitude, title, startTime, address) {
+        var marker = new google.maps.Marker({
+            position : new google.maps.LatLng(lattitude, longitude),
+            map : map,
+            title : title
+        });
+        var infowindow = new google.maps.InfoWindow({
+            content : "<div style='height:150px;'>" + title + "<br>Address : "
+                    + address + "<br><br> Start on : " + startTime + "</div>"
+        });
+        google.maps.event.addListener(marker, 'click', function() {
+            infowindow.open(map, marker);
+        });
+    }
+
+    $(function() {
+        $( "#tabs" ).tabs();
+    });
+
+    </script>
+
+<style type="text/css">
+#map-canvas {
+	height: 100%;
+	min-height:600px;
+	margin: 0; 
+	padding: 0;
+}
+.ui-tabs .ui-tabs-hide {
+    position: absolute !important;
+    left: -10000px !important;
+    display:block !important;
+}
+</style>
+
+</head>
+<body>
+
+
+	[[TOPMENU]]
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<!--<script src="../js/jquery-1.9.1.min.js"></script>-->
+	<!--<script src="bootstrap.min.js"></script>-->
+	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<!--<script src="ie10-viewport-bug-workaround.js"></script>-->
+
+	<!-- jssor slider scripts-->
+	<!-- use jssor.js + jssor.slider.js instead for development -->
+	<!-- jssor.slider.mini.js = (jssor.js + jssor.slider.js) -->
+
+	<div class="maincontainer">
+
+
+
+		<div class="lftContnr col-xs-12 col-sm-12 col-md-8">
+			<div>
+				<div class="hanger relPostn">
+					<h3 class="fltlft hangerHdng mrgnpdng absPostn">Events</h3>
+					<!--     <span class="fltrht nxtPrvCont relPostn">
+       <a href="javascript:void(0)" class="fltlft prvIco"></a>
+       <a href="javascript:void(0)" class="fltlft nxtIco"></a>
+      </span>    -->
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="contentDiv contentDivPdng">
+				<div id="tabs">
+					<ul>
+						<li><a href="#tabs-1">Map</a></li>
+						<li><a href="#tabs-2">List</a></li>
+						<li><a href="#tabs-3">Calendar</a></li>
+					</ul>
+					<div id="tabs-1">
+						<div id="map-canvas"></div>
+					</div>
+					<div id="tabs-2">
+						{{#each EventListPlugin}}
+                        <div class="newsCont">
+                            <a href="/content/event/{{id}}"><div class="event_head">{{title}}</div></a>
+                            <div class="event_date">
+                                <a href="/content/event/{{id}}"><div class="evnt_date fltlft">{{month}} {{date}}, {{year}}</div></a>
+                                <a href="/content/event/{{id}}"><div class="evnt_time fltlft">@ {{time}}</div></a>
+                                <a class="evnt_location fltrht" href="/content/event/{{id}}"><span class="fa fa-map-marker gglMapIco"></span>&nbsp;
+                                    {{address}}</a>
+                                <div class="clear"></div>
+                                <div class="evnt_txt">{{description}}</div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        {{/each}}
+					</div>
+					<div id="tabs-3">Under Construction</div>
+				</div>
+
+
+
+
+			</div>
+		</div>
+
+
+
+
+
+
+		[[RIGHT_SIDE]]
+		<div class="clear"></div>
+	</div>
+	[[FOOTER]]
+
+
+</body>
+</html>
+

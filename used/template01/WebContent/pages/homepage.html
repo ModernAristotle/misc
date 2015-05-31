@@ -35,23 +35,26 @@
 				<!--------changed by soumya------->
 				<div id="slider_container">
 					<div id="slider_content">
-						<div id="slider" class="galleryContnr">
-							<ul>
+						<div id="slider" class="galleryContnr" >
+							<ul style="width:2303px">
 								{{#each NewsListPlugin}}
-								<li>
-									<div class="col-xs-12">
+								<li style="width:329px">
+									<div class="col-xs-12" style="max-height:168px;overflow:hidden;">
 										<h4 class='mrgnpdng'>{{{title}}}</h4>
 										<br />
 										<p class='paraNews'>{{{trimString contentSummary}}}</p>
-										<a href="/content/news/{{id}}" class="fullEvent">Read more...</a>
+										
 									</div>
+									<a href="/content/news/{{id}}" class="fullEvent">Read more...</a>
 								</li> {{/each}}
 							</ul>
 						</div>
+						<a href="/content/news" class="fltrht btnviewAll">Read all</a>
 					</div>
 				</div>
 			</div>
 			<!--------changed by soumya end------->
+			<!-- 
 			<div class="contentDiv mrgnTop">
 				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 					<h4 class="hdngBlogs">
@@ -85,6 +88,8 @@
 				</div>
 				<div class="clear"></div>
 			</div>
+			 -->
+			<!-- 
 			<div class="contentDiv mrgnTop">
 				<div class="divtask divWid">
 					<h4 class="hdngVideos">
@@ -121,7 +126,7 @@
 						<div class="clear"></div>
 					</ul>
 				</div>
-			</div>
+			</div>-->
 			<div class="mrgnTop">
 				<div class="mrgnTop">
 					<div class="hanger relPostn">
@@ -145,7 +150,7 @@
 							<div class="fltrht evntRight">
 								<p>{{title}} .</p>
 								<p class="time mrgnpdng">@ {{time}}</p>
-								<a href="javascript:void(0)" class="fullEvent fltrht">Full View</a>
+								<a href="/content/event/{{id}}" class="fullEvent fltrht">Full View</a>
 								<div class='clear'></div>
 							</div>
 							<div class="clear"></div>
