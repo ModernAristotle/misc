@@ -127,6 +127,12 @@
             formData.pastVolunteer = 'false';
         }
         
+        if ($('#sameLocationCheckbox').prop('checked')) {
+        	formData.assemblyConstituencyVotingId = formData.assemblyConstituencyLivingId;
+        	formData.parliamentConstituencyVotingId = formData.parliamentConstituencyLivingId;
+        	formData.districtVotingId = formData.districtLivingId;
+        	formData.stateVotingId = formData.stateLivingId;
+        }
         
         
         if(formData.interests && formData.interests.constructor !== Array){
@@ -140,7 +146,6 @@
         $('#formSubmitButton').prop('disabled', true);
         
         var value = JSON.stringify(formData);
-        alert(value);
         $.ajax({
             contentType: 'application/json',
             type: "POST",
@@ -334,7 +339,7 @@
 					<div class="form-group col-xs-12 col-sm-6 col-md-6">
 						<label class="col-lg-4 pdng5">DOB :</label>
 						<div class="col-lg-8 pdng5">
-							<input type="text" class='form-control' placeholder="Enter Date of birth yyyy-MM-dd" id="dateOfBirth"
+							<input type="text" class='form-control' placeholder="Enter Date of birth dd-MM-YYYY" id="dateOfBirth"
 								name="dateOfBirth" />
 						</div>
 					</div>
@@ -367,8 +372,7 @@
 						<label class="col-lg-4 pdng5">State:</label>
 						<div class="col-lg-8 pdng5">
 							<select class="form-control" id="nriCountryId" name="nriCountryId">
-								<option>Select Country</option>
-								<option>India</option>
+								<option value="0">Select Country</option>
 							</select>
 						</div>
 					</div>
@@ -376,7 +380,7 @@
 						<label class="col-lg-4 pdng5">Region:</label>
 						<div class="col-lg-8 pdng5">
 							<select class="form-control" id="nriCountryRegionId" name="nriCountryRegionId">
-								<option>Select Country Region</option>
+								<option  value="0">Select Country Region</option>
 							</select>
 						</div>
 					</div>
@@ -384,7 +388,7 @@
 						<label class="col-lg-4 pdng5">Area:</label>
 						<div class="col-lg-8 pdng5">
 							<select class="form-control" id="nriCountryRegionAreaId" name="nriCountryRegionAreaId">
-								<option>Select Area</option>
+								<option value="0">Select Area</option>
 							</select>
 						</div>
 
@@ -2974,6 +2978,7 @@
           <button type="button" class="respSigninBtn btnsgninfn fltlft"></button>-->
 			</div>
 			<div class="fltlft hidInMob contSubscrib">
+			     <!-- 
 				<form action="javascript:void(0)" id="formsearch" method="get">
 					<div class="divField">
 						<span class="fldTitle">Newsletter Subscription</span> <input type="text" class="txtSearch"
@@ -2981,6 +2986,7 @@
 							value="Submit" />
 					</div>
 				</form>
+				 -->
 			</div>
 			<div class="fltrht contSigninup hidInMob">
 				<input type="button" class="btnSignUp btnsgnupfn btnBg btnStyle" value="Sign Up" /> 

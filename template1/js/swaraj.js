@@ -1,16 +1,41 @@
 var $j=$.noConflict();
+//---------------------Set Top Height---------------------
 function topHeight(){
     setTimeout(function(){
         $j('.divGaltop').height($j('header').height()+20);
     },10);
 }
-function startLoader(){
-    setTimeout(function(){
-        $j('.startingLoader').fadeOut(800);
-    },5000);
+//---------------------Set loader---------------------
+//function startLoader(){
+//    setTimeout(function(){
+//        $j('.startingLoader').fadeOut(800);
+//    },5000);
+//}
+//---------------------News gallery width auto adjust---------------------
+//function galWidth(){
+//if($j(window).width()>600){
+//        $j('.galleryContnr ul li').animate({width: $j('.galleryContnr ').width()/2},10);
+//    }else{
+//        $j('.galleryContnr ul li').animate({width: $j('.galleryContnr ').width()},10);
+//    }
+//}
+//---------------------Menu active---------------------
+function activeMenu(){
+
+    var getPage=window.location.href;
+    var temp=getPage.split('/');
+    var pageName=temp[temp.length-1].split('.php');
+    if(pageName.length<=1){
+	$j("#index").addClass("active");
+    }else{
+    $j('.ulMainMenu li a').removeClass('active');
+    $j('.ulMainMenu li a#'+pageName[0]).addClass('active');
+   }
 }
 $j(function(){
-        startLoader();
+    activeMenu();
+//    galWidth();
+//        startLoader();
     topHeight();
 //    -----------------------------gallery function---------------------
     $j("#slider").easySlider({
@@ -27,7 +52,8 @@ $j('.fnClose, .btnsgninfn, .btnsgnupfn, .contSubscrib').click(function(e){
     e.stopPropagation();
 });
 $j(window).resize(function(){
-    topHeight();
+    topHeight()
+//    galWidth()
    if($j(this).width()<=992){
        $j('.ftrMenuCont').hide();
    }else{
@@ -47,6 +73,9 @@ $j(window).resize(function(){
           $j('.frmcntnr .divField .tblFldTitle').fadeIn(800);
           }
         },1000);
+        $j('.ulMainMenu li a').on('click',function(){
+            $j('.ulMainMenu li a').removeClass('active').not($j(this).addClass('active'));
+        })
 //    -----------------------------Main menu function---------------------
 $j('.respmenuBtn').click(function(e){
     e.stopPropagation();

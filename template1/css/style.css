@@ -3,7 +3,7 @@
     src: url('ufonts.com_urw-gothic-l-book.ttf') format('truetype')
 }
 /*================================ Loader ======================*/
-.spinner {
+/*.spinner {
   margin: 22% auto;
   position: fixed;
   left: 0px;
@@ -57,7 +57,7 @@
     transform: scaleY(1.0);
     -webkit-transform: scaleY(1.0);
   }
-}
+}*/
 /*================================ End Loader ======================*/
 
 
@@ -69,9 +69,10 @@
 ul,li{list-style: none;}
 a, a:active, a:link{color: inherit !important; text-decoration: none !important; font-weight: normal; outline: none !important;}
 html,body{height: 100%;}
-body{font-size: 13px; font-family: URW Gothic L Book !important; letter-spacing: 0.2px;}
+body{font-size: 13px; font-family: sans !important; letter-spacing: 0.2px;}
+.ulMainMenu, h1, h2, h3, h4, h5, h6{font-family: URW Gothic L Book !important;}
 .upcomEvent, body{background: url('../images/bg.png') repeat;}
-header{background: #ffffff; padding: 10px; position: fixed; z-index: 9999; width: 100%; box-shadow: 1px 0px 3px #000000;}
+header{background: #ffffff; padding: 10px; position: fixed; z-index: 9999; width: 100%; box-shadow: 1px 0px 3px #000000; top: 0px; left: 0px;}
 .ftrContnr, .maincontainer, .hdrContnr{max-width: 1000px; width: 95%;}
 .hdrToolContnr{width: 60%; left: 0px; right: 0px; padding-right: 6px;}
 .txtSearch{
@@ -115,14 +116,15 @@ header{background: #ffffff; padding: 10px; position: fixed; z-index: 9999; width
 .mrgnTop{margin-top: 20px;}
 .galBgImg,
 .link2Top, 
-a.btnviewAll, .plsVer, button, input[type="button"], input[type="submit"]{
+button, a.btnviewAll, .plsVer,
+input[type="button"], input[type="submit"]{
     transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     -ms-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -webkit-transition: all 0.5s ease;
 }
-.rhtButn h5,.rhtButn h3, .ulSub li a,.btnSubmit{
+.btnnxtprv, .rhtButn h5,.rhtButn h3, .ulSub li a,.btnSubmit{
     transition: all 0.2s ease;
     -o-transition: all 0.2s ease;
     -ms-transition: all 0.2s ease;
@@ -144,11 +146,16 @@ a.btnviewAll, .plsVer, button, input[type="button"], input[type="submit"]{
 }
 .signinformCont{/*--------------changed by soumya------------------*/
     width: 475px;
-    padding: 10px;
+    /*padding: 10px;*/
+}
+/*.signinformCont .form-group{margin: 0px;}*/
+.entryGate .form-group label, .signinformCont .form-group label{text-align: left;}
+.entryGate .form-group label.mrgnpdng, .signinformCont .form-group label.mrgnpdng{padding: 0px;}
+.signupformCont,.entryGate, .signinformCont{/*--------------changed by soumya------------------*/
+    padding:0px 22px;
 }
 .signupformCont,.entryGate{/*--------------changed by soumya------------------*/
     width: 920px;
-    padding:0px 22px;
 }
 .signupformCont, .entryGate,.signinformCont{/*--------------changed by soumya------------------*/
     left: 0px;
@@ -164,7 +171,7 @@ a.btnviewAll, .plsVer, button, input[type="button"], input[type="submit"]{
     -webkit-box-shadow: 0px 0px 3px #272727;
 }
 .signinformCont h3, .entryGate h3, .signupformCont h3{
-    padding: 30px 15px 8px;
+    padding: 10px 15px 8px;
     color: #333333;
     font-size:23.4px;
     font-weight: bold;   
@@ -190,7 +197,7 @@ table tr td{padding: 5px;}
     font-size: 12px;
 }
 /*--------------changed by soumya------------------*/
-.evntRight p+p{font-size:11px;}
+.evntRight p+p{font-size:11px; color: #4AA1D9;}
 .evntRight p{margin-top: 10px;}
 ul{margin:0pc; padding:0px;}
 #slider{overflow: hidden !important; height: 200px !important;}
@@ -237,12 +244,12 @@ ul{margin:0pc; padding:0px;}
 }
 .signinBtn, .btnnxtprv{
     font-size: 15px;
-    padding: 3px 25px;
-    border-radius: 4px;
-    -o-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -ms-border-radius: 4px;
-    -webkit-border-radius: 4px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    -o-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -webkit-border-radius: 5px;
 }
 
 .sbmitbtn{
@@ -254,7 +261,8 @@ ul{margin:0pc; padding:0px;}
     font-size: 17px;
     padding: 5px 28px;
 }
-
+.btnnxtprv{margin-right: 5px;}
+.btnnxtprv:hover{background: #4AA1D9;}
 .signinBtn, .btnnxtprv,.sbmitbtn{
     background:#2c71bf; 
     color: #fff;
@@ -305,10 +313,10 @@ ul{margin:0pc; padding:0px;}
 }
 /*================================ Map Section======================*/
 .mapCont{
-    background: yellow;
+    background: #ffffff;
     width: 95%;
-    max-width: 421px;
-    max-height: 436px;
+    max-width: 400px;
+    height: 500px;
     overflow-y: auto;
     top: 25%;
     right: 0px;
@@ -316,6 +324,31 @@ ul{margin:0pc; padding:0px;}
     display: none;
     right: 0%;
     z-index: 9999;
+    box-shadow: 0 0 6px -2px #000000;
+    -o-box-shadow: 0 0 6px -2px #000000;
+    -ms-box-shadow: 0 0 6px -2px #000000;
+    -moz-box-shadow: 0 0 6px -2px #000000;
+    -webkit-box-shadow: 0 0 6px -2px #000000;
+}
+.mapCont h1{
+    margin: 0px 10px;
+    padding: 10px; 
+    font-size: 25px; 
+    text-align: center; 
+    color: #294DA3; 
+    border-bottom: 1px solid #e3e3e3;
+}
+.mapInfo{right: 0px; width: 200px;}
+.mapInfo p{font-size: 11px; color: #878787;}
+.selState{
+    background: #F5F5F5; 
+    border: 1px solid #c9c9c9; 
+    padding: 2px; 
+    border-radius: 3px; 
+    -o-border-radius: 3px; 
+    -ms-border-radius: 3px; 
+    -moz-border-radius: 3px; 
+    -webkit-border-radius: 3px;
 }
 /*================================ Button Section======================*/
 .btnNewsLetter{width: 100%; padding: 8px; font-weight: bold; margin-bottom: 10px;}
@@ -324,7 +357,7 @@ ul{margin:0pc; padding:0px;}
 .btnBg:hover,.btnBg.active{background: #4AA1D9;}
 .btnStyle{    
     font-weight: bold;
-    font-size: 14px;
+    font-size: 15px;
     color: #ffffff;
     padding: 5px 10px;
     border: none;
@@ -429,6 +462,7 @@ ul{margin:0pc; padding:0px;}
 }
 /*================================ Gallery Section======================*/
 .galleryContnr{width: 100% !important;}
+.jssorb21{display: none;}
 /*================================ Body Part starts here======================*/
 /*================================ Left Section======================*/
 .maincontainer{margin: 30px auto;}
@@ -449,7 +483,7 @@ ul{margin:0pc; padding:0px;}
     -moz-border-top-left-radius: 10px;
     -webkit-border-top-left-radius: 10px;
     background: #383838;
-    padding: 10px 30px;
+    padding: 10px 20px;
     top: -10px;
     font-size: 24px;
 }
@@ -521,7 +555,7 @@ a.btnviewAll, .btnviewAll{
 }
 .paraNews{line-height: 23px !important;}
 .selPolls label{display: block;}
-.ulBlogs li{border-bottom: 1px solid #E3E3E3; padding: 10px 0px;}
+.ulBlogs li{border-bottom: 1px solid #E3E3E3; padding: 10px 0px 0px;}
 .ulBlogs li:last-of-type{border-bottom: none;}
 .hdngSpn{border-bottom: 1px solid #e3e3e3;}
 .hdngSpn span{padding:15px 5px 10px; display: inline-block;}
@@ -530,11 +564,9 @@ a.linkSignin:hover{text-decoration: underline !important;}
 .voteurCast, .voteCast{padding: 3px 8px; color: #ffffff; margin: 0px auto;}
 /*.voteCast{left: 0px; right:0px; width: 130px;  position: absolute; margin:auto; bottom: 5px;}--------changed by soumya-------*/
 .voteurCast:hover, .voteCast:hover{background: #2C71BF;}
-.ulVideo li{xpadding: 0px 10px 35px; text-align: left; position: relative; margin-bottom: 6px; text-align: center;} /*--------changed by soumya-------*/
-.ulEvent li{padding-top: 18px; text-align: left;}
+.ulVideo li{padding: 0px 10px 35px; position: relative; margin-bottom: 6px; text-align: center;} /*--------changed by soumya-------*/
+.ulEvent li{padding: 18px 10px 0px; text-align: left;}
 .ulVideo li:nth-of-type(even){border-left: 1px solid #CECECE; border-right: 1px solid #CECECE;}
-/*.ulVideo li:first-of-type{padding-left: 0px;}
-.ulVideo li:last-of-type{padding-right: 0px;}*/
 .upcomEvent{
     top: -4px;
 }
@@ -549,7 +581,7 @@ a.linkSignin:hover{text-decoration: underline !important;}
 }
 .eventLeft, .evntRight{height: 150px;}
 .calMonth{padding: 25px 0px; border-bottom: 1px solid #6F6F6F;}
-.evntRight{width: 63%; font-size: 12px; font-weight: bold;}
+.evntRight{width: 64%; font-size: 12px; font-weight: bold;}
 .calDate{font-size: 36px; padding-top: 10px;}
 a.fullEvent{font-style: italic; color: #FE3000 !important; padding-right: 5px; font-weight: bold; font-size: 12px;}
 a.fullEvent:hover{text-decoration: underline !important;}
@@ -595,16 +627,16 @@ a.fullEvent:hover{text-decoration: underline !important;}
 .btnDonate{
     background: #2C71BF;
     color: #FFFFFF !important;
-    font-size: 30px;
-    padding: 6px 40px;
+    font-size: 25px;
+    padding: 6px 30px;
     border: none;
     margin-top: 10px;
     border-bottom: 3px solid #294DA3;
-    border-radius: 3px;
-    -o-border-radius: 3px;
-    -ms-border-radius: 3px;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
+    border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
 }
 .btnDonate:hover{background: #469AD5;}
 .helpMsg{color: #2C71BF; font-size: 17px; font-weight: bold;}
@@ -642,8 +674,8 @@ a.fullEvent:hover{text-decoration: underline !important;}
 }
 .ulFtrMain2{display: none;}
 .ulFtrMain li h3{color: #ffffff;}
-.ulftrMenu li a{color: #8E8C8D !important; padding: 2px !important; display: block;}
-.ulftrMenu li a:hover{color: #27AAE2!important; text-decoration: underline;}
+.ulContact li, .ulftrMenu li a{color: #8E8C8D !important; padding: 2px !important; display: block;}
+.ulftrMenu li a:hover{color: #27AAE2!important;}
 .copyRight{border-top: 1px solid #4E504F; padding-top: 10px; color: #4E504F;}
 .ulSocial li{margin: 17px 0px;}
 .ulSocial li a{padding: 0px 0px 0px 35px !important; background-position: left center;}
@@ -673,20 +705,39 @@ a.utube{background: url('../images/youtube.png') no-repeat;}
     font-size: 17px;
     border-bottom: 1px solid #CFCFCF;
     padding-bottom: 8px;
+    width: 98%;
+    padding-left: 15px;
 }
+    .tblcont tr td{padding: 10px 0px 0px 0px;}
 .event_talent_txt{color: #464646;
                   font-weight: bold;font-size: 17px;text-align: left;}
 .content_event{padding-top: 12px;}
-.event_head{width: 98%;padding-left: 5px;}
 .event_date{width: 98%;padding-left: 13px;padding-top: 10px;}
 .evnt_date{color: #2C71BF;font-size: 14px;font-weight: bold;border-right: 1px solid #DFDFDF;padding-right: 10px;}
 .evnt_time{color: #2C71BF;font-size: 13px;font-weight: bold;padding-left: 10px;}
-.evnt_location{color: #A5A5A5;}
-.evnt_txt{padding-top: 30px;padding-bottom: 20px; border-bottom: 1px solid #ababab; margin-bottom: 10px;}
-.contentDiv:last-child .evnt_txt{border-bottom: none;}
-.evnt_txt1{border-bottom: 1px solid #CFCFCF;}
+a.evnt_location{color: #A5A5A5 !important;}
+.quryContact{padding: 0px 0px 10px; width: 131px; float: left; font-weight: bold; font-size: 12px; color: #4883C7;}
+.eventFbLink{
+    background: url('../images/FB-event-btn.png') no-repeat;
+    width: 226px;
+    height: 67px;
+    display: block;
+}
+span.gglMapIco{
+    color: #E84C3D !important;
+    font-size: 18px;
+}
+iframe.fb_ltr{width: 100% !important;}
+.evnt_txt{
+    padding-top: 30px;
+    padding-bottom: 20px; 
+    border-bottom: 1px solid #ababab; 
+    margin-bottom: 10px; 
+    text-align: justify;
+    /*color: #6D6D6D;*/
+    font-weight: 400;
+}
 .event_talent_gather{padding-top: 30px;}
-.evnt_txt2{border-top: 1px solid #CFCFCF;margin-top: 10px;}
 /*--------------changed by Akshaya for donation------------------*/
 .frmcntnrWdth{width: 90%; border: 1px solid #cccccc; padding: 15px;}
 .frmHdng{border-bottom: 1px solid #000000;}
