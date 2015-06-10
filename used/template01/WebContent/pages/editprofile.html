@@ -1,0 +1,160 @@
+<html>
+<head>
+[[META_TAGS]] [[RESOURCES]]
+
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script>
+	$(function() {
+		$("#tabs").tabs().addClass("ui-tabs-vertical ui-helper-clearfix");
+		$("#tabs li").removeClass("ui-corner-top").addClass("ui-corner-left");
+	});
+</script>
+<style>
+.ui-tabs-vertical {
+	width: 55em;
+}
+
+.ui-tabs-vertical .ui-tabs-nav {
+	padding: .2em .1em .2em .2em;
+	float: left;
+	width: 12em;
+}
+
+.ui-tabs-vertical .ui-tabs-nav li {
+	clear: left;
+	width: 100%;
+	border-bottom-width: 1px !important;
+	border-right-width: 0 !important;
+	margin: 0 -1px .2em 0;
+}
+
+.ui-tabs-vertical .ui-tabs-nav li a {
+	display: block;
+}
+
+.ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active {
+	padding-bottom: 0;
+	padding-right: .1em;
+	border-right-width: 1px;
+}
+
+.ui-tabs-vertical .ui-tabs-panel {
+	padding: 1em;
+	float: right;
+	width: 40em;
+}
+</style>
+</head>
+<body>
+
+
+	[[TOPMENU]]
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<!--<script src="../js/jquery-1.9.1.min.js"></script>-->
+	<!--<script src="bootstrap.min.js"></script>-->
+	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<!--<script src="ie10-viewport-bug-workaround.js"></script>-->
+
+	<!-- jssor slider scripts-->
+	<!-- use jssor.js + jssor.slider.js instead for development -->
+	<!-- jssor.slider.mini.js = (jssor.js + jssor.slider.js) -->
+
+	<div class="maincontainer">
+		<div class="lftContnr col-xs-12 col-sm-12 col-md-12">
+			<div>
+				<div class="hanger relPostn">
+					<h3 class="fltlft hangerHdng mrgnpdng absPostn">Edit Profile</h3>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="contentDiv newsPad">
+				<!--------changed by soumya------->
+				<div class="newsCont">
+					<div id="tabs">
+						<ul>
+							<li><a href="#tabs-1">Security</a></li>
+						</ul>
+						<div id="tabs-1">
+							<h2>Change Password</h2>
+							<form action="javascript:void(0);" method="post" id="passwordChangeForm" name="passwordChangeForm" enctype="multipart/form-data" onsubmit="return changePassword();">
+								<div class="form-group col-xs-12">
+									<label class="col-lg-6 pdng5">Old Password <span class="spnStar">*</span>:
+									</label>
+									<div class="col-lg-6 pdng5">
+										<input type="password" id="oldPassword" name="oldPassword" class='form-control' placeholder="Enter old password" />
+									</div>
+								</div>
+								<div class="form-group col-xs-12">
+									<label class="col-lg-6 pdng5">New Password <span class="spnStar">*</span>:
+									</label>
+									<div class="col-lg-6 pdng5">
+										<input type="password" id="newPassword" name="newPassword" class='form-control' placeholder="Enter new password" />
+									</div>
+								</div>
+								<div class="form-group col-xs-12">
+									<label class="col-lg-6 pdng5">New Password(ReType)<span class="spnStar">*</span>:
+									</label>
+									<div class="col-lg-6 pdng5">
+										<input type="password" id="newPassword2" name="newPassword2" class='form-control' placeholder="Repeat new password" />
+									</div>
+								</div>
+								<div id="change_password_errors" class="form-group col-xs-12" align="center"></div>
+								<div class="form-group col-xs-12" align="center">
+									<input type="submit" id="changePasswordButton" value="Change Password" class="signinBtn" />
+								</div>
+								<div class="clear"></div>
+							</form>
+						</div>
+
+					</div>
+				</div>
+
+
+			</div>
+			<!--------changed by soumya end------->
+		</div>
+
+		<div class="clear"></div>
+	</div>
+	[[FOOTER]]
+
+	<script type="text/javascript">
+	function changePassword(){
+        var formData = getFormData('#passwordChangeForm');
+        if(formData.newPassword != formData.newPassword2){
+        	var errorHtml = "<font color='red'><b>Password do not match</b></font>";
+            $("#change_password_errors").html(errorHtml);
+            return false
+        }
+        $('#changePasswordButton').prop('disabled', true);
+        var value = JSON.stringify(formData);
+        $.ajax({
+            contentType: 'application/json',
+            type: "POST",
+            url: "/js/changepassword",
+            data: value,
+            dataType: "json"
+          }).done(function(msg) {
+        	  alert('Password Changed');
+              $('#changePasswordButton').prop('disabled', false);
+              $('#newPassword').val('')
+              $('#newPassword2').val('')
+              $('#oldPassword').val('')
+              }).fail(function(jqXHR, textStatus, errorThrown) {
+            	  alert('Password Change failed '+ jqXHR.responseText);
+                  $('#changePasswordButton').prop('disabled', false);
+                  
+                  var responseText = jqXHR.responseText;
+                  var resObj = jQuery.parseJSON(jqXHR.responseText);
+              var errorHtml = "<font color='red'><b>" + resObj.message+"</b></font>";
+              $("#change_password_errors").html(errorHtml);
+              
+          });
+        return false;
+    }
+</script>
+</body>
+</html>
+

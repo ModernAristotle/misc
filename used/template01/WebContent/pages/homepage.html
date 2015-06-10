@@ -35,17 +35,16 @@
 				<!--------changed by soumya------->
 				<div id="slider_container">
 					<div id="slider_content">
-						<div id="slider" class="galleryContnr" >
-							<ul style="width:2303px">
+						<div id="slider" class="galleryContnr">
+							<ul style="width: 2303px">
 								{{#each NewsListPlugin}}
-								<li style="width:329px">
-									<div class="col-xs-12" style="max-height:168px;overflow:hidden;">
+								<li style="width: 329px">
+									<div class="col-xs-12" style="max-height: 168px; overflow: hidden;">
 										<h4 class='mrgnpdng'>{{{title}}}</h4>
 										<br />
 										<p class='paraNews'>{{{trimString contentSummary}}}</p>
-										
-									</div>
-									<a href="/content/news/{{id}}" class="fullEvent">Read more...</a>
+
+									</div> <a href="/content/news/{{id}}" class="fullEvent">Read more...</a>
 								</li> {{/each}}
 							</ul>
 						</div>
@@ -54,42 +53,8 @@
 				</div>
 			</div>
 			<!--------changed by soumya end------->
-			<!-- 
-			<div class="contentDiv mrgnTop">
-				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-					<h4 class="hdngBlogs">
-						<div class="hdngSpn">
-							<span>Blogs</span>
-							<button type="button" class="fltrht btnviewAll">Read all</button>
-						</div>
-					</h4>
-					<ul class="ulBlogs mrgnpdng">
-						<li>
-							<p>
-								UNDER CONSTRUCTION <a href="javascript:void(0)" class='fullEvent'>Read More</a>
-							</p>
-						</li>
-					</ul>
-				</div>
-				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style='min-height: 337px !important;'>
-					<h4 class="hdngPolls">
-						<div class="hdngSpn">
-							<span>Polls</span> <a href="#" class="fltrht btnviewAll">View all</a>
-						</div>
-					</h4>
-					<p>UNDER CONSTRUCTION</p>
 
-					<br />
-					<p class='paraCasturvote absPostn'>
-						Please <a href="javascript:void(0)" class="linkSignin">Sign in</a> to vote &nbsp;
-						<button type="button" class="voteurCast">Cast your Vote</button>
-					</p>
-					<div class="clear"></div>
-				</div>
-				<div class="clear"></div>
-			</div>
-			 -->
-			<!-- 
+
 			<div class="contentDiv mrgnTop">
 				<div class="divtask divWid">
 					<h4 class="hdngVideos">
@@ -99,40 +64,23 @@
 						</div>
 					</h4>
 					<ul class="ulVideo mrgnpdng">
+						{{#each VideoListPlugin}}
 						<li class="col-xs-12 col-sm-4 col-md-4">
 							<div class="center">
-
-								<embed width="100%" height="122" src="https://www.youtube.com/embed/6ay54pPpHh8" />
-
+								<embed width="100%" height="122" src="https://www.youtube.com/embed/{{youtubeVideoId}}" />
 							</div>
-							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p>
+							<p style="line-height: 1.5em; height: 3em; overflow: hidden;">{{description}}</p>
 							<button type="button" class="voteCast center">Watch Now</button>
-						</li>
-						<li class="col-xs-12 col-sm-4 col-md-4">
-							<div class="center">
-								<embed width="100%" height="122" src="https://www.youtube.com/embed/owWmxA_3Sg8" />
-							</div>
-							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing</p>
-							<button type="button" class="voteCast center">Watch Now</button>
-						</li>
-						<li class="col-xs-12 col-sm-4 col-md-4">
-
-							<div class="center">
-								<embed width="100%" height="122" src="https://www.youtube.com/embed/1W6OPG0QDbo" />
-							</div>
-							<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit,?</p>
-							<button type="button" class="voteCast center">Watch Now</button>
-						</li>
+						</li> {{/each}}
 						<div class="clear"></div>
 					</ul>
 				</div>
-			</div>-->
+			</div>
 			<div class="mrgnTop">
 				<div class="mrgnTop">
 					<div class="hanger relPostn">
 						<h3 class="fltlft upcomEvent mrgnpdng absPostn">Upcoming Events</h3>
-						<span class="fltrht nxtPrvCont relPostn"> <a href="javascript:void(0)" class="fltlft prvIco"></a> <a
-							href="javascript:void(0)" class="fltlft nxtIco"></a>
+						<span class="fltrht nxtPrvCont relPostn"> <a href="javascript:void(0)" class="fltlft prvIco"></a> <a href="javascript:void(0)" class="fltlft nxtIco"></a>
 						</span>
 					</div>
 				</div>
@@ -157,8 +105,46 @@
 						</li> {{/each}}
 						<div class="clear"></div>
 					</ul>
+					<a href="/content/events" class="fltrht btnviewAll">View all</a>
 				</div>
 			</div>
+
+			<div class="contentDiv mrgnTop">
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+					<h4 class="hdngBlogs">
+						<div class="hdngSpn">
+							<span>Blogs</span>
+							<a href="/content/blogs" class="fltrht btnviewAll">Read all</a>
+						</div>
+					</h4>
+					<ul class="ulBlogs mrgnpdng">
+					   {{#each BlogListPlugin}}
+						<li>
+							<p>
+								{{{trimString contentSummary 112}}}... <a href="/content/blog/{{id}}" class='fullEvent'>Read More</a>
+							</p>
+						</li>
+						{{/each}}
+					</ul>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style='min-height: 337px !important;'>
+					<h4 class="hdngPolls">
+						<div class="hdngSpn">
+							<span>Polls</span> <a href="#" class="fltrht btnviewAll">View all</a>
+						</div>
+					</h4>
+					<p>UNDER CONSTRUCTION</p>
+
+					<br />
+					<p class='paraCasturvote absPostn'>
+						Please <a href="javascript:void(0)" class="linkSignin">Sign in</a> to vote &nbsp;
+						<button type="button" class="voteurCast">Cast your Vote</button>
+					</p>
+					<div class="clear"></div>
+				</div>
+				<div class="clear"></div>
+			</div>
+
 		</div>
 		[[RIGHT_SIDE]]
 		<div class="clear"></div>
