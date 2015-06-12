@@ -1,6 +1,26 @@
 
 <script type="text/javascript">
     function validateForm() {
+
+    	if($('#passwordMain').val() == ''){
+            $("#shw_passworderror").html('<font color=\'red\'>Please Enter password</font>');
+            return false;
+        }else{
+            $("#shw_passworderror").html('');
+        }
+        if($('#passwordRetype').val() == ''){
+            $("#shw_retypepassworderror").html('<font color=\'red\'>Please retype password</font>');
+            return false;
+        }else{
+            $("#shw_retypepassworderror").html('');
+        }
+        if($('#passwordRetype').val() != $('#passwordMain').val()){
+            $("#shw_retypepassworderror").html('<font color=\'red\'>Password did not match</font>');
+            return false;
+        }else{
+            $("#shw_retypepassworderror").html('');
+        }
+        $('#password').val($('#passwordMain').val());
         var validator = $("#noticeform").validate({
             rules : {
                 "email" : {
@@ -126,6 +146,7 @@
         return false;
     }
     function submitForm(){
+        
         $("#errors").html("Registering........");
         var formData = getFormData('#userForm');
         var countryData = $("#mobileNumber").intlTelInput("getSelectedCountryData");
@@ -177,9 +198,12 @@
             
             
         }
+        
         $('#formSubmitButton').prop('disabled', true);
         
+        formData.password = $('#password').val();
         var value = JSON.stringify(formData);
+        
         $.ajax({
             contentType: 'application/json',
             type: "POST",
@@ -270,8 +294,7 @@
 <div id="confirmation" class="center fnClose" style="display: none;">
 	<h3 class="mrgnpdng" align="">User Registered Succcesfully</h3>
 	<p class="closeicn">x</p>
-	<form action="javascript:void(0);" id="noticeform2" method="post" name="frm" enctype="multipart/form-data">User
-		Registered Succcesfully</form>
+	<form action="javascript:void(0);" id="noticeform2" method="post" name="frm" enctype="multipart/form-data">User Registered Succcesfully</form>
 </div>
 <div id="entryGate" class="entryGate center fnClose" style="display: none;">
 	<div class="frmHdng">
@@ -279,8 +302,7 @@
 	</div>
 	<br />
 	<p class="closeicn">x</p>
-	<form action="javascript:void(0);" id="noticeform" method="post" name="frm" enctype="multipart/form-data"
-		onsubmit="return validateForm();">
+	<form action="javascript:void(0);" id="noticeform" method="post" name="frm" enctype="multipart/form-data" onsubmit="return validateForm();">
 		<div class="cntnr clear" style="padding: 5px;">
 			<div class="form-group col-xs-12 col-sm-6 col-md-6" style="margin: 0px; padding-bottom: 10px;">
 				<label class="col-lg-12" style="text-align: left;">Email<span class='spnStar'>*</span>:
@@ -289,21 +311,25 @@
 			</div>
 			<div class="form-group col-xs-12 col-sm-6 col-md-6" style="margin: 0px; padding-bottom: 10px;">
 				<label class="col-lg-12" style="text-align: left;">Mobile<span class='spnStar'>*</span>:
-				</label> <input type="tel" class='form-control textbox' id="phone" name="phone" placeholder="Enter mobile number"/>
+				</label> <input type="tel" class='form-control textbox' id="phone" name="phone" placeholder="Enter mobile number" />
 				<div id="shw_phoneexist"></div>
 			</div>
+			
 			<div class="form-group col-xs-12 col-sm-6 col-md-6" style="margin: 0px; padding-bottom: 10px;">
                 <label class="col-lg-12" style="text-align: left;">Password<span class='spnStar'>*</span>:
-                </label> <input type="password" class='form-control' placeholder="Enter Password" id="password" name="password" />
+                </label> <input type="password" class='form-control' placeholder="Enter Password" id="passwordMain" name="passwordMain" />
+                <div id="shw_passworderror"></div>
             </div>
             <div class="form-group col-xs-12 col-sm-6 col-md-6" style="margin: 0px; padding-bottom: 10px;">
                 <label class="col-lg-12" style="text-align: left;">Password(Retype)<span class='spnStar'>*</span>:
-                </label> <input type="tel" class='form-control textbox' id="passwordRetype" name="passwordRetype" placeholder="Retype Password"/>
-                <div id="shw_passworderror"></div>
+                </label> <input type="password" class='form-control textbox' id="passwordRetype" name="passwordRetype" placeholder="Retype Password" />
+                <div id="shw_retypepassworderror"></div>
             </div>
+                    
+			<div class="clear"></div>
 			<div class="form-group col-xs-12 col-sm-6 col-md-6" style="margin: 0px;">
-				<label class="col-xs-12 col-sm-12 col-md-12 col-lg-12 formStatusHid">&nbsp;</label> <input type="submit"
-					value="Submit" id="pre_signup" class="btnnxtprv" style="margin-top: 6px;" />
+				<label class="col-xs-12 col-sm-12 col-md-12 col-lg-12 formStatusHid">&nbsp;</label> <input type="submit" value="Submit" id="pre_signup" class="btnnxtprv"
+					style="margin-top: 6px;" />
 			</div>
 			<div class="clear"></div>
 		</div>
@@ -332,13 +358,14 @@
 				<p class="fltlft pdb">Volunteer</p>
 			</div>
 		</div>
-		<form action="javascript:void(0);" id="userForm" method="post" name="frm" enctype="multipart/form-data"
-			onsubmit="return submitForm();">
+		<form action="javascript:void(0);" id="userForm" method="post" name="frm" enctype="multipart/form-data" onsubmit="return submitForm();">
 			<div class="prsnldtl">
 				<div class="cntnr clear">
 					<p class="hdng">Personal Details</p>
+					<input type="hidden" name="password" value="DOESNT MATTER, FAKE ONE">
 					<div class="form-group col-xs-12 col-sm-6 col-md-6">
-						<label class="col-lg-4 pdng5">Name:</label>
+						<label class="col-lg-4 pdng5">Name<span class='spnStar'>*</span>:
+						</label>
 						<div class="col-lg-8 pdng5">
 							<input type="text" class='form-control' placeholder="Enter your name" name="name" id="name" />
 						</div>
@@ -376,15 +403,13 @@
 								<option>Driving License</option>
 								<option>Voter Card</option>
 								<option>Passport</option>
-							</select> <input type="text" class="form-control frmElWdth50" placeholder="ID Card Number" id="identityNumber"
-								name="identityNumber" />
+							</select> <input type="text" class="form-control frmElWdth50" placeholder="ID Card Number" id="identityNumber" name="identityNumber" />
 						</div>
 					</div>
 					<div class="form-group col-xs-12 col-sm-6 col-md-6">
 						<label class="col-lg-4 pdng5">DOB :<span class='spnStar'>*</span></label>
 						<div class="col-lg-8 pdng5">
-							<input type="text" class='form-control' placeholder="Enter Date of birth dd-MM-YYYY" id="dateOfBirth"
-								name="dateOfBirth" />
+							<input type="text" class='form-control' placeholder="Enter Date of birth dd-MM-YYYY" id="dateOfBirth" name="dateOfBirth" />
 						</div>
 					</div>
 					<div class="form-group col-xs-12 col-sm-6 col-md-6">
@@ -424,7 +449,7 @@
 						<label class="col-lg-4 pdng5">Region:<span class='spnStar'>*</span></label>
 						<div class="col-lg-8 pdng5">
 							<select class="form-control" id="nriCountryRegionId" name="nriCountryRegionId">
-								<option  value="0">Select Country Region</option>
+								<option value="0">Select Country Region</option>
 							</select>
 						</div>
 					</div>
@@ -445,10 +470,7 @@
 						<label class="col-lg-4 pdng5">State:<span class='spnStar'>*</span></label>
 						<div class="col-lg-8 pdng5">
 							<select class="form-control" id="stateLivingId" name="stateLivingId">
-								<option>ID Card Type</option>
-								<option>Male</option>
-								<option>Female</option>
-								<option>Other</option>
+								<option>States</option>
 							</select>
 						</div>
 					</div>
@@ -483,8 +505,7 @@
 					<p class="hdng" id="voterMessage">Where You Register as Voters</p>
 					<p class="hdng" id="nriMessage" style="display: none;">Home place in india</p>
 					<div class="form-group col-xs-12 col-sm-6 col-md-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-2">
-						<label for="" id="sameLocation"><input type="checkbox" class="chkbx" id="sameLocationCheckbox" />&nbsp;
-							Same as Above</label>
+						<label for="" id="sameLocation"><input type="checkbox" class="chkbx" id="sameLocationCheckbox" />&nbsp; Same as Above</label>
 					</div>
 					<div class="form-group col-xs-12 col-sm-6 col-md-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-2"></div>
 					<div class="form-group col-xs-12 col-sm-6 col-md-6">
@@ -521,8 +542,8 @@
 					</div>
 					<div class="clear"></div>
 				</div>
-				<input type="button" value="Previous" class="prevBtn btnnxtprv fltlft" name="fonticn_pd" /> <input type="button"
-					value="Next" class="btnnxtprv nxtbtn1 fltrht" name="fonticn_rav" />
+				<input type="button" value="Previous" class="prevBtn btnnxtprv fltlft" name="fonticn_pd" /> <input type="button" value="Next" class="btnnxtprv nxtbtn1 fltrht"
+					name="fonticn_rav" />
 				<div class="clear"></div>
 			</div>
 
@@ -531,9 +552,10 @@
 				<div class="cntnr clear">
 					<p class="hdng">Volunteer Details</p>
 					<div class="form-group col-xs-12 col-sm-6 col-md-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-2">
-						<label><input type="checkbox" class="chkbx" id="volunteer" name="volunteer" />&nbsp; I Want to be
-							Volunteer</label>
+						<label><input type="checkbox" class="chkbx" id="volunteer" name="volunteer" />&nbsp; I Want to be Volunteer</label>
 					</div>
+					<div class="clear"></div>
+					<br>
 					<div id="volunteerDetailPanel" class="form-group" style="display: none;">
 						{{#each VolunteerOptionPlugin}}
 						<h3>{{description}}</h3>
@@ -542,8 +564,7 @@
 								{{#each interests}}
 								<tr>
 									{{#each this}}
-									<td><input type="checkbox" class="chkbx" id="interests" name="interests" value="{{id}}" />&nbsp;
-										{{description}}</td> {{/each}}
+									<td><input type="checkbox" class="chkbx" id="interests" name="interests" value="{{id}}" />&nbsp; {{description}}</td> {{/each}}
 								</tr>
 
 								{{/each}}
@@ -553,14 +574,12 @@
 						<div>
 							<br></br>
 							<h4>
-								<input type="checkbox" class="chkbx" id="pastVolunteer" name="pastVolunteer" /> Have you volunteered with any
-								political/public interest organization in the past?
+								<input type="checkbox" class="chkbx" id="pastVolunteer" name="pastVolunteer" /> Have you volunteered with any political/public interest organization in the past?
 							</h4>
 							<div class="form-group col-xs-12 col-sm-6 col-md-6" id="pastVolunteerOrganisationPanel" style="display: none;">
 								<label class="col-lg-4 pdng5">Organisation Name:</label>
 								<div class="col-lg-8 pdng5">
-									<input type="text" class='form-control' placeholder="Enter Organisation Name" id="pastOrganisation"
-										name="pastOrganisation" />
+									<input type="text" class='form-control' placeholder="Enter Organisation Name" id="pastOrganisation" name="pastOrganisation" />
 								</div>
 							</div>
 							<div class="clear"></div>
@@ -568,30 +587,26 @@
 						<div>
 							<br></br>
 							<h4>
-								<input type="checkbox" class="chkbx" id="knowExistingMember" name="knowExistingMember" /> Do you know someone
-								associated with Swaraj Abhiyan?
+								<input type="checkbox" class="chkbx" id="knowExistingMember" name="knowExistingMember" /> Do you know someone associated with Swaraj Abhiyan?
 							</h4>
 
 							<div id="existingKnownMemberPanel" style="display: none;">
 								<div class="form-group col-xs-12 col-sm-6 col-md-6">
 									<label class="col-lg-4 pdng5">Member Name:</label>
 									<div class="col-lg-8 pdng5">
-										<input type="text" class='form-control' placeholder="Member Name" id="existingMemberName"
-											name="existingMemberName" />
+										<input type="text" class='form-control' placeholder="Member Name" id="existingMemberName" name="existingMemberName" />
 									</div>
 								</div>
 								<div class="form-group col-xs-12 col-sm-6 col-md-6">
 									<label class="col-lg-4 pdng5">Member Email:</label>
 									<div class="col-lg-8 pdng5">
-										<input type="text" class='form-control' placeholder="Member Email" id="existingMemberEmail"
-											name="existingMemberEmail" />
+										<input type="text" class='form-control' placeholder="Member Email" id="existingMemberEmail" name="existingMemberEmail" />
 									</div>
 								</div>
 								<div class="form-group col-xs-12 col-sm-6 col-md-6">
 									<label class="col-lg-4 pdng5">Member Mobile:</label>
 									<div class="col-lg-8 pdng5">
-										<input type="text" class='form-control' placeholder="Member Mobile" id="existingMemberMobile"
-											name="existingMemberMobile" />
+										<input type="text" class='form-control' placeholder="Member Mobile" id="existingMemberMobile" name="existingMemberMobile" />
 									</div>
 								</div>
 							</div>
@@ -607,15 +622,13 @@
 						<div class="form-group col-xs-12 col-sm-6 col-md-6">
 							<label class="col-lg-4 pdng5">Professional Background:</label>
 							<div class="col-lg-8 pdng5">
-								<input type="text" class='form-control' placeholder="Professional Background" id="professionalBackground"
-									name="professionalBackground" />
+								<input type="text" class='form-control' placeholder="Professional Background" id="professionalBackground" name="professionalBackground" />
 							</div>
 						</div>
 						<div class="form-group col-xs-12 col-sm-6 col-md-6">
 							<label class="col-lg-4 pdng5">Domain Expertise:</label>
 							<div class="col-lg-8 pdng5">
-								<input type="text" class='form-control' placeholder="Domain Expertise" id="domainExpertise"
-									name="domainExpertise" />
+								<input type="text" class='form-control' placeholder="Domain Expertise" id="domainExpertise" name="domainExpertise" />
 							</div>
 						</div>
 
@@ -629,16 +642,14 @@
 						<div class="form-group col-xs-12 col-sm-6 col-md-6">
 							<label class="col-lg-4 pdng5">Emergency Contact Name:</label>
 							<div class="col-lg-8 pdng5">
-								<input type="text" class='form-control' placeholder="Emergency Contact Name" id="emergencyContactName"
-									name="emergencyContactName" />
+								<input type="text" class='form-control' placeholder="Emergency Contact Name" id="emergencyContactName" name="emergencyContactName" />
 							</div>
 						</div>
 
 						<div class="form-group col-xs-12 col-sm-6 col-md-6">
 							<label class="col-lg-4 pdng5">Emergency Contact Relation:</label>
 							<div class="col-lg-8 pdng5">
-								<input type="text" class='form-control' placeholder="i.e Father, Mother , Brother, Sister, Uncle etc"
-									id="emergencyContactRelation" name="emergencyContactRelation" />
+								<input type="text" class='form-control' placeholder="i.e Father, Mother , Brother, Sister, Uncle etc" id="emergencyContactRelation" name="emergencyContactRelation" />
 							</div>
 						</div>
 
@@ -657,8 +668,7 @@
 				<div id="errors"></div>
 				<div align='center'>
 
-					<input type="button" value="Previous" class="prevBtn1 btnnxtprv fltlft" name="fonticn_cl" /> <input
-						id="formSubmitButton" type="submit" value="SUBMIT" class="btnDonate" />
+					<input type="button" value="Previous" class="prevBtn1 btnnxtprv fltlft" name="fonticn_cl" /> <input id="formSubmitButton" type="submit" value="SUBMIT" class="btnDonate" />
 				</div>
 			</div>
 			<div class='clear'></div>
@@ -708,24 +718,20 @@
    });
   </script>
 
-		<svg version="1.1" id="svg3642" sodipodi:version="0.32" sodipodi:modified="true"
-			sodipodi:docname="India-states-numbered.svg" inkscape:version="0.46" sodipodi:docbase="D:\"
-			inkscape:output_extension="org.inkscape.output.svg.inkscape" xmlns:cc="http://creativecommons.org/ns#"
-			xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:svg="http://www.w3.org/2000/svg"
-			xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:dc="http://purl.org/dc/elements/1.1/"
-			xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg"
-			xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="95%" viewBox="0 0 1594 1868"
-			enable-background="new 0 0 1594 1868" xml:space="preserve">
- <sodipodi:namedview id="base" inkscape:window-width="1024" inkscape:current-layer="svg3642" inkscape:pageshadow="2"
-				inkscape:window-height="708" inkscape:window-x="0" inkscape:window-y="26" inkscape:pageopacity="0.0"
-				inkscape:zoom="0.56568542" inkscape:cx="1084.8025" borderopacity="1.0" pagecolor="#ffffff" inkscape:cy="636.55576"
+		<svg version="1.1" id="svg3642" sodipodi:version="0.32" sodipodi:modified="true" sodipodi:docname="India-states-numbered.svg" inkscape:version="0.46" sodipodi:docbase="D:\"
+			inkscape:output_extension="org.inkscape.output.svg.inkscape" xmlns:cc="http://creativecommons.org/ns#" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+			xmlns:svg="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:dc="http://purl.org/dc/elements/1.1/"
+			xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="95%"
+			viewBox="0 0 1594 1868" enable-background="new 0 0 1594 1868" xml:space="preserve">
+ <sodipodi:namedview id="base" inkscape:window-width="1024" inkscape:current-layer="svg3642" inkscape:pageshadow="2" inkscape:window-height="708" inkscape:window-x="0"
+				inkscape:window-y="26" inkscape:pageopacity="0.0" inkscape:zoom="0.56568542" inkscape:cx="1084.8025" borderopacity="1.0" pagecolor="#ffffff" inkscape:cy="636.55576"
 				showgrid="false" bordercolor="#666666">
  </sodipodi:namedview>
  <defs>
 
 
- <inkscape:perspective id="perspective389" inkscape:persp3d-origin="797 : 622.66667 : 1" inkscape:vp_x="0 : 934 : 1"
-				inkscape:vp_y="0 : 1000 : 0" sodipodi:type="inkscape:persp3d" inkscape:vp_z="1594 : 934 : 1">
+ <inkscape:perspective id="perspective389" inkscape:persp3d-origin="797 : 622.66667 : 1" inkscape:vp_x="0 : 934 : 1" inkscape:vp_y="0 : 1000 : 0" sodipodi:type="inkscape:persp3d"
+				inkscape:vp_z="1594 : 934 : 1">
  </inkscape:perspective>
  </defs>
  <path id="bihar_1_" class="imap" title="Bihar" fill="#C3C3C3" stroke="#FFFFFF" stroke-width="3.543"
@@ -1437,8 +1443,7 @@
        c-20.751-18.646-43.471-35.938-65.396-53.28c-5.485-4.342-7.182-3.121-12.661-5.313c-3.526-1.399-6.174-5.021-9.915-5.797
        c-3.956-0.813-10.956,1.482-14.938,2.16c-10.644,1.818-21.131,4.546-31.881,5.729C609.669,447.737,597.758,448.535,585.787,451.432z
        " />
- <path id="himachal_pradesh_1_" class="imap" title="Himanchal Pradesh" fill="#C3C3C3" stroke="#FFFFFF"
-				stroke-width="3.543"
+ <path id="himachal_pradesh_1_" class="imap" title="Himanchal Pradesh" fill="#C3C3C3" stroke="#FFFFFF" stroke-width="3.543"
 				d="M571.101,503.77
        c-2.972,1.512-5.757,5.873-5.979-0.021c-1.712-0.033-4.752,0.14-6.271-0.709c-0.687-0.385-1.381-1.666-2.054-2.316
        c-2.2-2.126-4.423-2.348-7.24-2.4c-0.136-2.072,0.035-4.192-0.05-6.282c-0.045-1.104,0.205-2.688-0.334-3.672
@@ -1514,8 +1519,7 @@
 				d="M531.023,477.463
        c0.6,0.068,1.109,0.152,1.438,0.2c0.094,1.488,0.655,8.753-2.924,6.979c0.38,0.188-1.604-2.271-1.501-2.063
        c-0.335-0.703-0.036-1.493-0.271-2.208c-0.229-0.714-1.438-0.908-1.021-2C527.171,477.219,529.391,477.279,531.023,477.463z" />
- <path id="dadra_and_nagar_haveli_1_" class="imap" title="Dadra and Nagar Haveli" fill="#C3C3C3" stroke="#FFFFFF"
-				stroke-width="3.543"
+ <path id="dadra_and_nagar_haveli_1_" class="imap" title="Dadra and Nagar Haveli" fill="#C3C3C3" stroke="#FFFFFF" stroke-width="3.543"
 				d="M325.786,1062.258
        c-0.586-0.076-1.363-0.044-1.813,0.092c-0.021,0.603-0.445,0.916-0.441,1.563c-1.286,0.081-5.335,0.589-5.038-1.928
        c0.172-1.453,2.146-0.521,2.52-2.229c1.537-0.104,4.786,0.539,4.251-2.063c-0.744-3.54-6.1-4.107-8.423-2.289
@@ -1608,8 +1612,7 @@
  <path id="diu_1_" fill="#C3C3C3" stroke="#FFFFFF" stroke-width="3.5433"
 				d="M209.837,1027.375c0.101-0.971,0.117-1.852-1.067-2.056
        c-1.001-0.173-2.436,1.01-2.672,1.961c0.98-0.063,3.665,1.259,3.905-0.489" />
- <path id="jammu_and_kashmir_1_" class="imap" title="Jammu & Kashmir" fill="#C3C3C3" stroke="#FFFFFF"
-				stroke-width="3.543"
+ <path id="jammu_and_kashmir_1_" class="imap" title="Jammu & Kashmir" fill="#C3C3C3" stroke="#FFFFFF" stroke-width="3.543"
 				d="M491.004,381.119
        c-0.597,0.591-1.365,0.945-2,1.524c-0.103,0.094-0.71,0.107-0.95,0.282c-0.331,0.242,0.238,0.905-0.282,1.162
        c-2.231,1.103-2.603-0.932-3.506,1.8c-0.646,1.978-0.261,2.469-2.513,2.737c-1.703,0.203-3.508-0.07-5.212,0.038
@@ -3002,10 +3005,9 @@
 <div class="bdyovrly">&nbsp;</div>
 <header>
 	<div class="hdrContnr center relPostn">
-		<a class="logo fltlft" href="/">
-		  <img src="http://static.swarajabhiyan.org.s3-us-west-2.amazonaws.com/templates/prod/1/images/logo.png" height="71" width="124" />
-		</a> 
-			<a class="mapIco fltrht" href="javascript:void(0)"> <img src="http://static.swarajabhiyan.org.s3-us-west-2.amazonaws.com/templates/prod/1/images/map-s.png" height="55" width="99" />
+		<a class="logo fltlft" href="/"> <img src="http://static.swarajabhiyan.org.s3-us-west-2.amazonaws.com/templates/prod/1/images/logo.png" height="71" width="124" />
+		</a> <a class="mapIco fltrht" href="javascript:void(0)"> <img src="http://static.swarajabhiyan.org.s3-us-west-2.amazonaws.com/templates/prod/1/images/map-s.png" height="55"
+			width="99" />
 			<div>Choose State</div>
 		</a>
 
@@ -3022,7 +3024,7 @@
           <button type="button" class="respSigninBtn btnsgninfn fltlft"></button>-->
 			</div>
 			<div class="fltlft hidInMob contSubscrib">
-			     <!-- 
+				<!-- 
 				<form action="javascript:void(0)" id="formsearch" method="get">
 					<div class="divField">
 						<span class="fldTitle">Newsletter Subscription</span> <input type="text" class="txtSearch"
@@ -3033,13 +3035,9 @@
 				 -->
 			</div>
 			<div class="fltrht contSigninup hidInMob">
-			{{#if LoggedInUserPlugin}}
-                <input type="button" class="btnBg btnStyle" value="My Account" onclick="$(location).attr('href','/user/editprofile');"/>
-                <input type="button" class="btnBg btnStyle" value="Sign Out" onclick="logout();"/> 
-            {{else}}
-                <input type="button" class="btnSignUp btnsgnupfn btnBg btnStyle" value="Sign Up" /> 
-                <input type="button" class="btnSignIn btnsgninfn btnBg btnStyle relPostn" value="Sign In" />
-            {{/if}}
+				{{#if LoggedInUserPlugin}} <input type="button" class="btnBg btnStyle" value="My Account" onclick="$(location).attr('href','/user/editprofile');" /> <input type="button"
+					class="btnBg btnStyle" value="Sign Out" onclick="logout();" /> {{else}} <input type="button" class="btnSignUp btnsgnupfn btnBg btnStyle" value="Sign Up" /> <input
+					type="button" class="btnSignIn btnsgninfn btnBg btnStyle relPostn" value="Sign In" /> {{/if}}
 			</div>
 			<div class="clear"></div>
 			<div class="relPostn">
