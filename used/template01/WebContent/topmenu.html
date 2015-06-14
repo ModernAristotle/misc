@@ -3033,9 +3033,9 @@
 				 -->
 			</div>
 			<div class="fltrht contSigninup hidInMob">
-				{{#if LoggedInUserPlugin}} <input type="button" class="btnBg btnStyle" value="My Account" onclick="$(location).attr('href','/user/editprofile');" /> <input type="button"
-					class="btnBg btnStyle" value="Sign Out" onclick="logout();" /> {{else}} <input type="button" class="btnSignUp btnsgnupfn btnBg btnStyle" value="Sign Up" /> <input
-					type="button" class="btnSignIn btnsgninfn btnBg btnStyle relPostn" value="Sign In" /> {{/if}}
+				{{#if LoggedInUserPlugin}} <input type="button" class="btnBg btnStyle" value="My Account" onclick="ga('send','event', 'Registeration', 'MyAccount', 'Position', 'Top'); $(location).attr('href','/user/editprofile');" /> <input type="button"
+					class="btnBg btnStyle" value="Sign Out" onclick="logout();" /> {{else}} <input type="button" class="btnSignUp btnsgnupfn btnBg btnStyle" value="Sign Up"  onclick="ga('send','event', 'Registeration', 'SignUp', 'Position', 'Top');return true;"/> <input
+					type="button" class="btnSignIn btnsgninfn btnBg btnStyle relPostn" value="Sign In" onclick="ga('send','event', 'Registeration', 'SignIn', 'Position', 'Top');return true;" /> {{/if}}
 			</div>
 			<div class="clear"></div>
 			<div class="relPostn">
