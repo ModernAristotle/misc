@@ -2,7 +2,9 @@
 <head>
 [[META_TAGS]] [[RESOURCES]]
 
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<link type="text/css" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet" />
+
 <script>
 	$(function() {
 		$("#tabs").tabs().addClass("ui-tabs-vertical ui-helper-clearfix");
@@ -11,7 +13,7 @@
 </script>
 <style>
 .ui-tabs-vertical {
-	width: 55em;
+	width: 65em;
 }
 
 .ui-tabs-vertical .ui-tabs-nav {
@@ -40,8 +42,8 @@
 
 .ui-tabs-vertical .ui-tabs-panel {
 	padding: 1em;
-	float: right;
-	width: 40em;
+	float: left;
+	width: 52em;
 }
 </style>
 </head>
@@ -74,9 +76,362 @@
 				<div class="newsCont">
 					<div id="tabs">
 						<ul>
-							<li><a href="#tabs-1">Security</a></li>
+							<li><a href="#tabs-1">Personal Details</a></li>
+							<li><a href="#tabs-2">Volunteer Detail</a></li>
+							<li><a href="#tabs-3">Security</a></li>
+
+
 						</ul>
 						<div id="tabs-1">
+							<h2>Personal Details</h2>
+							<form action="javascript:void(0);" method="post" id="personalDetailForm" name="personalDetailForm" enctype="multipart/form-data" onsubmit="return updatePersonalDetail();">
+								<div class="cntnr clear" style="display: block;" id="editUserIndianPanel2">
+									<p class="hdng" id="personalPanel">Personal</p>
+
+									<div class="form-group col-xs-12">
+										<label class="col-lg-6 pdng5">Name <span class="spnStar">*</span>:
+										</label>
+										<div class="col-lg-6 pdng5">
+											<input type="text" id="name" name="name" value="{{UserPlugin.name}}" class='form-control' placeholder="Enter Name" />
+										</div>
+									</div>
+									<div class="form-group col-xs-12">
+										<label class="col-lg-6 pdng5">Gender:</label>
+										<div class="col-lg-6 pdng5">
+											<select class="form-control" name="gender" id="gender">
+												<option value="">---select---</option> {{{UserPlugin.genderChoices}}}
+											</select>
+										</div>
+									</div>
+									<div class="form-group col-xs-12">
+										<label class="col-lg-6 pdng5">ID Card Detail:</label>
+										<div class="col-lg-6 pdng5">
+											<select class="form-control frmElWdth50" id="identityType" name="identityType"> {{{UserPlugin.identityChoices}}}
+											</select> <input type="text" class="form-control frmElWdth50" placeholder="ID Card Number" id="identityNumber" name="identityNumber" value="{{UserPlugin.identityNumber}}" />
+										</div>
+									</div>
+									<div class="form-group col-xs-12">
+										<label class="col-lg-6 pdng5">DOB :<span class='spnStar'>*</span></label>
+										<div class="col-lg-6 pdng5">
+											<input type="text" placeholder="Enter Date of birth dd-MM-YYYY" id="dateOfBirth" name="dateOfBirth" value="{{UserPlugin.dateOfBirth}}" />
+										</div>
+									</div>
+									<div class="form-group col-xs-12">
+										<label class="col-lg-6 pdng5">Father's Name:</label>
+										<div class="col-lg-6 pdng5">
+											<input type="text" class='form-control' placeholder="Enter your father's name" id="fatherName" name="fatherName" value="{{UserPlugin.fatherName}}" />
+										</div>
+									</div>
+									<div class="form-group col-xs-12">
+										<label class="col-lg-6 pdng5">Mother's Name:</label>
+										<div class="col-lg-6 pdng5">
+											<input type="text" class='form-control' placeholder="Enter your mother's name" id="motherName" name="motherName" value="{{UserPlugin.motherName}}" />
+										</div>
+									</div>
+									<div class="form-group col-xs-12 col-sm-6 col-md-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-2">
+										<label for=""> {{#if UserPlugin.nri}} <input type="checkbox" class="chkbx" id="nriEditUser" name="nriEditUser" checked="checked" /> {{else}} <input
+											type="checkbox" class="chkbx" id="nriEditUser" name="nriEditUser" /> {{/if}} &nbsp; I am NRI
+										</label>
+									</div>
+									<div class="clear"></div>
+								</div>
+								<br></br> {{#if UserPlugin.nri}}
+								<div class="cntnr clear" id="nriEditUserPanel" style="display: block">
+									{{else}}
+									<div class="cntnr clear" id="nriEditUserPanel" style="display: none">
+										{{/if}}
+										<p class="hdng">Currently Living - NRI Location</p>
+										<div class="form-group col-xs-12">
+											<label class="col-lg-4 pdng5">Country:<span class='spnStar'>*</span></label>
+											<div class="col-lg-8 pdng5">
+												<select class="form-control" id="editUserNriCountryId" name="editUserNriCountryId">
+													<option value="0">Select Country</option> {{{UserPlugin.Countries}}}
+												</select>
+											</div>
+										</div>
+										<div class="form-group col-xs-12">
+											<label class="col-lg-4 pdng5">Region:<span class='spnStar'>*</span></label>
+											<div class="col-lg-8 pdng5">
+												<select class="form-control" id="editUserNriCountryRegionId" name="editUserNriCountryRegionId">
+													<option value="0">Select Region</option> {{{UserPlugin.CountryRegions}}}
+												</select>
+											</div>
+										</div>
+										<div class="form-group col-xs-12">
+											<label class="col-lg-4 pdng5">Area:<span class='spnStar'>*</span></label>
+											<div class="col-lg-8 pdng5">
+												<select class="form-control" id="editUserNriCountryRegionAreaId" name="editUserNriCountryRegionAreaId">
+													<option value="0">Select Area</option> {{{UserPlugin.CountryRegionAreas}}}
+												</select>
+											</div>
+
+										</div>
+										<div class="clear"></div>
+									</div>
+									{{#if UserPlugin.nri}}
+									<div class="cntnr clear" style="display: none;" id="edituserIndianPanel">
+										{{else}}
+										<div class="cntnr clear" style="display: block;" id="edituserIndianPanel">
+											{{/if}}
+											<p class="hdng">Currently Living</p>
+											<div class="form-group col-xs-12">
+												<label class="col-lg-4 pdng5">State:<span class='spnStar'>*</span></label>
+												<div class="col-lg-8 pdng5">
+													<select class="form-control" id="editUserStateLivingId" name="editUserStateLivingId">
+														<option value="0">Select State</option> {{{UserPlugin.LivingStates}}}
+													</select>
+												</div>
+											</div>
+											<div class="form-group col-xs-12">
+												<label class="col-lg-4 pdng5">District:<span class='spnStar'>*</span></label>
+												<div class="col-lg-8 pdng5">
+													<select class="form-control" id="editUserDistrictLivingId" name="editUserDistrictLivingId">
+														<option value="0">Select District</option> {{{UserPlugin.LivingDistricts}}}
+													</select>
+												</div>
+											</div>
+											<div class="form-group col-xs-12">
+												<label class="col-lg-4 pdng5">Parliament Constituency:<span class='spnStar'>*</span></label>
+												<div class="col-lg-8 pdng5">
+													<select class="form-control" id="editUserParliamentConstituencyLivingId" name="editUserParliamentConstituencyLivingId">
+														<option value="0">Select Parliament Constituency</option> {{{UserPlugin.LivingPcs}}}
+													</select>
+												</div>
+											</div>
+											<div class="form-group col-xs-12">
+												<label class="col-lg-4 pdng5">Assembly Constituency:<span class='spnStar'>*</span></label>
+												<div class="col-lg-8 pdng5">
+													<select class="form-control" id="editUserAssemblyConstituencyLivingId" name="editUserAssemblyConstituencyLivingId">
+														<option value="0">Select Assembly Constituency</option> {{{UserPlugin.LivingAcs}}}
+													</select>
+												</div>
+											</div>
+											<div class="clear"></div>
+										</div>
+										<br></br>
+										<div class="cntnr clear" style="display: block;" id="editUserIndianPanel2">
+											<p class="hdng" id="editUserVoterMessage">Where You Register as Voters</p>
+											<p class="hdng" id="edituserNriMessage" style="display: none;">Home place in india</p>
+											{{#if UserPlugin.nri}}
+											<div class="form-group col-xs-12 col-sm-6 col-md-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-2" id="editUserSameLocationCheckboxLabel" style="display: none;">
+												{{else}}
+												<div class="form-group col-xs-12 col-sm-6 col-md-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-2" id="editUserSameLocationCheckboxLabel" style="display: block;">
+													{{/if}} <label for="editUserSameLocationCheckbox"> &nbsp; Same as Above</label> <input type="checkbox" class="chkbx" id="editUserSameLocationCheckbox"
+														name="editUserSameLocationCheckbox" />
+												</div>
+												<div class="form-group col-xs-12 col-sm-6 col-md-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-2"></div>
+												<div class="form-group col-xs-12">
+													<label class="col-lg-4 pdng5">State:<span class='spnStar'>*</span></label>
+													<div class="col-lg-8 pdng5">
+														<select class="form-control" id="editUserStateVotingId" name="editUserStateVotingId">
+															<option value="0">Select State</option> {{{UserPlugin.VotingStates}}}
+														</select>
+													</div>
+												</div>
+												<div class="form-group col-xs-12">
+													<label class="col-lg-4 pdng5">District:<span class='spnStar'>*</span></label>
+													<div class="col-lg-8 pdng5">
+														<select class="form-control" id="editUserDistrictVotingId" name="editUserDistrictVotingId">
+															<option value="0">Select District</option> {{{UserPlugin.VotingDistricts}}}
+														</select>
+													</div>
+												</div>
+												<div class="form-group col-xs-12">
+													<label class="col-lg-4 pdng5">Parliament Constituency:<span class='spnStar'>*</span></label>
+													<div class="col-lg-8 pdng5">
+														<select class="form-control" id="editUserParliamentConstituencyVotingId" name="editUserParliamentConstituencyVotingId">
+															<option value="0">Select Parliament Constituency</option> {{{UserPlugin.VotingPcs}}}
+														</select>
+													</div>
+												</div>
+												<div class="form-group col-xs-12">
+													<label class="col-lg-4 pdng5">Assembly Constituency:<span class='spnStar'>*</span></label>
+													<div class="col-lg-8 pdng5">
+														<select class="form-control" id="editUserAssemblyConstituencyVotingId" name="editUserAssemblyConstituencyVotingId">
+															<option value="0">Select Assembly Constituency</option> {{{UserPlugin.VotingAcs}}}
+														</select>
+													</div>
+												</div>
+												<div class="clear"></div>
+											</div>
+
+											<div id="persona_detail_errors" class="form-group col-xs-12" align="center"></div>
+											<div class="form-group col-xs-12" align="center">
+												<input type="submit" id="savePersonalDetailButton" value="Save Personal Details" class="signinBtn" />
+											</div>
+											<div class="clear"></div>
+							</form>
+						</div>
+						<div id="tabs-2">
+							<h2>Volunteer Detail</h2>
+							<form action="javascript:void(0);" method="post" id="volunteerDetailForm" name="volunteerDetailForm" enctype="multipart/form-data"
+								onsubmit="return updateVolunteerDetails();">
+								<div class="cntnr clear">
+									<p class="hdng">Volunteer Details</p>
+									<div class="form-group col-xs-12 col-sm-6 col-md-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-2">
+										<label>
+										{{#if UserPlugin.volunteer}}
+										<input type="checkbox" class="chkbx" id="editUserVolunteer" name="editUserVolunteer" checked="checked"/>
+										{{else}}
+										<input type="checkbox" class="chkbx" id="editUserVolunteer" name="editUserVolunteer" />
+										{{/if}}
+										&nbsp; I Want to be Volunteer</label>
+									</div>
+									<div class="clear"></div>
+									<br>
+									{{#if UserPlugin.volunteer}}
+                                    <div id="editUserVolunteerDetailPanel" class="form-group" style="display: block;">
+                                    {{else}}
+                                    <div id="editUserVolunteerDetailPanel" class="form-group" style="display: none;">
+                                    {{/if}}
+										{{#each UserPlugin.userinterests}}
+										<h3>{{description}}</h3>
+										<table style="width: 98%;">
+											<tbody>
+												{{#each interests}}
+												<tr>
+													{{#each this}}
+													<td>
+													{{#if selected}}
+													<input type="checkbox" class="chkbx" id="editUserInterests" name="editUserInterests" value="{{id}}" checked="checked"/>
+													{{else}}
+													<input type="checkbox" class="chkbx" id="editUserInterests" name="editUserInterests" value="{{id}}" />
+													{{/if}}
+													&nbsp; {{description}}
+													</td> 
+													{{/each}}
+												</tr>
+
+												{{/each}}
+											</tbody>
+										</table>
+										{{/each}}
+										<div>
+											<br></br>
+											<h4>
+											{{#if UserPlugin.pastVolunteer}}
+		                                    <input type="checkbox" class="chkbx" id="editUserPastVolunteer" name="editUserPastVolunteer" checked="checked"/>
+		                                    {{else}}
+		                                    <input type="checkbox" class="chkbx" id="editUserPastVolunteer" name="editUserPastVolunteer" />
+		                                    {{/if}}
+											
+												 
+												Have you volunteered with any political/public interest organization in the past?
+											</h4>
+											{{#if UserPlugin.pastVolunteer}}
+                                            <div class="form-group col-xs-12 col-sm-12 col-md-12" id="editUserPastVolunteerOrganisationPanel" style="display: block;">
+                                            {{else}}
+                                            <div class="form-group col-xs-12 col-sm-12 col-md-12" id="editUserPastVolunteerOrganisationPanel" style="display: none;">
+                                            {{/if}}
+												<label class="col-lg-4 pdng5">Organisation Name:</label>
+												<div class="col-lg-8 pdng5">
+													<input type="text" class='form-control' placeholder="Enter Organisation Name" id="editUserPastOrganisation" name="editUserPastOrganisation" value="{{UserPlugin.pastOrganisation}}"/>
+												</div>
+											</div>
+											<div class="clear"></div>
+										</div>
+										<div>
+											<br></br>
+											<h4>
+											{{#if UserPlugin.knowExistingMember}}
+                                            <input type="checkbox" class="chkbx" id="editUserKnowExistingMember" name="editUserKnowExistingMember" checked="checked"/> 
+                                            {{else}}
+                                            <input type="checkbox" class="chkbx" id="editUserKnowExistingMember" name="editUserKnowExistingMember" /> 
+                                            {{/if}}
+												Do you know someone associated with Swaraj Abhiyan?
+											</h4>
+											
+											{{#if UserPlugin.knowExistingMember}}
+                                            <div id="editUserExistingKnownMemberPanel" style="display: block;"> 
+                                            {{else}}
+                                            <div id="editUserExistingKnownMemberPanel" style="display: none;"> 
+                                            {{/if}}
+                
+											
+												<div class="form-group col-xs-12 col-sm-12 col-md-12">
+													<label class="col-lg-4 pdng5">Member Name:</label>
+													<div class="col-lg-8 pdng5">
+														<input type="text" class='form-control' placeholder="Member Name" id="editUserExistingMemberName" name="editUserExistingMemberName" value="{{UserPlugin.existingMemberName}}"/>
+													</div>
+												</div>
+												<div class="form-group col-xs-12 col-sm-12 col-md-12">
+													<label class="col-lg-4 pdng5">Member Email:</label>
+													<div class="col-lg-8 pdng5">
+														<input type="text" class='form-control' placeholder="Member Email" id="editUserExistingMemberEmail" name="editUserExistingMemberEmail" value="{{UserPlugin.existingMemberEmail}}"/>
+													</div>
+												</div>
+												<div class="form-group col-xs-12 col-sm-12 col-md-12">
+													<label class="col-lg-4 pdng5">Member Mobile:</label>
+													<div class="col-lg-8 pdng5">
+														<input type="text" class='form-control' placeholder="Member Mobile" id="editUserExistingMemberMobile" name="editUserExistingMemberMobile" value="{{UserPlugin.existingMemberMobile}}"/>
+													</div>
+												</div>
+											</div>
+											<div class="clear"></div>
+										</div>
+										<br></br>
+										
+										<div class="form-group col-xs-12 col-sm-12 col-md-12">
+											<label class="col-lg-4 pdng5">Education:</label>
+											<div class="col-lg-8 pdng5">
+												<input type="text" class='form-control' placeholder="Education" id="editUserEducation" name="editUserEducation" value="{{UserPlugin.education}}"/>
+											</div>
+										</div>
+										<div class="form-group col-xs-12 col-sm-12 col-md-12">
+											<label class="col-lg-4 pdng5">Professional Background:</label>
+											<div class="col-lg-8 pdng5">
+												<input type="text" class='form-control' placeholder="Professional Background" id="editUserProfessionalBackground" name="editUserProfessionalBackground" value="{{UserPlugin.professionalBackground}}"/>
+											</div>
+										</div>
+										<div class="form-group col-xs-12 col-sm-12 col-md-12">
+											<label class="col-lg-4 pdng5">Domain Expertise:</label>
+											<div class="col-lg-8 pdng5">
+												<input type="text" class='form-control' placeholder="Domain Expertise" id="editUserDomainExpertise" name="editUserDomainExpertise" value="{{UserPlugin.domainExpertise}}"/>
+											</div>
+										</div>
+<!-- 
+										<div class="form-group col-xs-12 col-sm-12 col-md-12">
+											<label class="col-lg-4 pdng5">Offences:</label>
+											<div class="col-lg-8 pdng5">
+												<input type="text" class='form-control' placeholder="Offences" id="editUserOffences" name="editUserOffences" value="{{UserPlugin.offences}}"/>
+											</div>
+										</div>
+ -->
+										<div class="form-group col-xs-12 col-sm-12 col-md-12">
+											<label class="col-lg-4 pdng5">Emergency Contact Name:</label>
+											<div class="col-lg-8 pdng5">
+												<input type="text" class='form-control' placeholder="Emergency Contact Name" id="editUserEmergencyContactName" name="editUserEmergencyContactName" value="{{UserPlugin.emergencyContactName}}"/>
+											</div>
+										</div>
+
+										<div class="form-group col-xs-12 col-sm-12 col-md-12">
+											<label class="col-lg-4 pdng5">Emergency Contact Relation:</label>
+											<div class="col-lg-8 pdng5">
+												<input type="text" class='form-control' placeholder="i.e Father, Mother , Brother, Sister, Uncle etc" id="editUserEmergencyContactRelation" name="editUserEmergencyContactRelation" value="{{UserPlugin.emergencyContactRelation}}"/>
+											</div>
+										</div>
+
+										<div class="form-group col-xs-12 col-sm-12 col-md-12">
+											<label class="col-lg-4 pdng5">Emergency Contact Mobile:</label>
+											<div class="col-lg-8 pdng5">
+												<input type="text" class='form-control' id="editUserEmergencyContactNo" name="editUserEmergencyContactNo" value="{{UserPlugin.emergencyContactNo}}"/>
+											</div>
+										</div>
+
+									</div>
+									<div class='clear'></div>
+								</div>
+
+
+								<div id="errors"></div>
+								<div align='center'>
+
+									<input id="saveVolunteerDetailButton" type="submit" value="Save Volunteer Details" class="btnDonate" />
+								</div>
+								<div class="clear"></div>
+							</form>
+						</div>
+						<div id="tabs-3">
 							<h2>Change Password</h2>
 							<form action="javascript:void(0);" method="post" id="passwordChangeForm" name="passwordChangeForm" enctype="multipart/form-data" onsubmit="return changePassword();">
 								<div class="form-group col-xs-12">
@@ -121,6 +476,374 @@
 	[[FOOTER]]
 
 	<script type="text/javascript">
+	function toggleUiBasedOnSameLocationCheckBox(){
+        if ($('#editUserSameLocationCheckbox').prop('checked')) {
+            $('#editUserAssemblyConstituencyVotingId').prop('disabled',true);
+            $('#editUserParliamentConstituencyVotingId').prop('disabled',true);
+            $('#editUserDistrictVotingId').prop('disabled',true);
+            $('#editUserStateVotingId').prop('disabled',true);
+        } else {
+            $('#editUserStateVotingId').prop('disabled',false);
+            //$('#editUserStateVotingId').val("0");
+        }
+    }
+	
+	$(function() {
+		$('#editUserPastVolunteer').click(function() {
+            if ($('#editUserPastVolunteer').prop('checked')) {
+                $('#editUserPastVolunteerOrganisationPanel').show();
+            } else {
+                $('#editUserPastVolunteerOrganisationPanel').hide();
+            }
+        });
+        $('#editUserKnowExistingMember').click(function() {
+            if ($('#editUserKnowExistingMember').prop('checked')) {
+                $('#editUserExistingKnownMemberPanel').show();
+            } else {
+                $('#editUserExistingKnownMemberPanel').hide();
+            }
+        });
+	$('#editUserVolunteer').click(function() {
+           if ($('#editUserVolunteer').prop('checked')) {
+               $('#editUserVolunteerDetailPanel').show();
+           } else {
+               $('#editUserVolunteerDetailPanel').hide();
+           }
+       });
+	$('#nriEditUser').click(function() {
+		toggleEditNriOptions();
+		$('#editUserSameLocationCheckbox').prop('checked', false);
+		toggleUiBasedOnSameLocationCheckBox();
+		
+    });
+	{{#if UserPlugin.existingMemberCountryIso2}}
+    $("#editUserExistingMemberMobile").intlTelInput({
+        defaultCountry : '{{UserPlugin.existingMemberCountryIso2}}',
+        preferredCountries : [ 'in', 'us', 'gb' ]
+    });
+	{{else}}
+    $("#editUserExistingMemberMobile").intlTelInput({
+        defaultCountry : 'auto',
+        preferredCountries : [ 'in', 'us', 'gb' ]
+    });
+	{{/if}}
+    $("editUserExistingMemberMobile").intlTelInput("setNumber", "{{UserPlugin.existingMemberMobile}}");
+
+    {{#if UserPlugin.emergencyContactCountryIso2}}
+    $("#editUserEmergencyContactNo").intlTelInput({
+        defaultCountry : '{{UserPlugin.emergencyContactCountryIso2}}',
+        preferredCountries : [ 'in', 'us', 'gb' ]
+    });
+    {{else}}
+    $("#editUserEmergencyContactNo").intlTelInput({
+        defaultCountry : 'auto',
+        preferredCountries : [ 'in', 'us', 'gb' ]
+    });
+    {{/if}}
+    $("editUserExistingMemberMobile").intlTelInput("setNumber", "{{UserPlugin.emergencyContactNo}}");
+	
+	$('#editUserSameLocationCheckbox').click(function() {
+		toggleUiBasedOnSameLocationCheckBox();
+    });
+	
+	 $("select#editUserStateLivingId")
+     .change(
+             function() {
+                 $('#editUserDistrictLivingId').prop('disabled', true);
+                 $('#edituserParliamentConstituencyLivingId').prop(
+                         'disabled', true);
+                 $('#editUserAssemblyConstituencyLivingId').prop(
+                         'disabled', true);
+                 $
+                         .ajax(
+                                 {
+                                     dataType : "json",
+                                     type : "GET",
+                                     url : "/api/districts/"
+                                             + $(this).val(),
+                                     data : {}
+                                 })
+                         .done(
+                                 function(msg) {
+                                     var options = '<option value="0">Select District</option>';
+                                     for (var i = 0; i < msg.LocationPlugin.length; i++) {
+                                         options += '<option value="' + msg.LocationPlugin[i].id + '">'
+                                                 + msg.LocationPlugin[i].name
+                                                 + '</option>';
+                                     }
+                                     $("select#editUserDistrictLivingId")
+                                             .html(options);
+                                     $(
+                                             "select#editUserAssemblyConstituencyLivingId")
+                                             .html(
+                                                     '<option value="0">Select Assembly Constituency</option>');
+                                     $('#editUserDistrictLivingId')
+                                             .prop('disabled',
+                                                     false);
+                                     $(
+                                             '#editUserAssemblyConstituencyLivingId')
+                                             .prop('disabled',
+                                                     true);
+                                 }).fail(
+                                 function(jqXHR, textStatus,
+                                         errorThrown) {
+                                     alert("error "
+                                             + errorThrown);
+                                 });
+                 $
+                         .ajax({
+                             dataType : "json",
+                             type : "GET",
+                             url : "/api/pcs/" + $(this).val(),
+                             data : {}
+                         })
+                         .done(
+                                 function(msg) {
+                                     var options = '<option value="0">Select Parliament Constituency</option>';
+                                     for (var i = 0; i < msg.LocationPlugin.length; i++) {
+                                         options += '<option value="' + msg.LocationPlugin[i].id + '">'
+                                                 + msg.LocationPlugin[i].name
+                                                 + '</option>';
+                                     }
+                                     $(
+                                             "select#edituserParliamentConstituencyLivingId")
+                                             .html(options);
+                                     $(
+                                             '#edituserParliamentConstituencyLivingId')
+                                             .prop('disabled',
+                                                     false);
+                                 }).fail(
+                                 function(jqXHR, textStatus,
+                                         errorThrown) {
+                                     alert("error "
+                                             + errorThrown);
+                                 });
+             });
+$("select#editUserDistrictLivingId")
+     .change(
+             function() {
+                 $('#editUserAssemblyConstituencyLivingId').prop(
+                         'disabled', true);
+                 $
+                         .ajax({
+                             dataType : "json",
+                             type : "GET",
+                             url : "/api/acs/" + $(this).val(),
+                             data : {}
+                         })
+                         .done(
+                                 function(msg) {
+                                     var options = '<option value="0">Select Assembly Constituency</option>';
+                                     for (var i = 0; i < msg.LocationPlugin.length; i++) {
+                                         options += '<option value="' + msg.LocationPlugin[i].id + '">'
+                                                 + msg.LocationPlugin[i].name
+                                                 + '</option>';
+                                     }
+                                     $(
+                                             "select#editUserAssemblyConstituencyLivingId")
+                                             .html(options);
+                                     $(
+                                             '#editUserAssemblyConstituencyLivingId')
+                                             .prop('disabled',
+                                                     false);
+                                 }).fail(
+                                 function(jqXHR, textStatus,
+                                         errorThrown) {
+                                     alert("error "
+                                             + errorThrown);
+                                 });
+             });
+
+$("select#edituserStateVotingId")
+     .change(
+             function() {
+                 $('#editUserDistrictVotingId').prop('disabled', true);
+                 $('#edituserParliamentConstituencyVotingId').prop('disabled', true);
+                 $('#editUserAssemblyConstituencyVotingId').prop('disabled', true);
+                 $
+                         .ajax(
+                                 {
+                                     dataType : "json",
+                                     type : "GET",
+                                     url : "/api/districts/"
+                                             + $(this).val(),
+                                     data : {}
+                                 })
+                         .done(
+                                 function(msg) {
+                                     var options = '<option value="0">Select District</option>';
+                                     for (var i = 0; i < msg.LocationPlugin.length; i++) {
+                                         options += '<option value="' + msg.LocationPlugin[i].id + '">'
+                                                 + msg.LocationPlugin[i].name
+                                                 + '</option>';
+                                     }
+                                     $("select#editUserDistrictVotingId").html(options);
+                                     $("select#editUserAssemblyConstituencyVotingId")
+                                             .html(
+                                                     '<option value="0">Select Assembly Constituency</option>');
+                                     $('#editUserDistrictVotingId')
+                                             .prop('disabled',
+                                                     false);
+                                     $(
+                                             '#editUserAssemblyConstituencyVotingId')
+                                             .prop('disabled',
+                                                     true);
+                                     $('#edituserParliamentConstituencyVotingId').prop('disabled', false);
+                                 }).fail(
+                                 function(jqXHR, textStatus,
+                                         errorThrown) {
+                                     alert("error "
+                                             + errorThrown);
+                                 });
+                 $
+                         .ajax({
+                             dataType : "json",
+                             type : "GET",
+                             url : "/api/pcs/" + $(this).val(),
+                             data : {}
+                         })
+                         .done(
+                                 function(msg) {
+                                     var options = '<option value="0">Select Parliament Constituency</option>';
+                                     for (var i = 0; i < msg.LocationPlugin.length; i++) {
+                                         options += '<option value="' + msg.LocationPlugin[i].id + '">'
+                                                 + msg.LocationPlugin[i].name
+                                                 + '</option>';
+                                     }
+                                     $(
+                                             "select#edituserParliamentConstituencyVotingId")
+                                             .html(options);
+                                     $(
+                                             '#edituserParliamentConstituencyVotingId')
+                                             .prop('disabled',
+                                                     false);
+                                 }).fail(
+                                 function(jqXHR, textStatus,
+                                         errorThrown) {
+                                     alert("error "
+                                             + errorThrown);
+                                 });
+             });
+$("select#editUserDistrictVotingId")
+     .change(
+             function() {
+                 $('#editUserAssemblyConstituencyVotingId').prop(
+                         'disabled', true);
+                 $
+                         .ajax({
+                             dataType : "json",
+                             type : "GET",
+                             url : "/api/acs/" + $(this).val(),
+                             data : {}
+                         })
+                         .done(
+                                 function(msg) {
+                                     var options = '<option value="0">Select Assembly Constituency</option>';
+                                     for (var i = 0; i < msg.LocationPlugin.length; i++) {
+                                         options += '<option value="' + msg.LocationPlugin[i].id + '">'
+                                                 + msg.LocationPlugin[i].name
+                                                 + '</option>';
+                                     }
+                                     $(
+                                             "select#editUserAssemblyConstituencyVotingId")
+                                             .html(options);
+                                     $(
+                                             '#editUserAssemblyConstituencyVotingId')
+                                             .prop('disabled',
+                                                     false);
+                                 }).fail(
+                                 function(jqXHR, textStatus,
+                                         errorThrown) {
+                                     alert("error "
+                                             + errorThrown);
+                                 });
+             });
+
+$("select#edituserNriCountryId")
+     .change(
+             function() {
+                 $('#editUserNriCountryRegionId').prop('disabled', true);
+                 $('#editUserNriCountryRegionAreaId')
+                         .prop('disabled', true);
+                 $
+                         .ajax({
+                             dataType : "json",
+                             type : "GET",
+                             url : "/api/cr/" + $(this).val(),
+                             data : {}
+                         })
+                         .done(
+                                 function(msg) {
+                                     var options = '<option value="0">Select Country Region</option>';
+                                     for (var i = 0; i < msg.LocationPlugin.length; i++) {
+                                         options += '<option value="' + msg.LocationPlugin[i].id + '">'
+                                                 + msg.LocationPlugin[i].name
+                                                 + '</option>';
+                                     }
+                                     $("select#editUserNriCountryRegionId")
+                                             .html(options);
+                                     $('#editUserNriCountryRegionId').prop(
+                                             'disabled', false);
+                                 }).fail(
+                                 function(jqXHR, textStatus,
+                                         errorThrown) {
+                                     alert("error "
+                                             + errorThrown);
+                                 });
+             });
+$("select#editUserNriCountryRegionId")
+     .change(
+             function() {
+                 $('#editUserNriCountryRegionAreaId')
+                         .prop('disabled', true);
+                 $
+                         .ajax({
+                             dataType : "json",
+                             type : "GET",
+                             url : "/api/cra/" + $(this).val(),
+                             data : {}
+                         })
+                         .done(
+                                 function(msg) {
+                                     var options = '<option value="0">Select Country Region</option>';
+                                     for (var i = 0; i < msg.LocationPlugin.length; i++) {
+                                         options += '<option value="' + msg.LocationPlugin[i].id + '">'
+                                                 + msg.LocationPlugin[i].name
+                                                 + '</option>';
+                                     }
+                                     $(
+                                             "select#editUserNriCountryRegionAreaId")
+                                             .html(options);
+                                     $('#editUserNriCountryRegionAreaId')
+                                             .prop('disabled',
+                                                     false);
+                                 }).fail(
+                                 function(jqXHR, textStatus,
+                                         errorThrown) {
+                                     alert("error "
+                                             + errorThrown);
+                                 });
+             });
+	});
+	
+	function toggleEditNriOptions(){
+        if ($('#nriEditUser').prop('checked')) {
+            loadCountries();
+            $('#nriEditUserPanel').show();
+            $('#edituserIndianPanel').hide();
+            $('#editUserVoterMessage').hide();
+            $('#edituserNriMessage').show();
+            $('#editUserSameLocationCheckboxLabel').hide();
+            
+            
+        } else {
+            $('#nriEditUserPanel').hide();
+            $('#edituserIndianPanel').show();
+            $('#edituserNriMessage').hide();
+            $('#editUserVoterMessage').show();
+            $('#editUserSameLocationCheckboxLabel').show();
+        }
+    }
 	function changePassword(){
         var formData = getFormData('#passwordChangeForm');
         if(formData.newPassword != formData.newPassword2){
@@ -154,6 +877,116 @@
           });
         return false;
     }
+	
+	function updatePersonalDetail(){
+        $('#savePersonalDetailButton').prop('disabled', true);
+		$("#persona_detail_errors").html("updating....");
+		
+        var formData = getFormData('#personalDetailForm');
+		if ($('#editUserSameLocationCheckbox').prop('checked')) {
+            formData.editUserAssemblyConstituencyVotingId = formData.editUserAssemblyConstituencyLivingId;
+            formData.editUserParliamentConstituencyVotingId = formData.editUserParliamentConstituencyLivingId;
+            formData.editUserDistrictVotingId = formData.editUserDistrictLivingId;
+            formData.editUserStateVotingId = formData.editUserStateLivingId;
+        }
+		
+		if(formData.nriEditUser=='on'){
+            formData.nri = 'true';
+        }else{
+            formData.nri = 'false';
+        }
+		
+        var value = JSON.stringify(formData);
+        $.ajax({
+            contentType: 'application/json',
+            type: "POST",
+            url: "/js/personaldetail",
+            data: value,
+            dataType: "json"
+          }).done(function(msg) {
+              $('#savePersonalDetailButton').prop('disabled', false);
+              var successHtml = "<font color='green'><b>Personal Details updated Succesfully</b></font>";
+              $("#persona_detail_errors").html(successHtml);
+              }).fail(function(jqXHR, textStatus, errorThrown) {
+                  $('#savePersonalDetailButton').prop('disabled', false);
+                  
+                  var responseText = jqXHR.responseText;
+                  var resObj = jQuery.parseJSON(jqXHR.responseText);
+              var errorHtml = "<font color='red'><b>" + resObj.message+"</b></font>";
+              $("#persona_detail_errors").html(errorHtml);
+              
+          });
+        return false;
+    }
+	
+	function updateVolunteerDetails(){
+        $('#savePersonalDetailButton').prop('disabled', true);
+        $("#persona_detail_errors").html("updating....");
+        
+        var formData = getFormData('#volunteerDetailForm');
+        
+        var countryData = $("#editUserEmergencyContactNo").intlTelInput("getSelectedCountryData");
+        formData.editUserEmergencyContactCountryCode = countryData.dialCode;
+        formData.editUserEmergencyContactCountryIso2 = countryData.iso2;
+        
+        
+        var countryDataForEM = $("#editUserExistingMemberMobile").intlTelInput("getSelectedCountryData");
+        formData.editUserExistingMemberCountryCode = countryDataForEM.dialCode;
+        formData.editUserExistingMemberCountryIso2 = countryDataForEM.iso2;
+        
+        if(formData.editUserVolunteer=='on'){
+            formData.editUserVolunteer = 'true';
+        }else{
+            formData.editUserVolunteer = 'false';
+        }
+        
+        if(formData.editUserPastVolunteer=='on'){
+            formData.editUserPastVolunteer = 'true';
+        }else{
+            formData.editUserPastVolunteer = 'false';
+        }
+        
+        if(formData.editUserKnowExistingMember=='on'){
+            formData.editUserKnowExistingMember = 'true';
+        }else{
+            formData.editUserKnowExistingMember = 'false';
+        }
+        
+        
+        
+        if(formData.editUserInterests && formData.editUserInterests.constructor !== Array){
+            if(formData.editUserInterests != ''){
+                var interestArray = new Array(formData.editUserInterests);
+                formData.editUserInterests = interestArray;
+            }
+        }
+        
+        var value = JSON.stringify(formData);
+        $.ajax({
+            contentType: 'application/json',
+            type: "POST",
+            url: "/js/volunteerdetail",
+            data: value,
+            dataType: "json"
+          }).done(function(msg) {
+              $('#savePersonalDetailButton').prop('disabled', false);
+              var successHtml = "<font color='green'><b>Personal Details updated Succesfully</b></font>";
+              $("#persona_detail_errors").html(successHtml);
+              }).fail(function(jqXHR, textStatus, errorThrown) {
+                  $('#savePersonalDetailButton').prop('disabled', false);
+                  
+                  var responseText = jqXHR.responseText;
+                  var resObj = jQuery.parseJSON(jqXHR.responseText);
+              var errorHtml = "<font color='red'><b>" + resObj.message+"</b></font>";
+              $("#persona_detail_errors").html(errorHtml);
+              
+          });
+        return false;
+    }
+    
+
+	
+
 </script>
 </body>
 </html>
