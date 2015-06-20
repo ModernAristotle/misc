@@ -44,19 +44,25 @@
 
 				<div class="paginationContnr">
 					<ul class="ulPagination center dispTable">
-						<li><a href="javascript:void(0)">&VerticalSeparator;&lt;&lt;</a></li>
-						<li><a href="javascript:void(0)">Prev</a></li>
-						<li><a href="javascript:void(0)" class="active">1</a></li>
-						<li><a href="javascript:void(0)">2</a></li>
-						<li><a href="javascript:void(0)">3</a></li>
-						<li><a href="javascript:void(0)">4</a></li>
-						<li><a href="javascript:void(0)">5</a></li>
-						<li><a href="javascript:void(0)">Next</a></li>
-						<li><a href="javascript:void(0)">&gt;&gt;&VerticalSeparator;</a></li>
+					    {{#if pageInfo.previous}}
+					    <li><a href="?">&VerticalSeparator;&lt;&lt;</a></li>
+                        <li><a href="?page={{pageInfo.previousPage}}">Prev</a></li>
+					    {{/if}}
+					    {{#each pageInfo.pages}}
+					    {{#if selected}}
+					       <li><a href="?page={{pageNumber}}" class="active">{{pageNumber}}</a></li>
+				        {{else}}
+				            <li><a href="?page={{pageNumber}}">{{pageNumber}}</a></li>
+			            {{/if}}
+					    {{/each}}
+						{{#if pageInfo.next}}
+                        <li><a href="?page={{pageInfo.nextPage}}">Next</a></li>
+                        <li><a href="?page={{pageInfo.lastPage}}">&gt;&gt;&VerticalSeparator;</a></li>
+                        {{/if}}
 						<div class="clear"></div>
 					</ul>
 				</div>
-				<br /> <img src="http://static.swarajabhiyan.org/templates/prod/1/images/fbComment.png" style="max-width: 100%;" />
+				<br /> 
 				<br /> <br />
 			</div>
 			<!--------changed by soumya end------->
