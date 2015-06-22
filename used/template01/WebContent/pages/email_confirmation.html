@@ -1,0 +1,75 @@
+<html>
+<head>[[META_TAGS]] [[RESOURCES]]
+
+</head>
+<body>
+
+
+	[[TOPMENU]]
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<!--<script src="../js/jquery-1.9.1.min.js"></script>-->
+	<!--<script src="bootstrap.min.js"></script>-->
+	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<!--<script src="ie10-viewport-bug-workaround.js"></script>-->
+
+	<!-- jssor slider scripts-->
+	<!-- use jssor.js + jssor.slider.js instead for development -->
+	<!-- jssor.slider.mini.js = (jssor.js + jssor.slider.js) -->
+
+	<div class="maincontainer">
+		<div class="lftContnr col-xs-12 col-sm-12 col-md-8">
+			<div>
+				<div class="hanger relPostn">
+					<h3 class="fltlft hangerHdng mrgnpdng absPostn">Email Confirmation</h3>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="contentDiv newsPad">
+				<!--------changed by soumya------->
+				<div class="newsCont">
+					<h3 class="">{{EmailConfirmationPlugin.message}}</h3>
+				</div>
+				
+			</div>
+			<!--------changed by soumya end------->
+		</div>
+
+		[[RIGHT_SIDE]]
+		<div class="clear"></div>
+	</div>
+	[[FOOTER]]
+
+<script type="text/javascript">
+	function resetPassword(){
+        var formData = getFormData('#passwordResetForm');
+        $('#resetPasswordButton').prop('disabled', true);
+        $("#password_reset_errors").html("updating...");
+        var value = JSON.stringify(formData);
+        $.ajax({
+            contentType: 'application/json',
+            type: "POST",
+            url: "/js/passwordreset",
+            data: value,
+            dataType: "json"
+          }).done(function(msg) {
+              $('#resetPasswordButton').prop('disabled', false);
+              $('#email').val('')
+              var errorHtml = "<font color='green'><b>Email sent, please check you email box including spam folder</b></font>";
+              $("#password_reset_errors").html(errorHtml);
+              }).fail(function(jqXHR, textStatus, errorThrown) {
+                  $('#resetPasswordButton').prop('disabled', false);
+                  
+                  var responseText = jqXHR.responseText;
+                  var resObj = jQuery.parseJSON(jqXHR.responseText);
+              var errorHtml = "<font color='red'><b>" + resObj.message+"</b></font>";
+              $("#password_reset_errors").html(errorHtml);
+              
+          });
+        return false;
+    }
+</script>
+</body>
+</html>
+
