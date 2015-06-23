@@ -16,4 +16,10 @@
 <meta property="og:description" content="{{WebPage.description}}" />
 <meta property="fb:app_id" content="705165199595773" />
 <meta property="og:type" content="article" />
+{{#if WebPage.images}}
+{{#each WebPage.images}}
+<meta property="og:image" content="{{image}}" />
+{{/each}}
+{{else}}
 <meta property="og:image" content="http://static.swarajabhiyan.org/templates/prof/1/images/jaikisan01.jpg" />
+{{/if}}
