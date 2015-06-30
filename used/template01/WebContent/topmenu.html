@@ -694,14 +694,23 @@
 		<div class="mapInfo absPostn">
 			<label><input type="radio" id="radioNatSite" checked="checked" /> <b>National site</b></label>
 			<p>If you want to see state site click on the correspondence state or choose from below.</p>
-			<select class="selState">
+			<select class="selState" id="stateSelector">
 				<option>State site</option>
-				<option>Jammu & Kashmir</option>
-				<option>Himachal Pradesh</option>
-				<option>Punjab</option>
-				<option>Uttaranchal</option>
-				<option>Haryana</option>
-				<option>Uttar Pradesh</option>
+				<option value="http://www.swarajabhiyan.org">National</option>
+				
+				<option value="http://ap.swarajabhiyan.org">Anndhra Pradesh</option>
+				<option value="http://assam.swarajabhiyan.org">Assam</option>
+				<option value="http://bihar.swarajabhiyan.org">Bihar</option>
+				<option value="http://delhi.swarajabhiyan.org">Delhi</option>
+				<option value="http://haryana.swarajabhiyan.org">Haryana</option>
+				<option value="http://karnataka.swarajabhiyan.org">Karnatka</option>
+				<option value="http://punjab.swarajabhiyan.org">Punjab</option>
+				<option value="http://rajasthan.swarajabhiyan.org">Rajasthan</option>
+				<option value="http://telangana.swarajabhiyan.org">Telangana</option>
+				<option value="http://uk.swarajabhiyan.org">Uttarakhand</option>
+				<option value="http://up.swarajabhiyan.org">Uttar Pradesh</option>
+				<option value="http://wb.swarajabhiyan.org">West Bengal</option>
+				
 			</select>
 		</div>
 		<!--<img src="mapimages/map-lines.png" style="max-width: 421px; width: 100%;" class="mapBorder" />-->
@@ -3050,17 +3059,7 @@
 						<ul class="ulSub mrgnpdng">
 							{{#each submenu}} 
 							{{#if display}}
-							<li><a href="{{url}}">{{title}}</a>
-							{{#if submenu}}
-		                        <ul class="ulSub mrgnpdng">
-		                            {{#each submenu}} 
-		                            {{#if display}}
-		                            <li><a href="{{url}}">{{title}}</a></li> 
-		                            {{/if}} 
-		                            {{/each}}
-		                        </ul> 
-		                    {{/if}}
-							</li> 
+							<li><a href="{{url}}">{{title}}</a></li> 
 							{{/if}} 
 							{{/each}}
 						</ul> 
@@ -3169,6 +3168,7 @@
                         alert("error " + errorThrown);
                     });
         }
+        
         $(function() {
             $("select#stateLivingId")
                     .change(
@@ -3455,6 +3455,16 @@
             $('#nri').click(function() {
                 toggleNriOptions();
             });
+            $('#haryana_1_').click(function() {
+            	window.location.replace("http://haryana.swarajabhiyan.org");
+            });
+            
+            
+            $("select#stateSelector")
+            .change(
+                    function() {
+                    	window.location.replace($(this).val());
+                    });
             $('#sameLocationCheckbox').click(function() {
                 if ($('#sameLocationCheckbox').prop('checked')) {
                     $('#assemblyConstituencyVotingId').prop('disabled',true);

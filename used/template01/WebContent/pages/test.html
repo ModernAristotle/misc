@@ -1,5 +1,4 @@
 
-<!DOCTYPE html>
 <html>
 <!-- **********************  include common.php ************************ -->
 <head>
@@ -24,361 +23,10 @@
 </head>
 <body>
 	<!-- **********************  include header.php ************************ -->
-	<div class="signinformCont center fnClose">
-		<div class="frmHdng">
-			<h3 class="mrgnpdng" align="center">Sign in here</h3>
-		</div>
-		<br />
-		<p class="closeicn">x</p>
-		<form action="#" method="post" name="frm" enctype="multipart/form-data">
-			<div class="cntnr clear" style="padding: 10px 0px;">
-				<!--<p class="hdng">Sign in here</p>-->
-				<div class="form-group col-xs-12">
-					<label class="col-lg-12">User Name <span class="spnStar">*</span>:
-					</label>
-					<div class="col-lg-12">
-						<input type="text" class='form-control' placeholder="Enter user name or email" />
-					</div>
-				</div>
-				<div class="form-group col-xs-12">
-					<label class="col-lg-12">Password <span class="spnStar">*</span>:
-					</label>
-					<div class="col-lg-12">
-						<input type="password" class='form-control' placeholder="Enter password" />
-					</div>
-				</div>
-				<div class="col-xs-12" align="center">
-					<input type="submit" value="Sign in" class="signinBtn" />
-				</div>
-				<div class="clear"></div>
-			</div>
-		</form>
-		<br />
-	</div>
 
-	<!---------------------------before signup form------------------------------>
-	<div class="entryGate center fnClose" style="display: none;">
-		<div class="frmHdng">
-			<h3 class="mrgnpdng" align="">Please enter Email ID or Mobile Number</h3>
-		</div>
-		<br />
-		<p class="closeicn">x</p>
-		<form action="javascript:void(0);" id="noticeform" method="post" name="frm" enctype="multipart/form-data"
-			onsubmit="return validateForm();">
-			<div class="cntnr clear" style="padding: 5px;">
-				<div class="form-group col-xs-12 col-sm-5 col-md-5" style="margin: 0px; padding-bottom: 10px;">
-					<label class="col-lg-12 mrgnpdng">Email<span class='spnStar'>*</span>:
-					</label> <input type="email" class='form-control' placeholder="Enter email ID" id="email" name="email"
-						onblur="chkExist('email');" />
-					<div id="shw_emailexist"></div>
-				</div>
-				<div class="form-group col-xs-12 col-sm-5 col-md-5" style="margin: 0px; padding-bottom: 10px;">
-					<label class="col-lg-12 mrgnpdng">Mobile<span class='spnStar'>*</span>:
-					</label> <input type="text" class='form-control' id="phone" name="phone" placeholder="Enter mobile number"
-						onblur="chkExist('phone');" />
-					<div id="shw_phoneexist"></div>
-				</div>
-				<div class="form-group col-xs-12 col-sm-2 col-md-2" style="margin: 0px;">
-					<label class="col-xs-12 col-sm-12 col-md-12 col-lg-12 formStatusHid">&nbsp;</label> <input type="submit"
-						value="Submit" id="pre_signup" class="btnnxtprv" style="margin: 0px;" />
-				</div>
-				<div class="clear"></div>
-			</div>
-		</form>
-		<br />
-	</div>
-
-	<!---------------------------signup form------------------------------>
-	<div class="signupformCont center fnClose">
-		<div class="frmHdng">
-			<h3 class="mrgnpdng" align="">Be a part of the change. Volunteer for the Swaraj Abhiyan</h3>
-		</div>
-		<p class="closeicn">x</p>
-		<div class="frmcntnr" style="padding-bottom: 15px;">
-			<div class="formStatusHid">
-				<div class="col-md-4 col-sm-4 col-xs-12 icondiv">
-					<div id="icon1" class="fltlft fonticn_pd active khammanKlass"></div>
-					<p class="fltlft pdb">Personal Details</p>
-				</div>
-				<div class="col-md-4 col-sm-4 col-xs-12 icondiv">
-					<div id="icon2" class="fltlft fonticn_cl khammanKlass"></div>
-					<p class="fltlft pdb">Currently Living</p>
-				</div>
-				<div class="col-md-4 col-sm-4 col-xs-12 icondiv">
-					<div id="icon3" class="fltlft fonticn_rav khammanKlass"></div>
-					<p class="fltlft pdb">Register as Voter</p>
-				</div>
-			</div>
-			<form action="#" method="post" name="frm" enctype="multipart/form-data">
-				<div class="prsnldtl">
-					<div class="cntnr clear">
-						<p class="hdng">Personal Details</p>
-						<div class="form-group col-xs-12 col-sm-6 col-md-6">
-							<label class="col-lg-4 pdng5">Name:</label>
-							<div class="col-lg-8 pdng5">
-								<input type="text" class='form-control' placeholder="Enter your name" />
-							</div>
-						</div>
-						<div class="form-group col-xs-12 col-sm-6 col-md-6">
-							<label class="col-lg-4 pdng5">Email<span class='spnStar'>*</span>:
-							</label>
-							<div class="col-lg-8 pdng5">
-								<input type="email" class='form-control' placeholder="Enter email ID" />
-							</div>
-						</div>
-						<div class="form-group col-xs-12 col-sm-6 col-md-6">
-							<label class="col-lg-4 pdng5">Gender:</label>
-							<div class="col-lg-8 pdng5">
-								<select class="form-control">
-									<option>---select---</option>
-									<option>Male</option>
-									<option>Female</option>
-									<option>Other</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group col-xs-12 col-sm-6 col-md-6">
-							<label class="col-lg-4 pdng5">ID Card Detail:</label>
-							<div class="col-lg-8 pdng5">
-								<select class="form-control frmElWdth50">
-									<option>Card Type</option>
-									<option>Debit Card</option>
-									<option>Credit Card</option>
-									<option>Visa Card</option>
-									<option>Master Card</option>
-								</select> <input type="text" class="form-control frmElWdth50" placeholder="ID Card Number" />
-							</div>
-						</div>
-						<div class="form-group col-xs-12 col-sm-6 col-md-6">
-							<label class="col-lg-4 pdng5">Mobile<span class='spnStar'>*</span>:
-							</label>
-							<div class="col-lg-8 pdng5">
-								<input type="text" class='form-control' placeholder="Enter mobile number" />
-							</div>
-						</div>
-						<div class="form-group col-xs-12 col-sm-6 col-md-6">
-							<label class="col-lg-4 pdng5">DOB :</label>
-							<div class="col-lg-8 pdng5">
-								<input type="text" class='form-control' placeholder="Enter Date of birth" />
-							</div>
-						</div>
-						<div class="form-group col-xs-12 col-sm-6 col-md-6">
-							<label class="col-lg-4 pdng5">Father's Name:</label>
-							<div class="col-lg-8 pdng5">
-								<input type="text" class='form-control' placeholder="Enter your father's name" />
-							</div>
-						</div>
-						<div class="form-group col-xs-12 col-sm-6 col-md-6">
-							<label class="col-lg-4 pdng5">Mother's Name:</label>
-							<div class="col-lg-8 pdng5">
-								<input type="text" class='form-control' placeholder="Enter your mother's name" />
-							</div>
-						</div>
-						<div class="form-group col-xs-12 col-sm-6 col-md-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-2">
-							<label for=""><input type="checkbox" name="chkbx" class="chkbx" />&nbsp; I am NRI</label>
-						</div>
-						<div class="clear"></div>
-					</div>
-					<input type="button" value="Next" class="nxtbtn btnnxtprv fltrht" name="fonticn_cl" />
-					<div class="clear"></div>
-				</div>
-
-				<!------ currently living-------->
-				<div class="crntlvng" style="display: none;">
-					<div class="cntnr clear">
-						<p class="hdng">Currently Living</p>
-						<div class="form-group col-xs-12 col-sm-6 col-md-6">
-							<label class="col-lg-4 pdng5">State:</label>
-							<div class="col-lg-8 pdng5">
-								<select class="form-control">
-									<option>ID Card Type</option>
-									<option>Male</option>
-									<option>Female</option>
-									<option>Other</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group col-xs-12 col-sm-6 col-md-6">
-							<label class="col-lg-4 pdng5">District:</label>
-							<div class="col-lg-8 pdng5">
-								<select class="form-control">
-									<option>ID Card Type</option>
-									<option>Male</option>
-									<option>Female</option>
-									<option>Other</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group col-xs-12 col-sm-6 col-md-6">
-							<label class="col-lg-4 pdng5">Parliament Constituency:</label>
-							<div class="col-lg-8 pdng5">
-								<select class="form-control">
-									<option>ID Card Type</option>
-									<option>Male</option>
-									<option>Female</option>
-									<option>Other</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group col-xs-12 col-sm-6 col-md-6">
-							<label class="col-lg-4 pdng5">Assembly Constituency:</label>
-							<div class="col-lg-8 pdng5">
-								<select class="form-control">
-									<option>ID Card Type</option>
-									<option>Male</option>
-									<option>Female</option>
-									<option>Other</option>
-								</select>
-							</div>
-						</div>
-						<div class="clear"></div>
-					</div>
-					<input type="button" value="Next" class="btnnxtprv nxtbtn1 fltrht" name="fonticn_rav" /> <input type="button"
-						value="Previous" class="prevBtn btnnxtprv fltrht" name="fonticn_pd" />
-					<div class="clear"></div>
-				</div>
-
-				<!------ Register as Voters-------->
-				<div class="rgstrvtr" style="display: none;">
-					<div class="cntnr clear">
-						<p class="hdng">Register as Voters</p>
-						<div class="form-group col-xs-12 col-sm-6 col-md-6">
-							<label class="col-lg-4 pdng5">State:</label>
-							<div class="col-lg-8 pdng5">
-								<select class="form-control">
-									<option>ID Card Type</option>
-									<option>Male</option>
-									<option>Female</option>
-									<option>Other</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group col-xs-12 col-sm-6 col-md-6">
-							<label class="col-lg-4 pdng5">District:</label>
-							<div class="col-lg-8 pdng5">
-								<select class="form-control">
-									<option>ID Card Type</option>
-									<option>Male</option>
-									<option>Female</option>
-									<option>Other</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group col-xs-12 col-sm-6 col-md-6">
-							<label class="col-lg-4 pdng5">Parliament Constituency:</label>
-							<div class="col-lg-8 pdng5">
-								<select class="form-control">
-									<option>ID Card Type</option>
-									<option>Male</option>
-									<option>Female</option>
-									<option>Other</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group col-xs-12 col-sm-6 col-md-6">
-							<label class="col-lg-4 pdng5">Assembly Constituency:</label>
-							<div class="col-lg-8 pdng5">
-								<select class="form-control">
-									<option>ID Card Type</option>
-									<option>Male</option>
-									<option>Female</option>
-									<option>Other</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group col-xs-12 col-sm-6 col-md-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-2">
-							<label><input type="checkbox" nm="chkbx" class="chkbx" />&nbsp; I Want to be Volunteer</label>
-						</div>
-						<div class='clear'></div>
-					</div>
-					<div align='center' class="relPostn">
-						<input type="button" value="Previous" class="prevBtn1 absPostn btnnxtprv" style="right: 0px;" name="fonticn_cl" />
-						<input type="submit" value="SUBMIT" class="btnDonate" />
-					</div>
-					<div class='clear'></div>
-				</div>
-			</form>
-		</div>
-	</div>
-	<script type="text/javascript" src="js/jquery1.9.1.js"></script>
-	<script type="text/javascript" src="js/jquery.validate.js"></script>
-	<script type="text/javascript">
-          function validateForm() {
-            var validator = $("#noticeform").validate({
-              rules: {
-                "email": {
-                  required: function() {
-                    if ($("#phone").val()) {
-                      return false;
-                    } else {
-                      return true;
-                    }
-                  },
-                  email: true
-                },
-                "phone": {
-                  required: function() {
-                    if ($("#email").val()) {
-                      return false;
-                    } else {
-                      return true;
-                    }
-                  }
-                }
-              },
-              messages: {
-                "email": {
-                  required: "<font color='red'>This field required</font>"
-                },
-                "phone": {
-                  required: "<font color='red'>This field required</font>"
-                }
-              }
-            });
-            var x = validator.form();
-            if (x && emailexists) {
-              if ($("#shw_emailexist").html().length > 0 && $("#shw_phoneexist").html().length > 0) {
-                return false;
-              } else if($("#shw_emailexist").html().length > 0) {
-                return false;
-              }else if($("#shw_phoneexist").html().length > 0){
-                return false;
-              }else{
-                $(".entryGate").fadeOut(500);
-                $(".signupformCont").fadeIn(500).animate({top: $j(window).scrollTop()+160},80);
-//                $("#pre_signup").prop("disabled", true);
-                return true;
-              }
-            } else {
-              $(".entryGate").prop('style', 'display:block;');
-//              $("#pre_signup").removeAttr("disabled");
-              $(".error").first().focus();
-              return false;
-            }
-          }
-          var emailexists = true;
-          function chkExist(type) {
-            emailexists = false;
-            var email = $("#email").val();
-            var phone = $("#phone").val();
-            if (email != '' && phone != '') {
-              var url = "checkExist.php?email=" + email + "&phone=" + phone;
-            } else if (email != "") {
-              var url = "checkExist.php?email=" + email;
-            } else {
-              var url = "checkExist.php?phone=" + phone;
-            }
-            $.post(url, function(res) {
-              if (parseInt(res) <= 1 && $("#"+type).val()!='') {
-                $("#shw_" + type + "exist").html("<font color='red'>This " + type + " is already exist.</font>");
-                emailexists = false;
-              } else {
-                $("#shw_" + type + "exist").html("");
-                emailexists = true;
-              }
-            });
-          }
-</script>
+	Warning: include(signin_up.php): failed to open stream: No such file or directory in /var/www/vhosts/demos4clients.com/httpdocs/swarajabhiyan/header.php on line 2 Warning:
+	include(signin_up.php): failed to open stream: No such file or directory in /var/www/vhosts/demos4clients.com/httpdocs/swarajabhiyan/header.php on line 2 Warning: include():
+	Failed opening 'signin_up.php' for inclusion (include_path='.:') in /var/www/vhosts/demos4clients.com/httpdocs/swarajabhiyan/header.php on line 2
 	<div class="mapCont center fnClose">
 		<h1 style="margin: 0px; padding: 10px;">Select a site</h1>
 		<div class="relPostn">
@@ -410,24 +58,20 @@
    });
   </script>
 
-			<svg version="1.1" id="svg3642" sodipodi:version="0.32" sodipodi:modified="true"
-				sodipodi:docname="India-states-numbered.svg" inkscape:version="0.46" sodipodi:docbase="D:\"
-				inkscape:output_extension="org.inkscape.output.svg.inkscape" xmlns:cc="http://creativecommons.org/ns#"
-				xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:svg="http://www.w3.org/2000/svg"
-				xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:dc="http://purl.org/dc/elements/1.1/"
-				xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg"
-				xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="95%" viewBox="0 0 1594 1868"
-				enable-background="new 0 0 1594 1868" xml:space="preserve">
- <sodipodi:namedview id="base" inkscape:window-width="1024" inkscape:current-layer="svg3642" inkscape:pageshadow="2"
-					inkscape:window-height="708" inkscape:window-x="0" inkscape:window-y="26" inkscape:pageopacity="0.0"
-					inkscape:zoom="0.56568542" inkscape:cx="1084.8025" borderopacity="1.0" pagecolor="#ffffff" inkscape:cy="636.55576"
+			<svg version="1.1" id="svg3642" sodipodi:version="0.32" sodipodi:modified="true" sodipodi:docname="India-states-numbered.svg" inkscape:version="0.46" sodipodi:docbase="D:\"
+				inkscape:output_extension="org.inkscape.output.svg.inkscape" xmlns:cc="http://creativecommons.org/ns#" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+				xmlns:svg="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:dc="http://purl.org/dc/elements/1.1/"
+				xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="95%"
+				viewBox="0 0 1594 1868" enable-background="new 0 0 1594 1868" xml:space="preserve">
+ <sodipodi:namedview id="base" inkscape:window-width="1024" inkscape:current-layer="svg3642" inkscape:pageshadow="2" inkscape:window-height="708" inkscape:window-x="0"
+					inkscape:window-y="26" inkscape:pageopacity="0.0" inkscape:zoom="0.56568542" inkscape:cx="1084.8025" borderopacity="1.0" pagecolor="#ffffff" inkscape:cy="636.55576"
 					showgrid="false" bordercolor="#666666">
  </sodipodi:namedview>
  <defs>
 
 
- <inkscape:perspective id="perspective389" inkscape:persp3d-origin="797 : 622.66667 : 1" inkscape:vp_x="0 : 934 : 1"
-					inkscape:vp_y="0 : 1000 : 0" sodipodi:type="inkscape:persp3d" inkscape:vp_z="1594 : 934 : 1">
+ <inkscape:perspective id="perspective389" inkscape:persp3d-origin="797 : 622.66667 : 1" inkscape:vp_x="0 : 934 : 1" inkscape:vp_y="0 : 1000 : 0" sodipodi:type="inkscape:persp3d"
+					inkscape:vp_z="1594 : 934 : 1">
  </inkscape:perspective>
  </defs>
  <path id="bihar_1_" class="imap" title="Bihar" fill="#C3C3C3" stroke="#FFFFFF" stroke-width="3.543"
@@ -1139,8 +783,7 @@
        c-20.751-18.646-43.471-35.938-65.396-53.28c-5.485-4.342-7.182-3.121-12.661-5.313c-3.526-1.399-6.174-5.021-9.915-5.797
        c-3.956-0.813-10.956,1.482-14.938,2.16c-10.644,1.818-21.131,4.546-31.881,5.729C609.669,447.737,597.758,448.535,585.787,451.432z
        " />
- <path id="himachal_pradesh_1_" class="imap" title="Himanchal Pradesh" fill="#C3C3C3" stroke="#FFFFFF"
-					stroke-width="3.543"
+ <path id="himachal_pradesh_1_" class="imap" title="Himanchal Pradesh" fill="#C3C3C3" stroke="#FFFFFF" stroke-width="3.543"
 					d="M571.101,503.77
        c-2.972,1.512-5.757,5.873-5.979-0.021c-1.712-0.033-4.752,0.14-6.271-0.709c-0.687-0.385-1.381-1.666-2.054-2.316
        c-2.2-2.126-4.423-2.348-7.24-2.4c-0.136-2.072,0.035-4.192-0.05-6.282c-0.045-1.104,0.205-2.688-0.334-3.672
@@ -1216,8 +859,7 @@
 					d="M531.023,477.463
        c0.6,0.068,1.109,0.152,1.438,0.2c0.094,1.488,0.655,8.753-2.924,6.979c0.38,0.188-1.604-2.271-1.501-2.063
        c-0.335-0.703-0.036-1.493-0.271-2.208c-0.229-0.714-1.438-0.908-1.021-2C527.171,477.219,529.391,477.279,531.023,477.463z" />
- <path id="dadra_and_nagar_haveli_1_" class="imap" title="Dadra and Nagar Haveli" fill="#C3C3C3" stroke="#FFFFFF"
-					stroke-width="3.543"
+ <path id="dadra_and_nagar_haveli_1_" class="imap" title="Dadra and Nagar Haveli" fill="#C3C3C3" stroke="#FFFFFF" stroke-width="3.543"
 					d="M325.786,1062.258
        c-0.586-0.076-1.363-0.044-1.813,0.092c-0.021,0.603-0.445,0.916-0.441,1.563c-1.286,0.081-5.335,0.589-5.038-1.928
        c0.172-1.453,2.146-0.521,2.52-2.229c1.537-0.104,4.786,0.539,4.251-2.063c-0.744-3.54-6.1-4.107-8.423-2.289
@@ -1310,8 +952,7 @@
  <path id="diu_1_" fill="#C3C3C3" stroke="#FFFFFF" stroke-width="3.5433"
 					d="M209.837,1027.375c0.101-0.971,0.117-1.852-1.067-2.056
        c-1.001-0.173-2.436,1.01-2.672,1.961c0.98-0.063,3.665,1.259,3.905-0.489" />
- <path id="jammu_and_kashmir_1_" class="imap" title="Jammu & Kashmir" fill="#C3C3C3" stroke="#FFFFFF"
-					stroke-width="3.543"
+ <path id="jammu_and_kashmir_1_" class="imap" title="Jammu & Kashmir" fill="#C3C3C3" stroke="#FFFFFF" stroke-width="3.543"
 					d="M491.004,381.119
        c-0.597,0.591-1.365,0.945-2,1.524c-0.103,0.094-0.71,0.107-0.95,0.282c-0.331,0.242,0.238,0.905-0.282,1.162
        c-2.231,1.103-2.603-0.932-3.506,1.8c-0.646,1.978-0.261,2.469-2.513,2.737c-1.703,0.203-3.508-0.07-5.212,0.038
@@ -2704,9 +2345,9 @@
 	<div class="bdyovrly">&nbsp;</div>
 	<header>
 		<div class="hdrContnr center relPostn">
-			<a class="logo fltlft" href="javascript:void(0)"><img src="http://static.swarajabhiyan.org.s3-us-west-2.amazonaws.com/templates/prod/1/images/logo.png" height="71" width="124" /></a> <a
-				class="mapIco fltrht" href="javascript:void(0)"> <img src="http://static.swarajabhiyan.org.s3-us-west-2.amazonaws.com/templates/prod/1/images/map-s.png" height="55" width="99" />
-				<div>Choose State(UNDER CONSTRUCTION)</div>
+			<a class="logo fltlft" href="javascript:void(0)"><img src="images/logo.png" height="71" width="124" /></a> <a class="mapIco fltrht" href="javascript:void(0)"> <img
+				src="images/map-s.png" height="55" width="99" />
+				<div>Choose State</div>
 			</a>
 
 			<div class="clear showinMob"></div>
@@ -2714,26 +2355,19 @@
 				<div class="showinMob">
 					<button type="button" class="respmenuBtn fltlft"></button>
 					<button type="button" class="respSubscribeBtn fltlft"></button>
-					<!--     <div class="fltrht respcontSigninup showinMob">
-      <input type="button" class="btnSignUp btnsgnupfn btnBg btnStyle" value="Sign Up" />
-      <input type="button" class="btnSignIn btnsgninfn btnStyle relPostn" value="Sign In" />
-     </div>-->
-					<!--          <button type="button" class="respSignupBtn btnsgnupfn fltlft"></button>
-          <button type="button" class="respSigninBtn btnsgninfn fltlft"></button>-->
 				</div>
 				<div class="fltlft hidInMob contSubscrib">
 					<form action="javascript:void(0)" id="formsearch" method="get">
 						<div class="divField">
-							<span class="fldTitle">Newsletter Subscription</span> <input type="text" class="txtSearch"
-								placeholder='Provide your email ID' /> <input type="submit" class="btnSubmit btnBg btnStyle relPostn"
-								value="Submit" />
+							<span class="fldTitle" style="top: -5px;">Newsletter Subscription</span> <input type="text" class="txtSearch" placeholder='Provide your email ID' /> <input type="submit"
+								class="btnSubmit btnBg btnStyle relPostn" value="Submit" />
 						</div>
 					</form>
 				</div>
-				<div class="fltrht contSigninup hidInMob">
-					<input type="button" class="btnSignUp btnsgnupfn btnBg btnStyle" value="Sign Up" /> <input type="button"
-						class="btnSignIn btnsgninfn btnBg btnStyle relPostn" value="Sign In" />
-				</div>
+				<!--     <div class="fltrht contSigninup hidInMob">
+      <input type="button" class="btnSignUp btnsgnupfn btnBg btnStyle" value="Sign Up" />
+      <input type="button" class="btnSignIn btnsgninfn btnBg btnStyle relPostn" value="Sign In" />
+     </div>-->
 				<div class="clear"></div>
 				<div class="relPostn">
 					<ul class="ulMainMenu center hidInMob absPostn dispTable">
@@ -2773,199 +2407,249 @@
 }(document, 'script', 'facebook-jssdk'));</script>
 	<!--================================popup section=========================-->
 	<div class="maincontainer">
-		<div class="lftContnr col-xs-12 col-sm-12 col-md-8">
+		<div class="lftContnr col-xs-12 col-sm-12 col-md-12">
 			<div>
 				<div class="hanger relPostn">
-					<h3 class="fltlft hangerHdng mrgnpdng absPostn">News</h3>
+					<h3 class="fltlft hangerHdng mrgnpdng absPostn">Online Donations</h3>
 				</div>
 				<div class="clear"></div>
 			</div>
-			<div class="contentDiv newsPad">
-				<!--------changed by soumya------->
-				<div class="newsCont">
-					<h4 class="">Lorem Ipsum is simply dummy text of the printing and typesetting industry</h4>
-					<p class="pressNote">Press Note, Swaraj Abhiyan, 03-May-2015</p>
-					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-						industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
-						it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic
-						typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
-						containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including
-						versions of Lorem Ipsum.</p>
-					<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical
-						Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at
-						Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum
-						passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem
-						Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil)
-						by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance.
-						The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</p>
-					<p>It is a long established fact that a reader will be distracted by the readable content of a page when
-						looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of
-						letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop
-						publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem
-						ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes
-						by accident, sometimes on purpose (injected humour and the like).</p>
-					<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in
-						some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to
-						use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.
-						All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the
-						first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of
-						model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore
-						always free from repetition, injected humour, or non-characteristic words etc.</p>
-					<p>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections
-						1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original
-						form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
-					<p>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
-						aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo
-						enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui
-						ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
-						adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat
-						voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut
-						aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil
-						molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"</p>
-				</div>
-				<br /> <br /> <img src="images/fbComment.png" style="max-width: 100%;" /> <br /> <br />
-				<div class="newsCont">
+			<div class="contentDiv contentDivPdng">
+				<p style="padding: 0px 10px;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismodLorem ipsum dolor sit amet, consectetuer adipiscing
+					elit, Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismodLorem ipsum dolor sit amet, consectetuer adipiscing elit, Lorem ipsum dolor sit
+					amet, consectetuer adipiscing elit.</p>
+				<p style="padding: 0px 10px;">
+					<b>Please Note :</b>consectetuer adipiscing elit, sed diam nonummy nibh euismodLorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismodLorem
+					ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismodLorem ipsum dolor sit amet, consectetuer adipiscing.
+				</p>
+				<div class="frmcntnr frmcntnrWdth center">
 					<div class="frmHdng">
-						<h3 align="left">Other News</h3>
-					</div>
-					<div class="divOtherNews">
-						<ul class="ulOtherNews">
-							<li>
-								<h4 class="">Lorem Ipsum is simply dummy text of the printing...</h4>
-								<div class="">
-									<p class="pressNote">Press Note, Swaraj Abhiyan, 03-May-2015</p>
-									<p>
-										Lorem Ipsum is simply dummy text industry... <a href="javascript:void(0)" class="fullEvent">Read more</a>
-									</p>
-								</div>
-							</li>
-							<li>
-								<h4 class="">Ipsum is simply dummy text Lorem of the printing...</h4>
-								<div class="">
-									<p class="pressNote">Press Note, Swaraj Abhiyan, 03-May-2015</p>
-									<p>
-										Ipsum is simply dummy text of the printing and Lorem typesetting industry... <a href="javascript:void(0)"
-											class="fullEvent">Read more</a>
-									</p>
-								</div>
-							</li>
-							<li>
-								<h4 class="">The printing and Lorem Ipsum is simply...</h4>
-								<div class="">
-									<p class="pressNote">Press Note, Swaraj Abhiyan, 03-May-2015</p>
-									<p>
-										The Lorem typesetting industry industry... <a href="javascript:void(0)" class="fullEvent">Read more</a>
-									</p>
-								</div>
-							</li>
-							<li>
-								<h4 class="">Simply dummy Lorem Ipsum is text of the printing and typesetting...</h4>
-								<div class="">
-									<p class="pressNote">Press Note, Swaraj Abhiyan, 03-May-2015</p>
-									<p>
-										Text of the printing and Lorem Ipsum is simply dummy ... <a href="javascript:void(0)" class="fullEvent">Read
-											more</a>
-									</p>
-								</div>
-							</li>
-						</ul>
-						<a href="newsindex.php" class="fltrht btnviewAll">See all</a>
+						<h3 class="">
+							Fill your details to donate online
+							<div class="fltrht">
+								Fields marked with '<span class='spnStar'>*</span>' are Mandatory.
+							</div>
+						</h3>
 						<div class="clear"></div>
-						<br />
 					</div>
-				</div>
-			</div>
-			<!--------changed by soumya end------->
-		</div>
-		<!-- *******************  include rightpannel.php ************************ -->
-		<div class="rhtContnr col-xs-12 col-sm-12 col-md-4">
-			<ul class="rhtButn mrgnpdng col-xs-12 col-md-12 col-sm-12" style="padding: 0px;">
-				<li class="col-sm-5 col-xs-12 col-md-12 col-sm-offset-1 col-md-offset-0"><a href='javascript:void(0)'
-					class="btnsgnupfn">
-						<div class='fltlft'>
-							<h5 class='mrgnpdng'>To Spr...e..ad</h5>
-							<h3 class='mrgnpdng'>JOIN US NOW</h3>
-						</div> <span class='fltrht rhtArow fa fa-angle-right'></span>
-						<div class='clear'></div>
-				</a></li>
-				<li class="col-sm-5 col-xs-12 col-md-12 col-sm-offset-1 col-md-offset-0"><a href='javascript:void(0)'>
-						<div class='fltlft'>
-							<h5 class='mrgnpdng'>To discuss & share ideas</h5>
-							<h3 class='mrgnpdng'>GO TO FORUMS</h3>
-						</div> <span class='fltrht rhtArow fa fa-angle-right'></span>
-						<div class='clear'></div>
-				</a></li>
-				<li class="col-sm-5 col-xs-12 col-md-12 col-sm-offset-1 col-md-offset-0"><a href='donation.php'>
-						<div class='fltlft'>
-							<h5 class='mrgnpdng'>Click here</h5>
-							<h3 class='mrgnpdng'>DONATE NOW</h3>
-						</div> <span class='fltrht rhtArow fa fa-angle-right'></span>
-						<div class='clear'></div>
-				</a></li>
-				<li class="col-sm-5 col-xs-12 col-md-12 col-sm-offset-1 col-md-offset-0"><a href='javascript:void(0)'>
-						<div class='fltlft'>
-							<h5 class='mrgnpdng'>See a list of</h5>
-							<h3 class='mrgnpdng'>SWARAJ CENTERS</h3>
-						</div> <span class='fltrht rhtArow fa fa-angle-right'></span>
-						<div class='clear'></div>
-				</a></li>
-				<li class="col-sm-5 col-xs-12 col-md-12 col-sm-offset-1 col-md-offset-0"><a href='javascript:void(0)'>
-						<div class='fltlft'>
-							<h5 class='mrgnpdng'>Participate in</h5>
-							<h3 class='mrgnpdng'>AGENDA 4 INDIA</h3>
-						</div> <span class='fltrht rhtArow fa fa-angle-right'></span>
-						<div class='clear'></div>
-				</a></li>
-			</ul>
-			<!--==================Facebook=====================-->
-			<div class="col-xs-12 col-sm-6 col-md-12" style="padding: 0px;">
-				<div class='socmrgnTop'>
-					<div class="hanger relPostn">
-						<h3 class="fltlft hangerHdng mrgnpdng absPostn">Facebook</h3>
-					</div>
-					<div class="clear"></div>
-				</div>
-				<div class="fbBlock">
-					<iframe
-						src="//www.facebook.com/plugins/likebox.php?href=https://www.facebook.com/swarajabhiyan&amp;width&amp;height=430&amp;colorscheme=light&amp;show_faces=true&amp;header=true&amp;stream=true&amp;show_border=true&amp;appId=607545139264444"
-						scrolling="no" frameborder="0" style="border: none; overflow: hidden; height: 430px; width: 100%;"
-						allowTransparency="true"></iframe>
-				</div>
-			</div>
-			<!--==================Twitter=====================-->
-			<div class="col-xs-12 col-sm-6 col-md-12" style="padding: 0px;">
-				<div class='socmrgnTop'>
-					<div class="hanger relPostn">
-						<h3 class="fltlft hangerHdng mrgnpdng absPostn">Twitter</h3>
-					</div>
-					<div class="clear"></div>
-				</div>
-				<div class='twrBlock'>
-					<!--<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script><a class="twitter-timeline" href="https://twitter.com/swarajabhiyan" data-widget-id="352375736809693184" height = 430px></a>-->
+					<div class="frmcntnr">
+						<div class="formStatusHid">
+							<div class="col-md-4 col-sm-4 col-xs-12 icondiv">
+								<div id="icon1" class="fltlft fonticn_pd active khammanKlass"></div>
+								<p class="fltlft pdb">Personal Details</p>
+							</div>
+							<div class="col-md-4 col-sm-4 col-xs-12 icondiv">
+								<div id="icon2" class="fltlft fonticn_cl khammanKlass"></div>
+								<p class="fltlft pdb">Currently Living</p>
+							</div>
+							<div class="col-md-4 col-sm-4 col-xs-12 icondiv">
+								<div id="icon3" class="fltlft fonticn_rav khammanKlass"></div>
+								<p class="fltlft pdb">Register as Voter</p>
+							</div>
+						</div>
+						<form method='get' action="javascript:void(0)" class="form-inline">
+							<div class="prsnldtl">
+								<div class="cntnr clear">
+									<p class="hdng">Personal Details</p>
+									<div class="form-group col-xs-12 col-sm-6 col-md-6">
+										<label class="col-lg-4 pdng5">Name :</label>
+										<div class="col-lg-8 pdng5">
+											<input type="text" class='form-control' placeholder="Enter your name" />
+										</div>
+									</div>
+									<div class="form-group col-xs-12 col-sm-6 col-md-6">
+										<label class="col-lg-4 pdng5">Email<span class='spnStar'>*</span>:
+										</label>
+										<div class="col-lg-8 pdng5">
+											<input type="email" class='form-control' placeholder="Enter email ID" />
+										</div>
+									</div>
+									<div class="form-group col-xs-12 col-sm-6 col-md-6">
+										<label class="col-lg-4 pdng5">Gender:</label>
+										<div class="col-lg-8 pdng5">
+											<select class="form-control">
+												<option>---select---</option>
+												<option>Male</option>
+												<option>Female</option>
+												<option>Other</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group col-xs-12 col-sm-6 col-md-6">
+										<label class="col-lg-4 pdng5">ID Card Detail:</label>
+										<div class="col-lg-8 pdng5">
+											<select class="form-control frmElWdth50">
+												<option>Card Type</option>
+												<option>Debit Card</option>
+												<option>Credit Card</option>
+												<option>Visa Card</option>
+												<option>Master Card</option>
+											</select> <input type="text" class="form-control frmElWdth50" placeholder="ID Card Number" />
+										</div>
+									</div>
+									<div class="form-group col-xs-12 col-sm-6 col-md-6">
+										<label class="col-lg-4 pdng5">Mobile<span class='spnStar'>*</span>:
+										</label>
+										<div class="col-lg-8 pdng5">
+											<input type="text" class='form-control' placeholder="Enter mobile number" />
+										</div>
+									</div>
+									<div class="form-group col-xs-12 col-sm-6 col-md-6">
+										<label class="col-lg-4 pdng5">DOB:</label>
+										<div class="col-lg-8 pdng5">
+											<input type="text" class='form-control' placeholder="Enter Date of birth" />
+										</div>
+									</div>
+									<div class="form-group col-xs-12 col-sm-6 col-md-6">
+										<label class="col-lg-4 pdng5">Father's Name:</label>
+										<div class="col-lg-8 pdng5">
+											<input type="text" class='form-control' placeholder="Enter your father's name" />
+										</div>
+									</div>
+									<div class="form-group col-xs-12 col-sm-6 col-md-6">
+										<label class="col-lg-4 pdng5">Mother's Name:</label>
+										<div class="col-lg-8 pdng5">
+											<input type="text" class='form-control' placeholder="Enter your mother's name" />
+										</div>
+									</div>
+									<div class="form-group col-xs-12 col-sm-6 col-md-6 col-md-offset-2">
+										<label for="" style="text-align: left;"><input type="checkbox" nm="chkbx" class="chkbx" />&nbsp; I am NRI</label>
+									</div>
+									<div class="clear"></div>
+								</div>
+								<input type="button" value="Next" class="nxtbtn btnnxtprv fltrht" name="fonticn_cl" />
+								<div class="clear"></div>
+							</div>
+							<div class="clear"></div>
 
-					<a class="twitter-timeline" href="https://twitter.com/swaraj_abhiyan" data-widget-id="591375821736120321">Tweets
-						by @swaraj_abhiyan</a>
-					<script>
-       !function (d, s, id) {
-           var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/
-                   .test(d.location) ? 'http'
-                   : 'https';
-           if (!d.getElementById(id)) {
-               js = d.createElement(s);
-               js.id = id;
-               js.src = p
-                       + "://platform.twitter.com/widgets.js";
-               fjs.parentNode.insertBefore(js, fjs);
-           }
-       }(document, "script", "twitter-wjs");
-   </script>
+							<!------ currently living-------->
+							<div class="crntlvng" style="display: none;">
+								<div class="cntnr clear">
+									<p class="hdng">Currently Living</p>
+									<div class="form-group col-xs-12 col-sm-6 col-md-6">
+										<label class="col-lg-4 pdng5">State:</label>
+										<div class="col-lg-8 pdng5">
+											<select class="form-control">
+												<option>ID Card Type</option>
+												<option>Male</option>
+												<option>Female</option>
+												<option>Other</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group col-xs-12 col-sm-6 col-md-6">
+										<label class="col-lg-4 pdng5">District:</label>
+										<div class="col-lg-8 pdng5">
+											<select class="form-control">
+												<option>ID Card Type</option>
+												<option>Male</option>
+												<option>Female</option>
+												<option>Other</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group col-xs-12 col-sm-6 col-md-6">
+										<label class="col-lg-4 pdng5">Parliament Constituency:</label>
+										<div class="col-lg-8 pdng5">
+											<select class="form-control">
+												<option>ID Card Type</option>
+												<option>Male</option>
+												<option>Female</option>
+												<option>Other</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group col-xs-12 col-sm-6 col-md-6">
+										<label class="col-lg-4 pdng5">Assembly Constituency:</label>
+										<div class="col-lg-8 pdng5">
+											<select class="form-control">
+												<option>ID Card Type</option>
+												<option>Male</option>
+												<option>Female</option>
+												<option>Other</option>
+											</select>
+										</div>
+									</div>
+									<div class='clear'></div>
+								</div>
+								<input type="button" value="Previous" class="prevBtn btnnxtprv fltlft" name="fonticn_pd" /> <input type="button" value="Next" class="nxtbtn1 btnnxtprv fltrht"
+									name="fonticn_rav" />
+								<div class='clear'></div>
+							</div>
+
+							<!------ Payment Details-------->
+							<div class="rgstrvtr" style="display: none;">
+								<div class="cntnr clear">
+									<p class="hdng">Payment Details</p>
+									<div class="form-group col-xs-12 col-sm-6 col-md-6">
+										<label class="col-lg-4 pdng5">Donation to<span class='spnStar'>*</span>:
+										</label>
+										<div class="col-lg-8 pdng5">
+											<select class="form-control">
+												<option selected="selected">National</option>
+												<option>Andaman & Nikobar</option>
+												<option>Andhra Pradesh</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group col-xs-12 col-sm-6 col-md-6">
+										<label class="col-lg-4 pdng5">Amount<span class='spnStar'>*</span>:
+										</label>
+										<div class="col-lg-8 pdng5">
+											<input type="text" class='form-control' placeholder="Rs." />
+										</div>
+									</div>
+									<div class="form-group col-xs-12 col-sm-6 col-md-6">
+										<label class="col-lg-4 pdng5">Pay by<span class='spnStar'>*</span>:
+										</label>
+										<div class="col-lg-8 pdng5">
+											<select class="form-control">
+												<option>---Select payment mode---</option>
+												<option>Credit Card</option>
+												<option>Debit Card</option>
+												<option>Visa Card</option>
+												<option>Master Card</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group col-xs-12 col-sm-6 col-md-6">
+										<label class="col-lg-4 pdng5">Remark<span class='spnStar'>*</label>
+										<div class="col-lg-8 pdng5">
+											<textarea placeholder="Write your remarks" class="form-control"></textarea>
+										</div>
+									</div>
+									<div class="form-group col-xs-12 col-sm-6 col-md-6">
+										<label style="font-weight: normal; text-align: left;"> <input type='checkbox' name='declaration' />&nbsp; I declare that I am an Indian citizen, above 18 years
+											of age and am making this payment. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh.
+										</label>
+									</div>
+									<div class='clear'></div>
+								</div>
+								<div align='center'>
+									<input type="button" value="Previous" class="btnnxtprv prevBtn1 fltlft" name="fonticn_cl" /> <input type="submit" value="DONATE" class="btnDonate" />
+								</div>
+								<div class='clear'></div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div align='center' class="helpMsg">
+					If you are facing any problem <br />Call us at +91 7210222333 or email us at<br /> donate@swarajabhiyan.org
+				</div>
+				<br />
+				<div align='justify' style='padding: 10px; background: #E6E8EC;'>Dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismodLorem ipsum dolor sit amet,
+					consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet...Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod
+					tincidunt ut laoreet. dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismodLorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
+					nibh euismod tincidunt ut laoreet...Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet</div>
+				<br /> <br /> <br />
+				<div class="" style="border-top: 1px solid #cecece; text-align: center; padding: 5px 0px 0px;">
+					<img src='images/paymentfooter.png' style="max-width: 100%;" />
 				</div>
 			</div>
 		</div>
 		<div class="clear"></div>
 	</div>
-
-	</div>
+	<div class="clear"></div>
 	<div class="footerContainer">
 		<div class="ftrContnr center">
 			<ul class="ulFtrMain ulFtrMain1 mrgnpdng">
@@ -3077,5 +2761,3 @@
 			<p class='copyRight'>&copy; Swaraj Abhiyan. All Rights Reserved</p>
 		</div>
 	</div>
-</body>
-</html>
