@@ -54,7 +54,7 @@
         <!-- To move inline styles to css file/block, please specify a class name for each element. --> 
         <!-- ================================================== -->
         <div id="slider1_container" style="display: none; position: relative; margin: 0 auto;
-        top: 0px; left: 0px; max-width: 1600px; height: 340px; overflow: hidden;">
+        top: 0px; left: 0px; width: 1600px; height: 340px; overflow: hidden;">
             <!-- Loading Screen -->
             <div u="loading" style="position: absolute; top: 0px; left: 0px;">
                 <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block;

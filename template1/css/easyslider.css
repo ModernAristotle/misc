@@ -37,7 +37,7 @@
 			define width and height of list item (slide)
 			entire slider area will adjust according to the parameters provided here
 		*/ 
-		/*width:657px;*/
+		width:329px;
 		height:241px;
 		overflow:hidden; 
 		}	

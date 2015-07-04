@@ -35,9 +35,9 @@
     </div>
     <h3 class='contacth3'>Contact Us</h3>
     <div class="ftrMenuCont">
-     <ul class="ulftrMenu  mrgnpdng">
-      <li><a href="javascript:void(0)">A-189, Sec-43, Noida, UP</a></li>
-      <li><a href="javascript:void(0)">+917210222333</a></li>
+     <ul class="ulContact mrgnpdng">
+      <li>A-189, Sec-43, Noida, UP</li>
+      <li>+917210222333</li>
      </ul>
     </div>
    </li>
@@ -99,9 +99,9 @@
     </div>
     <h3 class='contacth3'>Contact Us</h3>
     <div class="ftrMenuCont">
-     <ul class="ulftrMenu  mrgnpdng">
-      <li><a href="javascript:void(0)">A-189, Sec-43, Noida, UP</a></li>
-      <li><a href="javascript:void(0)">+917210222333</a></li>
+     <ul class="ulContact mrgnpdng">
+      <li>A-189, Sec-43, Noida, UP</li>
+      <li>+917210222333</li>
      </ul>
     </div>
    </li>

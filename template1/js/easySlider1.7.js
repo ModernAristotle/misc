@@ -56,7 +56,7 @@
 			numericId: 		'controls'
 		}; 
 		
-		var options = $.extend(defaults, options);  
+		var options = $.extend(defaults, options);
 				
 		this.each(function() {  
 			var obj = $(this); 				
@@ -72,7 +72,8 @@
 			$("ul", obj).css('width',s*w);			
 			
 			if(options.continuous){
-				$("ul", obj).prepend($("ul li:last-child", obj).clone().css("margin-left","-"+ w +"px"));
+//				$("ul", obj).prepend($("ul li:last-child", obj).clone().css("margin-left","-"+ w +"px"));
+				$("ul", obj).append($("ul li:first-child", obj).clone());
 				$("ul", obj).append($("ul li:nth-child(2)", obj).clone());
 				$("ul", obj).css('width',(s+1)*w);
 			};				
@@ -90,8 +91,8 @@
 					if(options.lastShow) html += ' <span id="'+ options.lastId +'"><a href=\"javascript:void(0);\">'+ options.lastText +'</a></span>';				
 				};
 				
-				html += options.controlsAfter;						
-				$(obj).after(html);										
+				html += options.controlsAfter;
+				$(obj).after(html);
 			};
 			
 			if(options.numeric){									
@@ -140,10 +141,10 @@
 			function animate(dir,clicked){
 				if (clickable){
 					clickable = false;
-					var ot = t;				
+					var ot = t;
 					switch(dir){
 						case "next":
-							t = (ot>=ts) ? (options.continuous ? t+1 : ts) : t+1;						
+							t = (ot>=ts) ? (options.continuous ? t+1 : ts) : t+1;
 							break; 
 						case "prev":
 							t = (t<=0) ? (options.continuous ? t-1 : 0) : t-1;

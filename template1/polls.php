@@ -9,6 +9,17 @@
   <?php
   include 'header.php';
   ?>
+<!---------------Facebook Comment Script------------------>
+<!--  <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>-->
+<!---------------Facebook Comment Script------------------>
+
   <div class="maincontainer">
    <div class="lftContnr col-xs-12 col-sm-12 col-md-8">
     <div>
@@ -29,7 +40,7 @@
         <p>*Please <a href="javascript:void(0)" class="linkSignin">Sign In</a> vote</p>
         <button type="button" class="voteurCast">Cast your vote</button>
       </div>      
-       <div class="fbcomment">
+       <div class="fbcomment col-xs-12">
             <img src="images/fbComment.png" style="max-width: 100%;" />
       </div>
      </div>
@@ -48,6 +59,9 @@
      <div class="fbcomment">
             <img src="images/fbComment.png" style="max-width: 100%;" />
       </div>
+<!--     <div class="fbcomment col-xs-12">
+            <div class="fb-comments" data-href="http://www.swarajabhiyan.org/" data-width="100%" data-numposts="1" data-colorscheme="light"></div>
+      </div>-->
      </div>
      <div class="clear"></div>
      <h4 class="mrgnpdng newsHead accordian"><span class="col-xs-11">Part II of PC of NSC meeting of Swaraj Abhiyan. </span><span class="fltrht plusSign"><span class="plusSign plsVer" title="Expand">&nbsp;</span></span><div class="clear"></div></h4>
@@ -61,9 +75,9 @@
         <p>*Please <a href="javascript:void(0)" class="linkSignin">Sign In</a> vote</p>
         <button type="button" class="voteurCast">Cast your vote</button>
       </div>      
-     <div class="fbcomment">
+     <div class="fbcomment col-xs-12">
             <img src="images/fbComment.png" style="max-width: 100%;" />
-      </div>
+        </div>
      </div>
      <div class="clear"></div>
      <h4 class="mrgnpdng newsHead accordian"><span class="col-xs-11">Yadav, Bhushan finalise national team, launch farmers' movement</span><span class="fltrht plusSign"><span class="plusSign plsVer" title="Expand">&nbsp;</span></span><div class="clear"></div></h4>
@@ -77,7 +91,7 @@
         <p>*Please <a href="javascript:void(0)" class="linkSignin">Sign In</a> vote</p>
         <button type="button" class="voteurCast">Cast your vote</button>
       </div>      
-     <div class="fbcomment">
+     <div class="fbcomment col-xs-12">
             <img src="images/fbComment.png" style="max-width: 100%;" />
       </div>
      </div>
@@ -93,7 +107,7 @@
         <p>*Please <a href="javascript:void(0)" class="linkSignin">Sign In</a> vote</p>
         <button type="button" class="voteurCast">Cast your vote</button>
       </div>      
-     <div class="fbcomment">
+     <div class="fbcomment col-xs-12">
             <img src="images/fbComment.png" style="max-width: 100%;" />
       </div>
      </div>
@@ -109,7 +123,7 @@
         <p>*Please <a href="javascript:void(0)" class="linkSignin">Sign In</a> vote</p>
         <button type="button" class="voteurCast">Cast your vote</button>
       </div>
-     <div class="fbcomment">
+<div class="fbcomment col-xs-12">
             <img src="images/fbComment.png" style="max-width: 100%;" />
       </div>
      </div>
