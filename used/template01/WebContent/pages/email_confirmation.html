@@ -41,35 +41,6 @@
 	</div>
 	[[FOOTER]]
 
-<script type="text/javascript">
-	function resetPassword(){
-        var formData = getFormData('#passwordResetForm');
-        $('#resetPasswordButton').prop('disabled', true);
-        $("#password_reset_errors").html("updating...");
-        var value = JSON.stringify(formData);
-        $.ajax({
-            contentType: 'application/json',
-            type: "POST",
-            url: "/js/passwordreset",
-            data: value,
-            dataType: "json"
-          }).done(function(msg) {
-              $('#resetPasswordButton').prop('disabled', false);
-              $('#email').val('')
-              var errorHtml = "<font color='green'><b>Email sent, please check you email box including spam folder</b></font>";
-              $("#password_reset_errors").html(errorHtml);
-              }).fail(function(jqXHR, textStatus, errorThrown) {
-                  $('#resetPasswordButton').prop('disabled', false);
-                  
-                  var responseText = jqXHR.responseText;
-                  var resObj = jQuery.parseJSON(jqXHR.responseText);
-              var errorHtml = "<font color='red'><b>" + resObj.message+"</b></font>";
-              $("#password_reset_errors").html(errorHtml);
-              
-          });
-        return false;
-    }
-</script>
 </body>
 </html>
 
