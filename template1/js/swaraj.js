@@ -4,7 +4,7 @@ function topHeight() {
     setTimeout(function () {
         $j('.divGaltop').height($j('header').height() + 20);
     }, 10);
-}
+} 
 //---------------------Set loader---------------------
 //function startLoader(){
 //    setTimeout(function(){
@@ -53,7 +53,7 @@ $j(function () {
     });
     $j(window).resize(function () {
         topHeight();
-        eventLiwidth();
+//        eventLiwidth();
 //    galWidth()
         if ($j(this).width() <= 992) {
             $j('.ftrMenuCont').hide();
@@ -129,16 +129,13 @@ $j(function () {
         $j('.mapCont').fadeToggle(800).animate({top: $j(window).scrollTop() + 160}, 800);
     });
 //    -----------------------------show popup---------------------
-    /*$j('.btnsgnupfn').click(function (e) {
+    $j('.btnsgnupfn').click(function (e) {
         hideoverlay();
         hideform();
-//        showoverlay();
         $j(this).addClass('active');
-//        $j('.entryGate').fadeIn(500).animate({top: $j(window).scrollTop() + 120}, 800);
         $j('.entryGate').fadeIn(500);
-//        $j('.entryGate').find('#shw_emailexist, #shw_phoneexist').html('');
         clearField();
-    });*/
+    });
 //    $j('.btnsgninfn').click(function (e) {
 //        e.stopPropagation();
 //        hideoverlay();

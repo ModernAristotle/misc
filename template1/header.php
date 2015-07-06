@@ -1,5 +1,7 @@
 <?php
- include 'signin_up.php';
+ini_set("display_errors", 0);
+session_start();
+// include 'signin_up.php';
  ?>
 <div class="mapCont center fnClose">
  <h1 style="margin: 0px; padding: 10px;">Select a site</h1>
@@ -45,10 +47,15 @@
            </div>
           </form>
          </div>
-<!--	 <div class="fltrht contSigninup hidInMob">
-	  <input type="button" class="btnSignUp btnsgnupfn btnBg btnStyle" value="Sign Up" />
-	  <input type="button" class="btnSignIn btnsgninfn btnBg btnStyle relPostn" value="Sign In" />
-	 </div>-->
+	 <div class="fltrht contSigninup hidInMob">
+          <?php if(isset($_SESSION['username']) && isset($_SESSION['password']) ) {?>
+          <a href="index.php?logout=1" class="btnSignIn btnBg btnStyle" id="logout">Logout</a>
+         <?php }else{ ?>
+          <a href="index.php" class="btnSignIn btnBg btnStyle" id="login">Log In</a>
+         <?php } ?>
+<!--	  <input type="button" class="btnSignUp btnsgnupfn btnBg btnStyle" value="Sign Up" />
+	  <input type="button" class="btnSignIn btnsgninfn btnBg btnStyle relPostn" value="Sign In" />-->
+	 </div>
 	 <div class="clear"></div>
          <?php include 'menu.php'; ?>
         </div>

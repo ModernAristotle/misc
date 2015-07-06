@@ -2,8 +2,22 @@
 <html>
 <!-- **********************  include common.php ************************ -->
  <?php
+ ini_set("display_errors", 0);
+ session_start();
+ if(isset($_SESSION['message'])){
+     echo $_SESSION['message'];
+     unset($_SESSION['message']);
+ }
+ if(isset($_REQUEST['logout'])){
+     session_destroy();
+     header("location:index.php");exit;
+ }
+ if(isset($_SESSION['username'])){
+        header("location:home.php");exit;
+ }
  include 'common.php';
  ?>
+<?php if (empty($_SESSION['username'])){?>
  <body> 
 <div class="signinformCont center fnClose">
   <div class="frmHdng">
@@ -39,7 +53,7 @@
   <!---------------------------before signup form------------------------------>
 <div class="entryGate center" style="display: none;">
   <div class="frmHdng">
-    <h3 class="mrgnpdng" align="">Please enter Email ID or Mobile Number</h3>
+   <h3 class="mrgnpdng" align="">Please enter Email ID or Mobile Number <a href="javascript:void(0)" class="fltrht linkSignin">Login</a></h3>
   </div>
   <br />
   <!--<p class="closeicn">x</p>-->
@@ -405,4 +419,5 @@
         }
 </script>
  </body>
+<?php }?>
 </html>
