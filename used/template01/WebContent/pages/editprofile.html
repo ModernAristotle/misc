@@ -84,6 +84,11 @@
 						</ul>
 						<div id="tabs-1">
 							<h2>Personal Details</h2>
+							<form method="POST" enctype="multipart/form-data" action="/editprofile/upload" id="profilePicForm" name="profilePicForm" onsubmit="return uploadPhoto();">
+							    <img src="http://static.swarajabhiyan.org/{{UserPlugin.profilePic}}"  alt="Profile Pic" style="max-height:200px;"/><br>
+								<input type="file" name="file"> <input type="submit" value="Upload">
+								<br>* This page is still under construction, You can upload image but it will take you to a success page and then please come back and refresh page
+							</form>
 							<form action="javascript:void(0);" method="post" id="personalDetailForm" name="personalDetailForm" enctype="multipart/form-data" onsubmit="return updatePersonalDetail();">
 								<div class="cntnr clear" style="display: block;" id="editUserIndianPanel2">
 									<p class="hdng" id="personalPanel">Personal</p>
@@ -269,127 +274,112 @@
 								<div class="cntnr clear">
 									<p class="hdng">Volunteer Details</p>
 									<div class="form-group col-xs-12 col-sm-6 col-md-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-2">
-										<label>
-										{{#if UserPlugin.volunteer}}
-										<input type="checkbox" class="chkbx" id="editUserVolunteer" name="editUserVolunteer" checked="checked"/>
-										{{else}}
-										<input type="checkbox" class="chkbx" id="editUserVolunteer" name="editUserVolunteer" />
-										{{/if}}
-										&nbsp; I Want to be Volunteer</label>
+										<label> {{#if UserPlugin.volunteer}} <input type="checkbox" class="chkbx" id="editUserVolunteer" name="editUserVolunteer" checked="checked" /> {{else}} <input
+											type="checkbox" class="chkbx" id="editUserVolunteer" name="editUserVolunteer" /> {{/if}} &nbsp; I Want to be Volunteer
+										</label>
 									</div>
 									<div class="clear"></div>
-									<br>
-									{{#if UserPlugin.volunteer}}
-                                    <div id="editUserVolunteerDetailPanel" class="form-group" style="display: block;">
-                                    {{else}}
-                                    <div id="editUserVolunteerDetailPanel" class="form-group" style="display: none;">
-                                    {{/if}}
-										{{#each UserPlugin.userinterests}}
-										<h3>{{description}}</h3>
-										<table style="width: 98%;">
-											<tbody>
-												{{#each interests}}
-												<tr>
-													{{#each this}}
-													<td>
-													{{#if selected}}
-													<input type="checkbox" class="chkbx" id="editUserInterests" name="editUserInterests" value="{{id}}" checked="checked"/>
-													{{else}}
-													<input type="checkbox" class="chkbx" id="editUserInterests" name="editUserInterests" value="{{id}}" />
-													{{/if}}
-													&nbsp; {{description}}
-													</td> 
-													{{/each}}
-												</tr>
+									<br> {{#if UserPlugin.volunteer}}
+									<div id="editUserVolunteerDetailPanel" class="form-group" style="display: block;">
+										{{else}}
+										<div id="editUserVolunteerDetailPanel" class="form-group" style="display: none;">
+											{{/if}} {{#each UserPlugin.userinterests}}
+											<h3>{{description}}</h3>
+											<table style="width: 98%;">
+												<tbody>
+													{{#each interests}}
+													<tr>
+														{{#each this}}
+														<td>{{#if selected}} <input type="checkbox" class="chkbx" id="editUserInterests" name="editUserInterests" value="{{id}}" checked="checked" /> {{else}} <input
+															type="checkbox" class="chkbx" id="editUserInterests" name="editUserInterests" value="{{id}}" /> {{/if}} &nbsp; {{description}}
+														</td> {{/each}}
+													</tr>
 
-												{{/each}}
-											</tbody>
-										</table>
-										{{/each}}
-										<div>
-											<br></br>
-											<h4>
-											{{#if UserPlugin.pastVolunteer}}
-		                                    <input type="checkbox" class="chkbx" id="editUserPastVolunteer" name="editUserPastVolunteer" checked="checked"/>
-		                                    {{else}}
-		                                    <input type="checkbox" class="chkbx" id="editUserPastVolunteer" name="editUserPastVolunteer" />
-		                                    {{/if}}
-											
-												 
-												Have you volunteered with any political/public interest organization in the past?
-											</h4>
-											{{#if UserPlugin.pastVolunteer}}
-                                            <div class="form-group col-xs-12 col-sm-12 col-md-12" id="editUserPastVolunteerOrganisationPanel" style="display: block;">
-                                            {{else}}
-                                            <div class="form-group col-xs-12 col-sm-12 col-md-12" id="editUserPastVolunteerOrganisationPanel" style="display: none;">
-                                            {{/if}}
-												<label class="col-lg-4 pdng5">Organisation Name:</label>
-												<div class="col-lg-8 pdng5">
-													<input type="text" class='form-control' placeholder="Enter Organisation Name" id="editUserPastOrganisation" name="editUserPastOrganisation" value="{{UserPlugin.pastOrganisation}}"/>
-												</div>
-											</div>
-											<div class="clear"></div>
-										</div>
-										<div>
-											<br></br>
-											<h4>
-											{{#if UserPlugin.knowExistingMember}}
-                                            <input type="checkbox" class="chkbx" id="editUserKnowExistingMember" name="editUserKnowExistingMember" checked="checked"/> 
-                                            {{else}}
-                                            <input type="checkbox" class="chkbx" id="editUserKnowExistingMember" name="editUserKnowExistingMember" /> 
-                                            {{/if}}
-												Do you know someone associated with Swaraj Abhiyan?
-											</h4>
-											
-											{{#if UserPlugin.knowExistingMember}}
-                                            <div id="editUserExistingKnownMemberPanel" style="display: block;"> 
-                                            {{else}}
-                                            <div id="editUserExistingKnownMemberPanel" style="display: none;"> 
-                                            {{/if}}
-                
-											
-												<div class="form-group col-xs-12 col-sm-12 col-md-12">
-													<label class="col-lg-4 pdng5">Member Name:</label>
-													<div class="col-lg-8 pdng5">
-														<input type="text" class='form-control' placeholder="Member Name" id="editUserExistingMemberName" name="editUserExistingMemberName" value="{{UserPlugin.existingMemberName}}"/>
+													{{/each}}
+												</tbody>
+											</table>
+											{{/each}}
+											<div>
+												<br></br>
+												<h4>
+													{{#if UserPlugin.pastVolunteer}} <input type="checkbox" class="chkbx" id="editUserPastVolunteer" name="editUserPastVolunteer" checked="checked" /> {{else}} <input
+														type="checkbox" class="chkbx" id="editUserPastVolunteer" name="editUserPastVolunteer" /> {{/if}} Have you volunteered with any political/public interest organization
+													in the past?
+												</h4>
+												{{#if UserPlugin.pastVolunteer}}
+												<div class="form-group col-xs-12 col-sm-12 col-md-12" id="editUserPastVolunteerOrganisationPanel" style="display: block;">
+													{{else}}
+													<div class="form-group col-xs-12 col-sm-12 col-md-12" id="editUserPastVolunteerOrganisationPanel" style="display: none;">
+														{{/if}} <label class="col-lg-4 pdng5">Organisation Name:</label>
+														<div class="col-lg-8 pdng5">
+															<input type="text" class='form-control' placeholder="Enter Organisation Name" id="editUserPastOrganisation" name="editUserPastOrganisation"
+																value="{{UserPlugin.pastOrganisation}}" />
+														</div>
 													</div>
+													<div class="clear"></div>
 												</div>
-												<div class="form-group col-xs-12 col-sm-12 col-md-12">
-													<label class="col-lg-4 pdng5">Member Email:</label>
-													<div class="col-lg-8 pdng5">
-														<input type="text" class='form-control' placeholder="Member Email" id="editUserExistingMemberEmail" name="editUserExistingMemberEmail" value="{{UserPlugin.existingMemberEmail}}"/>
+												<div>
+													<br></br>
+													<h4>
+														{{#if UserPlugin.knowExistingMember}} <input type="checkbox" class="chkbx" id="editUserKnowExistingMember" name="editUserKnowExistingMember" checked="checked" />
+														{{else}} <input type="checkbox" class="chkbx" id="editUserKnowExistingMember" name="editUserKnowExistingMember" /> {{/if}} Do you know someone associated with Swaraj
+														Abhiyan?
+													</h4>
+
+													{{#if UserPlugin.knowExistingMember}}
+													<div id="editUserExistingKnownMemberPanel" style="display: block;">
+														{{else}}
+														<div id="editUserExistingKnownMemberPanel" style="display: none;">
+															{{/if}}
+
+
+															<div class="form-group col-xs-12 col-sm-12 col-md-12">
+																<label class="col-lg-4 pdng5">Member Name:</label>
+																<div class="col-lg-8 pdng5">
+																	<input type="text" class='form-control' placeholder="Member Name" id="editUserExistingMemberName" name="editUserExistingMemberName"
+																		value="{{UserPlugin.existingMemberName}}" />
+																</div>
+															</div>
+															<div class="form-group col-xs-12 col-sm-12 col-md-12">
+																<label class="col-lg-4 pdng5">Member Email:</label>
+																<div class="col-lg-8 pdng5">
+																	<input type="text" class='form-control' placeholder="Member Email" id="editUserExistingMemberEmail" name="editUserExistingMemberEmail"
+																		value="{{UserPlugin.existingMemberEmail}}" />
+																</div>
+															</div>
+															<div class="form-group col-xs-12 col-sm-12 col-md-12">
+																<label class="col-lg-4 pdng5">Member Mobile:</label>
+																<div class="col-lg-8 pdng5">
+																	<input type="text" class='form-control' placeholder="Member Mobile" id="editUserExistingMemberMobile" name="editUserExistingMemberMobile"
+																		value="{{UserPlugin.existingMemberMobile}}" />
+																</div>
+															</div>
+														</div>
+														<div class="clear"></div>
 													</div>
-												</div>
-												<div class="form-group col-xs-12 col-sm-12 col-md-12">
-													<label class="col-lg-4 pdng5">Member Mobile:</label>
-													<div class="col-lg-8 pdng5">
-														<input type="text" class='form-control' placeholder="Member Mobile" id="editUserExistingMemberMobile" name="editUserExistingMemberMobile" value="{{UserPlugin.existingMemberMobile}}"/>
+													<br></br>
+
+													<div class="form-group col-xs-12 col-sm-12 col-md-12">
+														<label class="col-lg-4 pdng5">Education:</label>
+														<div class="col-lg-8 pdng5">
+															<input type="text" class='form-control' placeholder="Education" id="editUserEducation" name="editUserEducation" value="{{UserPlugin.education}}" />
+														</div>
 													</div>
-												</div>
-											</div>
-											<div class="clear"></div>
-										</div>
-										<br></br>
-										
-										<div class="form-group col-xs-12 col-sm-12 col-md-12">
-											<label class="col-lg-4 pdng5">Education:</label>
-											<div class="col-lg-8 pdng5">
-												<input type="text" class='form-control' placeholder="Education" id="editUserEducation" name="editUserEducation" value="{{UserPlugin.education}}"/>
-											</div>
-										</div>
-										<div class="form-group col-xs-12 col-sm-12 col-md-12">
-											<label class="col-lg-4 pdng5">Professional Background:</label>
-											<div class="col-lg-8 pdng5">
-												<input type="text" class='form-control' placeholder="Professional Background" id="editUserProfessionalBackground" name="editUserProfessionalBackground" value="{{UserPlugin.professionalBackground}}"/>
-											</div>
-										</div>
-										<div class="form-group col-xs-12 col-sm-12 col-md-12">
-											<label class="col-lg-4 pdng5">Domain Expertise:</label>
-											<div class="col-lg-8 pdng5">
-												<input type="text" class='form-control' placeholder="Domain Expertise" id="editUserDomainExpertise" name="editUserDomainExpertise" value="{{UserPlugin.domainExpertise}}"/>
-											</div>
-										</div>
-<!-- 
+													<div class="form-group col-xs-12 col-sm-12 col-md-12">
+														<label class="col-lg-4 pdng5">Professional Background:</label>
+														<div class="col-lg-8 pdng5">
+															<input type="text" class='form-control' placeholder="Professional Background" id="editUserProfessionalBackground" name="editUserProfessionalBackground"
+																value="{{UserPlugin.professionalBackground}}" />
+														</div>
+													</div>
+													<div class="form-group col-xs-12 col-sm-12 col-md-12">
+														<label class="col-lg-4 pdng5">Domain Expertise:</label>
+														<div class="col-lg-8 pdng5">
+															<input type="text" class='form-control' placeholder="Domain Expertise" id="editUserDomainExpertise" name="editUserDomainExpertise"
+																value="{{UserPlugin.domainExpertise}}" />
+														</div>
+													</div>
+													<!-- 
 										<div class="form-group col-xs-12 col-sm-12 col-md-12">
 											<label class="col-lg-4 pdng5">Offences:</label>
 											<div class="col-lg-8 pdng5">
@@ -397,38 +387,40 @@
 											</div>
 										</div>
  -->
-										<div class="form-group col-xs-12 col-sm-12 col-md-12">
-											<label class="col-lg-4 pdng5">Emergency Contact Name:</label>
-											<div class="col-lg-8 pdng5">
-												<input type="text" class='form-control' placeholder="Emergency Contact Name" id="editUserEmergencyContactName" name="editUserEmergencyContactName" value="{{UserPlugin.emergencyContactName}}"/>
+													<div class="form-group col-xs-12 col-sm-12 col-md-12">
+														<label class="col-lg-4 pdng5">Emergency Contact Name:</label>
+														<div class="col-lg-8 pdng5">
+															<input type="text" class='form-control' placeholder="Emergency Contact Name" id="editUserEmergencyContactName" name="editUserEmergencyContactName"
+																value="{{UserPlugin.emergencyContactName}}" />
+														</div>
+													</div>
+
+													<div class="form-group col-xs-12 col-sm-12 col-md-12">
+														<label class="col-lg-4 pdng5">Emergency Contact Relation:</label>
+														<div class="col-lg-8 pdng5">
+															<input type="text" class='form-control' placeholder="i.e Father, Mother , Brother, Sister, Uncle etc" id="editUserEmergencyContactRelation"
+																name="editUserEmergencyContactRelation" value="{{UserPlugin.emergencyContactRelation}}" />
+														</div>
+													</div>
+
+													<div class="form-group col-xs-12 col-sm-12 col-md-12">
+														<label class="col-lg-4 pdng5">Emergency Contact Mobile:</label>
+														<div class="col-lg-8 pdng5">
+															<input type="text" class='form-control' id="editUserEmergencyContactNo" name="editUserEmergencyContactNo" value="{{UserPlugin.emergencyContactNo}}" />
+														</div>
+													</div>
+
+												</div>
+												<div class='clear'></div>
 											</div>
-										</div>
 
-										<div class="form-group col-xs-12 col-sm-12 col-md-12">
-											<label class="col-lg-4 pdng5">Emergency Contact Relation:</label>
-											<div class="col-lg-8 pdng5">
-												<input type="text" class='form-control' placeholder="i.e Father, Mother , Brother, Sister, Uncle etc" id="editUserEmergencyContactRelation" name="editUserEmergencyContactRelation" value="{{UserPlugin.emergencyContactRelation}}"/>
+
+											<div id="errors"></div>
+											<div align='center'>
+
+												<input id="saveVolunteerDetailButton" type="submit" value="Save Volunteer Details" class="btnDonate" />
 											</div>
-										</div>
-
-										<div class="form-group col-xs-12 col-sm-12 col-md-12">
-											<label class="col-lg-4 pdng5">Emergency Contact Mobile:</label>
-											<div class="col-lg-8 pdng5">
-												<input type="text" class='form-control' id="editUserEmergencyContactNo" name="editUserEmergencyContactNo" value="{{UserPlugin.emergencyContactNo}}"/>
-											</div>
-										</div>
-
-									</div>
-									<div class='clear'></div>
-								</div>
-
-
-								<div id="errors"></div>
-								<div align='center'>
-
-									<input id="saveVolunteerDetailButton" type="submit" value="Save Volunteer Details" class="btnDonate" />
-								</div>
-								<div class="clear"></div>
+											<div class="clear"></div>
 							</form>
 						</div>
 						<div id="tabs-3">
@@ -877,7 +869,11 @@ $("select#editUserNriCountryRegionId")
           });
         return false;
     }
-	
+	function uploadPhoto(){
+		var formData = getFormData('#profilePicForm');
+		$( "#profilePicForm" ).submit();
+		return false;
+	}
 	function updatePersonalDetail(){
         $('#savePersonalDetailButton').prop('disabled', true);
 		$("#persona_detail_errors").html("updating....");
