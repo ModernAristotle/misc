@@ -97,7 +97,7 @@
     .ulFtrMain2, .ulftrMenu.ulSocial{display: block;}
 }
 @media all and (max-device-width: 1300px) , (max-width: 1300px) {
-    .ulMainMenu li a{font-size: 16px; padding: 5px 5px 5px 20px; background-size: auto 15px !important;}
+    .ulMainMenu li a{font-size: 16px; /*padding: 5px 5px 5px 20px;*/ background-size: auto 15px !important;}
     .ulMainMenu li a.group{background-size: auto 12px;}
 }
 @media all and (max-device-width: 1200px) , (max-width: 1200px) {
