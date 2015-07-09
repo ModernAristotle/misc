@@ -52,6 +52,22 @@
         padding: 1px 15px;
         font-size: 20px;
     }
+    
+    .ulMainMenu>li .ulSub>li .subLavelul{
+        position: static !important;
+        width: 700%;
+        top: 1px;
+    }
+    .ulMainMenu>li .ulSub{left: 45% !important; z-index: 100; width: 70%;}
+    .ulMainMenu>li:hover .ulSub, .ulMainMenu>li .ulSub>li:hover .subLavelul{
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    .ulMainMenu>li .ulSub>li:hover .subLavelul{overflow: auto !important; height: 100px; opacity: 1;}
+    .ulMainMenu>li .ulSub>li .subLavelul{
+        background: #cecece;
+    }
+    .subLavelul li{border-bottom: 1px solid #c3c3c3;}
 }
 @media all and (max-deivice-width: 768px) , (max-width: 768px){
     .eventFbLink{margin-bottom: 20px;}
@@ -81,7 +97,7 @@
     .ulFtrMain2, .ulftrMenu.ulSocial{display: block;}
 }
 @media all and (max-device-width: 1300px) , (max-width: 1300px) {
-    .ulMainMenu li a{font-size: 16px; padding: 5px 5px 5px 20px; background-size: auto 15px !important;}
+    .ulMainMenu li a{font-size: 16px; /*padding: 5px 5px 5px 20px;*/ background-size: auto 15px !important;}
     .ulMainMenu li a.group{background-size: auto 12px;}
 }
 @media all and (max-device-width: 1200px) , (max-width: 1200px) {
@@ -123,29 +139,11 @@
     .ulMainMenu>li>a:hover{
         background: #E7E7E8 !important;
     }
-    /*    .ulSub{opacity: 0 !important; height: 0px !important;}
-        .ulMainMenu>li:hover .ulSub{
-            opacity: 1 !important; height: auto !important;
-        }*/
     .ulMainMenu li a{font-size: 12px;}
     .ulMainMenu>li .ulSub, .ulMainMenu>li .ulSub>li .subLavelul{
-        position: static !important;
+        /*position: static !important;*/
         width: 100%;
-        top: 1px;
-/*        height: 0px !important;
-        opacity: 0px !important;*/
-        transition: all 0.9s ease;
-        -o-transition: all 0.9s ease;
-        -ms-transition: all 0.9s ease;
-        -moz-transition: all 0.9s ease;
-        -webkit-transition: all 0.9s ease;
-    }
-    .ulMainMenu>li:hover .ulSub, .ulMainMenu>li .ulSub>li:hover .subLavelul{
-        margin-top: 5px;
-        margin-bottom: 5px;
-    }
-    .ulMainMenu>li .ulSub>li:hover .subLavelul{overflow: auto !important; max-height: 100px !important;}
-    .ulMainMenu>li .ulSub>li .subLavelul{
-        background: #cecece;
+        top: 0px;
+        left: 100%;
     }
 }

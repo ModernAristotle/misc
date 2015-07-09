@@ -2,7 +2,7 @@
     font-family: 'URW Gothic L Book';
     src: url('ufonts.com_urw-gothic-l-book.ttf') format('truetype')
 }
-/*================================ Loader ======================*/
+/*================================ Loader ======================*/ 
 /*.spinner {
   margin: 22% auto;
   position: fixed;
@@ -71,7 +71,7 @@ a, a:active, a:link{color: inherit !important; text-decoration: none !important;
 html,body{height: 88%;}
 body{font-size: 13px; font-family: sans !important; letter-spacing: 0.2px;}
 .ulMainMenu, h1, h2, h3, h4, h5, h6{font-family: URW Gothic L Book !important;}
-.upcomEvent, body{background: url('../images/bg.png') repeat;}
+.upcomEvent, body{background: url('../images/bg_1.png') repeat;}
 header{background: #ffffff; padding: 10px; position: fixed; z-index: 9999; width: 100%; box-shadow: 1px 0px 3px #000000; top: 0px; left: 0px;}
 .ftrContnr, .maincontainer, .hdrContnr{max-width: 1000px; width: 95%;}
 .hdrToolContnr{width: 60%; left: 0px; right: 0px; padding-right: 6px;}
@@ -84,21 +84,39 @@ header{background: #ffffff; padding: 10px; position: fixed; z-index: 9999; width
 .ulOtherNews li{border-bottom: 1px solid #eeeeee;}
 .ulOtherNews li:last-of-type{border-bottom: none;}
 /*================================ Common Statements======================*/
-.btnSignIn, .txtSearch{
+.loginMessage{
+    position: absolute; 
+    z-index: 10000; 
+    min-height: 50px; 
+    left: 0px; right: 0px; 
+    top: -50px;
+    text-align: center; 
+    display: table; 
+    margin: 0px auto; 
+    background: #ffffff; color: #ff0000; 
+    padding: 20px 15px;
+    box-shadow: 0px 0px 9px -4px #000000 inset, 0px 0px 5px rgb(54, 54, 54);
+    -o-box-shadow: 0px 0px 9px -4px #000000 inset, 0px 0px 5px rgb(54, 54, 54);
+    -ms-box-shadow: 0px 0px 9px -4px #000000 inset, 0px 0px 5px rgb(54, 54, 54);
+    -moz-box-shadow: 0px 0px 9px -4px #000000 inset, 0px 0px 5px rgb(54, 54, 54);
+    -webkit-box-shadow: 0px 0px 9px -4px #000000 inset, 0px 0px 5px rgb(54, 54, 54);
+    }
+ .btnSignIn, .txtSearch{
     border-radius: 5px 0px 0px 5px;
     -o-border-radius: 5px 0px 0px 5px;
     -moz-border-radius: 5px 0px 0px 5px;
     -ms-border-radius: 5px 0px 0px 5px;
     -webkit-border-radius: 5px 0px 0px 5px;
 }
-.btnSubmit,.btnSignUp{
+.btnSubmit, .btnSignUp, .btnReset{
     border-radius: 0px 5px 5px 0px;
     -o-border-radius: 0px 5px 5px 0px;
     -ms-border-radius: 0px 5px 5px 0px;
     -moz-border-radius: 0px 5px 5px 0px;
     -webkit-border-radius: 0px 5px 5px 0px;
 }
-.btnviewAll,.voteCast,.voteurCast{
+.btnviewAll,.voteCast,
+.voteurCast{
     border-radius: 5px;
     -o-border-radius: 5px;
     -ms-border-radius: 5px;
@@ -142,7 +160,7 @@ input[type="button"], input[type="submit"]{
     position: fixed;
     top: 0px;
     left: 0px;
-    z-index: 100;
+    z-index: 1000;
     display: none;
 }
 .signinformCont{/*--------------changed by soumya------------------*/
@@ -152,11 +170,11 @@ input[type="button"], input[type="submit"]{
 .entryGate .form-group label, .signinformCont .form-group label{text-align: left;}
 .entryGate .form-group label.mrgnpdng, .signinformCont .form-group label.mrgnpdng{padding: 0px;}
 .signupformCont,.entryGate, .signinformCont{/*--------------changed by soumya------------------*/
+    display: none;
 }
 .signupformCont,.entryGate{/*--------------changed by soumya------------------*/
     width: 920px;
 }
-.signupformCont, .entryGate{display: none;}
 .signupformCont, .entryGate,.signinformCont{/*--------------changed by soumya------------------*/
     padding:0px 22px;
     left: 0px;
@@ -366,10 +384,12 @@ ul{margin:0pc; padding:0px;}
     padding: 5px 10px;
     border: none;
 }
+a.btnStyle{
+    color: #ffffff !important;
+    font-weight: bold !important;
+}
 .btnSubmit{left: -5px;}
 .btnSignIn{left: -2px;}
-/*.btnSignIn:hover, .btnBg{background: #2C71BF;}*/
-/*.btnSignIn:hover, .btnSignIn.active{background: #F4F4F5; color: #31363C;}*/
 .btn-danger,.btn-danger{
     background: #4AA1D9 !important; 
     border: none !important;
@@ -407,6 +427,7 @@ ul{margin:0pc; padding:0px;}
 .ulMainMenu li:last-of-type{background:none; margin-right:0px; padding-right:0px;}
 /*.ulMainMenu li a{color: #2C71BF;}*/
 .ulMainMenu li a{padding:5px 5px 12px 30px; font-size: 19px; background-position: left 7px !important; display: block;}
+.ulMainMenu li a.hvSbMenu{background: url('../images/menuarrow.png') no-repeat 96% center !important;}
 .ulMainMenu li a:hover, .ulMainMenu li a.active{color: #4C6BB1 !important;}
 .ulMainMenu li a.home{
     background:url("../images/home.png") no-repeat;
@@ -441,11 +462,6 @@ ul{margin:0pc; padding:0px;}
 }
 /*.submenuCont{display: none; overflow: hidden;}*/
 .ulSub{
-/*    border-radius: 0px 0px 20px 20px;
-    -o-border-radius: 0px 0px 20px 20px;
-    -ms-border-radius: 0px 0px 20px 20px;
-    -moz-border-radius: 0px 0px 20px 20px;
-    -webkit-border-radius: 0px 0px 20px 20px;*/
     top: 39px;
     width: 230px;
     display: none;
@@ -467,6 +483,9 @@ ul{margin:0pc; padding:0px;}
     padding-top: 7px;
     padding-bottom: 7px;
 }
+.ulSub>li>a{padding-left: 7px;}
+.ulSub>li>a span{font-size: 14px; font-style: none !important; margin-right: 5px;}
+/*.ulSub>li>a:hover span{font-size: 12px;}*/
 .subLavelul{
     left: 100%; 
     top: 0px; 
@@ -493,7 +512,7 @@ ul{margin:0pc; padding:0px;}
 }
 .hanger_status, .hanger{
     background: url('../images/line.png') repeat-x center center;
-}
+} 
 .hangerHdng{
     color: #ffffff;
     border-top-left-radius: 10px;
@@ -550,6 +569,7 @@ ul{margin:0pc; padding:0px;}
 .accordian{cursor: pointer;}
 .fbcomment{margin-top: 20px;}
 .newsCont{padding: 0px 10px;}
+.newsCont h4{font-weight: bold;}
 .newsIndexCont .newsCont{margin-bottom: 15px !important; border-bottom: 1px solid #eeeeee; padding-bottom: 8px;}
 .pollsCont{padding: 20px; display: none;}
 .pollsCont:first-of-type{display: block;}
@@ -722,7 +742,8 @@ a.utube{background: url('../images/youtube.png') no-repeat;}
     /*margin:0px auto;*/
     color: #464646;
     font-weight: bold;
-    font-size: 17px;
+    font-size: 22px;
+    font-weight: bold !important;
     border-bottom: 1px solid #CFCFCF;
     padding-bottom: 8px;
     width: 98%;
@@ -797,7 +818,7 @@ label.error{font-size: 12px; color: #ff0000;}
     -webkit-box-shadow: 0px 0px 10px -4px #616161;
 }
 table.tblMemberDetails tr td{vertical-align: top;}
-table.tblMemberDetails tr:nth-of-type(even) td{background: #EBEAEA;}
+table.tblMemberDetails tr:nth-of-type(even) td{background: #DEEBEB;}
 .membPhoto, .membPhoto > div{
     width:130px;
     height: 140px;

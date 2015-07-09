@@ -1,5 +1,5 @@
  <script type="text/javascript">
-   $(function () {
+   $j(function () {
 	var thisFill;
 	   $('path.imap').hover(
 			   function () {

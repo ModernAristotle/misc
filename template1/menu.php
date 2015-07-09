@@ -9,7 +9,7 @@
 <div class="relPostn">
              <ul class="ulMainMenu center hidInMob absPostn dispTable">
 	 <li>
-	  <a href="home.php" class="home" id="index">
+	  <a href="index.php" class="home" id="index">
 	   <span>Home</span>
 	  </a>
 	 </li>
@@ -20,12 +20,12 @@
       <!--<div class="submenuCont">-->
 	   <ul class="ulSub mrgnpdng">
       <li>
-      <a href="javascript:void(0)">Leadership</a>
+       <a href="javascript:void(0)">Leadership</a>
       <ul class="subLavelul mrgnpdng">
       <li>
       <a href="javascript:void(0)">Submenu 1</a>
       </li>
-            <li>
+      <li>
       <a href="javascript:void(0)">Submenu 2</a>
       </li>
             <li>
@@ -54,7 +54,7 @@
 	  </a>
 	 </li>
 	 <li>
-          <a href="livetv.php" class="liveTv" id="livetv">
+          <a href="javascript:void(0)" class="liveTv" id="livetv">
 	   <span>Live TV</span>
 	  </a>
 	 </li>

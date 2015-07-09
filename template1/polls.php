@@ -37,7 +37,12 @@
         <label><input type="radio" name="polls" />Consectetuer adipiscing elit</label>
       </div>
 <div class="col-xs-12 col-sm-4 col-md-4 pdngBtm" align="right">
-        <p>*Please <a href="javascript:void(0)" class="linkSignin">Sign In</a> vote</p>
+  <?php if(isset($_SESSION['username']) && isset($_SESSION['password']) ) {?>
+          <!--<a href="index.php?logout=1" class="btnSignIn btnBg btnStyle" id="logout">Logout</a>-->
+          <p style="display: none;">*Please <a href="index.php" class="linkSignin">Sign In</a> to vote</p>
+         <?php }else{ ?>
+          <p>*Please <a href="index.php" class="linkSignin">Sign In</a> to vote</p>
+          <?php } ?>
         <button type="button" class="voteurCast">Cast your vote</button>
       </div>      
        <div class="fbcomment col-xs-12">
@@ -53,7 +58,12 @@
         <label><input type="radio" name="polls" />Consectetuer adipiscing elit</label>
       </div>
 <div class="col-xs-12 col-sm-4 col-md-6 pdngBtm" align="right">
-        <p>*Please <a href="javascript:void(0)" class="linkSignin">Sign In</a> vote</p>
+        <?php if(isset($_SESSION['username']) && isset($_SESSION['password']) ) {?>
+          <!--<a href="index.php?logout=1" class="btnSignIn btnBg btnStyle" id="logout">Logout</a>-->
+          <p style="display: none;">*Please <a href="index.php" class="linkSignin">Sign In</a> to vote</p>
+         <?php }else{ ?>
+          <p>*Please <a href="index.php" class="linkSignin">Sign In</a> to vote</p>
+          <?php } ?>
         <button type="button" class="voteurCast">Cast your vote</button>
       </div>
      <div class="fbcomment">
@@ -72,7 +82,12 @@
         <label><input type="radio" name="polls" />Consectetuer adipiscing elit</label>
       </div>
       <div class="col-xs-12 col-sm-4 col-md-6 pdngBtm" align="right">
-        <p>*Please <a href="javascript:void(0)" class="linkSignin">Sign In</a> vote</p>
+        <?php if(isset($_SESSION['username']) && isset($_SESSION['password']) ) {?>
+          <!--<a href="index.php?logout=1" class="btnSignIn btnBg btnStyle" id="logout">Logout</a>-->
+          <p style="display: none;">*Please <a href="index.php" class="linkSignin">Sign In</a> to vote</p>
+         <?php }else{ ?>
+          <p>*Please <a href="index.php" class="linkSignin">Sign In</a> to vote</p>
+          <?php } ?>
         <button type="button" class="voteurCast">Cast your vote</button>
       </div>      
      <div class="fbcomment col-xs-12">
@@ -88,7 +103,12 @@
         <label><input type="radio" name="polls" />Consectetuer adipiscing elit</label>
       </div>
 <div class="col-xs-12 col-sm-4 col-md-6 pdngBtm" align="right">
-        <p>*Please <a href="javascript:void(0)" class="linkSignin">Sign In</a> vote</p>
+        <?php if(isset($_SESSION['username']) && isset($_SESSION['password']) ) {?>
+          <!--<a href="index.php?logout=1" class="btnSignIn btnBg btnStyle" id="logout">Logout</a>-->
+          <p style="display: none;">*Please <a href="index.php" class="linkSignin">Sign In</a> to vote</p>
+         <?php }else{ ?>
+          <p>*Please <a href="index.php" class="linkSignin">Sign In</a> to vote</p>
+          <?php } ?>
         <button type="button" class="voteurCast">Cast your vote</button>
       </div>      
      <div class="fbcomment col-xs-12">
@@ -104,7 +124,12 @@
         <label><input type="radio" name="polls" />Consectetuer adipiscing elit</label>
       </div>
 <div class="col-xs-12 col-sm-4 col-md-4 pdngBtm" align="right">
-        <p>*Please <a href="javascript:void(0)" class="linkSignin">Sign In</a> vote</p>
+        <?php if(isset($_SESSION['username']) && isset($_SESSION['password']) ) {?>
+          <!--<a href="index.php?logout=1" class="btnSignIn btnBg btnStyle" id="logout">Logout</a>-->
+          <p style="display: none;">*Please <a href="index.php" class="linkSignin">Sign In</a> to vote</p>
+         <?php }else{ ?>
+          <p>*Please <a href="index.php" class="linkSignin">Sign In</a> to vote</p>
+          <?php } ?>
         <button type="button" class="voteurCast">Cast your vote</button>
       </div>      
      <div class="fbcomment col-xs-12">
@@ -120,7 +145,12 @@
         <label><input type="radio" name="polls" />Consectetuer adipiscing elit</label>
       </div>
 <div class="col-xs-12 col-sm-4 col-md-4 pdngBtm" align="right">
-        <p>*Please <a href="javascript:void(0)" class="linkSignin">Sign In</a> vote</p>
+        <?php if(isset($_SESSION['username']) && isset($_SESSION['password']) ) {?>
+          <!--<a href="index.php?logout=1" class="btnSignIn btnBg btnStyle" id="logout">Logout</a>-->
+          <p style="display: none;">*Please <a href="index.php" class="linkSignin">Sign In</a> to vote</p>
+         <?php }else{ ?>
+          <p>*Please <a href="index.php" class="linkSignin">Sign In</a> to vote</p>
+          <?php } ?>
         <button type="button" class="voteurCast">Cast your vote</button>
       </div>
 <div class="fbcomment col-xs-12">

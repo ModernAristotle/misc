@@ -1,408 +1,382 @@
-<!DOCTYPE html>
-<html>
-<!-- **********************  include common.php ************************ -->
- <?php
- include 'common.php';
- ?>
- <body> 
-<div class="signinformCont center fnClose">
-  <div class="frmHdng">
-    <h3 class="mrgnpdng" align="center">Sign in here</h3>
-  </div>
- <br />
-<!--<p class="closeicn">x</p>-->
- <form action="home.php" method="post" id="loginForm" class="formLogin" name="frm" enctype="multipart/form-data" onsubmit="return validatelogin();">
-    <div class="cntnr clear" style="padding: 10px 0px;">
-     <!--<p class="hdng">Sign in here</p>-->
-      <div class="form-group col-xs-12">
-        <label class="col-lg-12">User Name <span class="spnStar">*</span>:</label>
-        <div class="col-lg-12">
-         <input type="text" id="username" name="username" class='form-control' placeholder="Enter user name or email"  />
-        </div>
-      </div>
-      <div class="form-group col-xs-12">
-        <label class="col-lg-12">Password <span class="spnStar">*</span>:</label>
-        <div class="col-lg-12">
-         <input type="password" id="usepassword" name="password" class='form-control' placeholder="Enter password"  />
-        </div>
-      </div>
-      <div class="col-xs-12" align="center">       
-       <input type="submit" value="Sign in" class="btnSignIn btnsgninfn btnBg btnStyle relPostn" />
-        <input type="button" value="Sign up" class="btnSignUp btnsgnupfn btnBg btnStyle" />
-      </div>
-     <div class="clear"></div>
-    </div>
-  </form>
-  <br />
-</div>
 
-  <!---------------------------before signup form------------------------------>
-<div class="entryGate center" style="display: none;">
-  <div class="frmHdng">
-    <h3 class="mrgnpdng" align="">Please enter Email ID or Mobile Number</h3>
-  </div>
-  <br />
-  <!--<p class="closeicn">x</p>-->
-  <form action="javascript:void(0);" id="noticeform" method="post" name="frm" enctype="multipart/form-data" onsubmit="return validateForm();">
-    <div class="cntnr clear" style="padding: 5px;">
-      <div class="form-group col-xs-12 col-sm-5 col-md-5" style="margin: 0px; padding-bottom: 10px;">
-        <label class="col-lg-12 mrgnpdng">Email<span class='spnStar'>*</span>:</label>
-        <input type="email" class='form-control' placeholder="Enter email ID" id="email" name="email" onblur="chkExist('email');" />
-      <div id="shw_emailexist"></div>
+<?php session_start(); ?>
+<?php
+$user_array = array("rakesh@gmail.com", "akshaya@gmail.com", "pati@gmail.com", "monalisa@gmail.com", "upasana@gmail.com", "runu@gmail.com", "manjari@gmail.com");
+$pass_array = array("rakesh111111", "akshaya111111", "pati111111", "monalisa111111", "upasana111111", "runu111111", "manjari111111");
+if (!empty($_REQUEST['logout'])) {
+    unset($_SESSION['username']);
+    unset($_SESSION['password']);
+    header("location:index.php");
+}
+if (isset($_REQUEST['username']) || isset($_REQUEST['password'])) {
+    $ukey = array_search($_REQUEST['username'], $user_array);
+    if ($ukey >= 0) {
+        $password = $pass_array[$ukey];
+    } else {
+        //$_SESSION['message'] = "Username And password is wrong";
+        //header("location:index.php");
+        print 0;
+        exit;
+    }
+    if ($password == $_REQUEST['password']) {
+        $_SESSION['username'] = $_REQUEST['username'];
+        $_SESSION['password'] = $_REQUEST['password'];
+        $_SESSION['message'] = "Successfully Logged In";
+        print 1;
+        exit;
+    } else {
+        //$_SESSION['message'] = "Username And password is wrong";
+        print 0;
+        exit;
+        //header("location:index.php");
+    }
+    
+} else {
+    ?>
+    <!DOCTYPE html>
+    <html>
+     <!-- **********************  include common.php ************************ -->
+     <?php include 'common.php'; ?>
+     <body>
+      <!--<div class="startingLoader" style="position: fixed; height: 100%; width: 100%; z-index: 100000; background: #2C71BF; left: 0px; top: 0px;">
+            <div class="spinner">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
       </div>
-      <div class="form-group col-xs-12 col-sm-5 col-md-5" style="margin: 0px; padding-bottom: 10px;">
-        <label class="col-lg-12 mrgnpdng">Mobile<span class='spnStar'>*</span>:</label>
-        <input type="text" class='form-control' id="phone" name="phone" placeholder="Enter mobile number" onblur="chkExist('phone');"/>
-      <div id="shw_phoneexist"></div>
-      </div>
-      <div class="form-group col-xs-12 col-sm-2 col-md-2" style="margin: 0px;">
-        <label class="col-xs-12 col-sm-12 col-md-12 col-lg-12 formStatusHid">&nbsp;</label>
-            <input type="submit" value="Submit" id="pre_signup" class="btnnxtprv" style="margin: 0px;" />
-      </div>
-      <div class="clear"></div>
-    </div>
-  </form>
-  <br />
-</div>
-  
-  <!---------------------------signup form------------------------------>
-<div class="signupformCont center">
-  <div class="frmHdng">
-    <h3 class="mrgnpdng" align="">Be a part of the change. Volunteer for the Swaraj Abhiyan</h3>
-  </div>
-  <!--<p class="closeicn">x</p>-->
-  <div class="frmcntnr" style="padding-bottom: 15px;">
-    <div class="formStatusHid">
-      <div class="col-md-4 col-sm-4 col-xs-12 icondiv">
-        <div id="icon1" class="fltlft fonticn_pd active khammanKlass"></div><p class="fltlft pdb">Personal Details</p>
-      </div>
-      <div class="col-md-4 col-sm-4 col-xs-12 icondiv">
-        <div id="icon2" class="fltlft fonticn_cl khammanKlass"></div><p class="fltlft pdb">Currently Living</p>
-      </div>
-      <div class="col-md-4 col-sm-4 col-xs-12 icondiv">
-        <div id="icon3" class="fltlft fonticn_rav khammanKlass"></div><p class="fltlft pdb">Register as Voter</p>
-      </div>
-    </div>
-    <form action="#" id="personaldetails" method="post" name="frm" enctype="multipart/form-data">
-      <div class="prsnldtl">
-        <div class="cntnr clear">
-          <p class="hdng">Personal Details</p>
-          <div class="form-group col-xs-12 col-sm-6 col-md-6">
-            <label class="col-lg-4 pdng5">Name:</label>
-            <div class="col-lg-8 pdng5">
-              <input type="text" class='form-control' placeholder="Enter your name" />
-            </div>
+      </div>-->
+      <!-- **********************  include header.php ************************ -->
+      <?php
+      include 'header.php';
+      ?>
+      <?php
+      /*       * *****  include gallery.php *********** */
+      include 'gallery.php';
+      ?>  
+      
+      <div class="maincontainer">
+       <div class="lftContnr col-xs-12 col-sm-12 col-md-8">
+        <div>
+         <div class="hanger relPostn">
+          <h3 class="fltlft hangerHdng mrgnpdng absPostn">News</h3>
+    <!--	 <span class="fltrht nxtPrvCont relPostn">
+           <a href="javascript:void(0)" class="fltlft prvIco"></a>
+           <a href="javascript:void(0)" class="fltlft nxtIco"></a>
+          </span>	 -->
+         </div>
+         <div class="clear"></div>
+        </div>
+        <div class="contentDiv contentDivPdng"><!--------changed by soumya------->
+         <div id="slider_container">
+          <div id="slider_content">
+           <div  id="slider" class="galleryContnr">
+            <ul>
+             <!--<li class="col-md-6 col-sm-12 col-xs-12">-->
+             <li>
+              <!--<div class="col-xs-6 col-sm-6 col-md-6">-->
+              <div class="col-xs-12">
+               <h4 class='mrgnpdng'>1. Lorem Ipsum dolar</h4>
+               <br />
+               <p class='paraNews'><?php echo substr("Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet.", 0, 100) . "..."; ?></p>
+               <a href="singlenews.php" class="fullEvent">Read more...</a>
+              </div>
+             </li>
+             <li>
+              <div class="col-xs-12">
+               <h4 class='mrgnpdng'>2. Lorem Ipsum dolar</h4>
+               <br />
+               <p class='paraNews'><?php echo substr("Consectetuer adipiscing elit, sed diam nonummy Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet.", 0, 100) . "..."; ?></p>
+               <a href="singlenews.php" class="fullEvent">Read more...</a>
+              </div>
+              <div class="clear"></div>
+             </li>
+             <li>
+              <div class="col-xs-12">
+               <h4 class='mrgnpdng'>3. Lorem Ipsum dolar</h4>
+               <br />
+               <p class='paraNews'><?php echo substr("Ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy Lorem nibh euismod tincidunt ut laoreet.", 0, 100) . "..."; ?></p>
+               <a href="singlenews.php" class="fullEvent">Read more...</a>
+              </div>
+             </li>
+             <li>
+              <div class="col-xs-12">
+               <h4 class='mrgnpdng'>4. Lorem Ipsum dolar</h4>
+               <br />
+               <p class='paraNews'><?php echo substr("Diam nonummy nibh euismod tincidunt ut laoreet Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed.", 0, 100) . "..."; ?></p>
+               <a href="singlenews.php" class="fullEvent">Read more...</a>
+              </div>
+              <div class="clear"></div>
+             </li>
+             <li>
+              <div class="col-xs-12">
+               <h4 class='mrgnpdng'>5. Lorem Ipsum dolar</h4>
+               <br />
+               <p class='paraNews'><?php echo substr("Amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut Lorem ipsum dolor sit  laoreet.", 0, 100) . "..."; ?></p>
+               <a href="singlenews.php" class="fullEvent">Read more...</a>
+              </div>
+             </li>
+             <li>
+              <div class="col-xs-12">
+               <h4 class='mrgnpdng'>6. Lorem Ipsum dolar</h4>
+               <br />
+               <p class='paraNews'><?php echo substr("Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet.", 0, 100) . "..."; ?></p>
+               <a href="singlenews.php" class="fullEvent">Read more...</a>
+              </div>
+              <div class="clear"></div>
+             </li>
+             <!--<div class="clear"></div>-->
+            </ul></div>
           </div>
-          <div class="form-group col-xs-12 col-sm-6 col-md-6">
-            <label class="col-lg-4 pdng5">Email<span class='spnStar'>*</span>:</label>
-            <div class="col-lg-8 pdng5">
-             <input type="email" name="prsnlemail" class='form-control' placeholder="Enter email ID" />
-            </div>
+         </div>
+        </div><!--------changed by soumya end------->
+        <div class="contentDiv mrgnTop">
+         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+          <h4 class="hdngBlogs">
+           <div class="hdngSpn"><span>Blogs</span> <button type="button" class="fltrht btnviewAll">Read all</button></div>
+          </h4>
+          <ul class="ulBlogs mrgnpdng">
+           <li>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet... <a href="javascript:void(0)" class='fullEvent'>Read More</a></p>
+           </li>
+           <li>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet... <a href="javascript:void(0)" class='fullEvent'>Read More</a></p>
+           </li>
+           <li>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet... <a href="javascript:void(0)" class='fullEvent'>Read More</a></p>
+           </li>
+          </ul>
+         </div>
+         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style='min-height: 337px !important;'>
+          <h4 class="hdngPolls">
+           <div class="hdngSpn"><span>Polls</span> <a href="polls.php" class="fltrht btnviewAll">View all</a></div>
+          </h4>
+          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet?</p>
+          <div class="selPolls">
+           <label>
+            <input type="radio" name="polls"/> Lorem ipsum dolor
+           </label>
+           <label>
+            <input type="radio" name="polls"/> Molesite consequat
+           </label>
+           <label>
+            <input type="radio" name="polls"/> Consecteture adipiscing elit
+           </label>
           </div>
-          <div class="form-group col-xs-12 col-sm-6 col-md-6">
-            <label class="col-lg-4 pdng5">Gender:</label>
-            <div class="col-lg-8 pdng5">
-              <select class="form-control">
-                <option>---select---</option>
-                <option>Male</option>
-                <option>Female</option>
-                <option>Other</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group col-xs-12 col-sm-6 col-md-6">
-            <label class="col-lg-4 pdng5">ID Card Detail:</label>
-            <div class="col-lg-8 pdng5">
-              <select class="form-control frmElWdth50">
-                <option>Card Type</option>
-                <option>Debit Card</option>
-                <option>Credit Card</option>
-                <option>Visa Card</option>
-                <option>Master Card</option>
-              </select>
-              <input type="text" class="form-control frmElWdth50"  placeholder="ID Card Number"/>
-            </div>
-          </div>
-          <div class="form-group col-xs-12 col-sm-6 col-md-6">
-            <label class="col-lg-4 pdng5">Mobile<span class='spnStar'>*</span>:</label>
-            <div class="col-lg-8 pdng5">
-              <input type="text" name="prsnlphone" class='form-control' name="" placeholder="Enter mobile number" />
-            </div>
-          </div>
-          <div class="form-group col-xs-12 col-sm-6 col-md-6">
-            <label class="col-lg-4 pdng5">DOB :</label>
-            <div class="col-lg-8 pdng5"> 
-              <input type="text" class='form-control' placeholder="Enter Date of birth"/>
-            </div>
-          </div>
-          <div class="form-group col-xs-12 col-sm-6 col-md-6">
-            <label class="col-lg-4 pdng5">Father's Name:</label>
-            <div class="col-lg-8 pdng5">
-              <input type="text" class='form-control' placeholder="Enter your father's name" />
-            </div>
-          </div>
-          <div class="form-group col-xs-12 col-sm-6 col-md-6">
-            <label class="col-lg-4 pdng5">Mother's Name:</label>
-            <div class="col-lg-8 pdng5">
-              <input type="text" class='form-control' placeholder="Enter your mother's name" />
-            </div>
-          </div>
-          <div class="form-group col-xs-12 col-sm-6 col-md-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-2">
-            <label for=""><input type="checkbox" name="chkbx" class="chkbx" />&nbsp; I am NRI</label>
-          </div>
+          <br />
+          <p class='paraCasturvote absPostn'>
+              <?php if (isset($_SESSION['username']) && isset($_SESSION['password'])) { ?>
+              <p style="display: none;">Please <a href="index.php" class="linkSignin">Sign In</a> to vote</p>
+          <?php } else { ?>
+              <p>Please <a href="index.php" class="linkSignin">Sign In</a> to vote</p>
+          <?php } ?>
+          &nbsp;<button type="button" class="voteurCast">Cast your Vote</button>
+          </p>
           <div class="clear"></div>
+         </div>
+         <div class="clear"></div>
         </div>
-       <input type="button" value="Next" onclick="validatepersonal();" class="nxtbtn btnnxtprv fltrht"  name="fonticn_cl"/>
+        <div class="contentDiv mrgnTop">
+         <div class="divtask divWid">
+          <h4 class="hdngVideos">
+           <div class="hdngSpn"><span>Videos</span> <button type="button" class="fltrht btnviewAll">View all</button></div>
+          </h4>
+          <ul class="ulVideo videoGal mrgnpdng">
+           <li class="col-xs-12 col-sm-4 col-md-4">
+            <div class="center">
+             <img src="images/video1.png" width="100%" style="max-width: 300px; cursor: pointer;" />
+             <!--<video width="100%" height="122" src="https://youtu.be/-ymAZUDcsA4"></video>-->
+             <!--<embed width="100%" height="122" src="https://youtu.be/-ymAZUDcsA4" type="screen" />-->
+            </div>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</p>
+            <button type="button" class="voteCast center">Watch Now</button>
+           </li>
+           <li class="col-xs-12 col-sm-4 col-md-4">
+            <div class="center">
+             <img src="images/video1.png" width="100%" style="max-width: 300px; cursor: pointer;" />
+             <!--<video width="100%" height="122" src="https://youtu.be/W3KAGoDBK8M"></video>-->
+             <!--<embed width="100%" height="122" src="https://youtu.be/W3KAGoDBK8M" type="screen" />-->
+            </div>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing</p>
+            <button type="button" class="voteCast center">Watch Now</button>
+           </li>
+           <li class="col-xs-12 col-sm-4 col-md-4">
+            <!--<div><embed width="100%" height="122" src="https://www.youtube.com/watch?feature=player_embedded&v=kPGfHx0_aqk" /></div>-->
+            <div class="center">
+             <img src="images/video1.png" width="100%" style="max-width: 300px; cursor: pointer;" />
+             <!--<video width="100%" height="122" src="https://youtu.be/Mx9lRnMv1C8"></video>-->
+             <!--<embed width="100%" height="122" src="https://www.youtube.com/watch?feature=player_detailpage&v=Mx9lRnMv1C8" type="screen" />-->
+            </div>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit,?</p>
+            <button type="button" class="voteCast center">Watch Now</button>
+           </li>
+           <div class="clear"></div>
+          </ul>
+         </div>
+        </div>
+        <div class="mrgnTop">
+         <div class="mrgnTop">
+          <div class="hanger relPostn">
+           <h3 class="fltlft upcomEvent mrgnpdng absPostn">Upcoming Events</h3>
+           <span class="fltrht nxtPrvCont relPostn">
+            <a href="javascript:void(0)" class="fltlft prvIco"></a>
+            <a href="javascript:void(0)" class="fltlft nxtIco"></a>
+           </span>	 
+          </div>
+         </div>
+        </div>
         <div class="clear"></div>
-      </div>
-
-      <!------ currently living-------->
-      <div class="crntlvng"  style="display:none;">
-        <div class="cntnr clear">
-          <p class="hdng">Currently Living</p>
-          <div class="form-group col-xs-12 col-sm-6 col-md-6">
-            <label class="col-lg-4 pdng5">State:</label>
-            <div class="col-lg-8 pdng5">
-              <select class="form-control">
-                <option>ID Card Type</option>
-                <option>Male</option>
-                <option>Female</option>
-                <option>Other</option>
-              </select>
+        <div class="contentDiv">
+         <div class="divtask divWid eventcont relPostn">
+          <ul class="ulVideo ulEvent mrgnpdng absPostn">
+           <!--<li class="col-xs-12 col-sm-4 col-md-4">-->
+           <li>
+            <div class="fltlft eventLeft">
+             <div class="calMonth">MAY</div>
+             <div class="calDate">17</div>
             </div>
-          </div>
-          <div class="form-group col-xs-12 col-sm-6 col-md-6">
-            <label class="col-lg-4 pdng5">District:</label>
-            <div class="col-lg-8 pdng5">
-              <select class="form-control">
-                <option>ID Card Type</option>
-                <option>Male</option>
-                <option>Female</option>
-                <option>Other</option>
-              </select>
+            <div class="fltrht evntRight">
+             <p>Jayalalitha's acquittal: A Travesty of Justice <br />-Swaraj Abhiyan Press Note</p>
+             <p class="time mrgnpdng">@ 8:00 am - 11:00 am</p>
+             <a href="singleevent.php" class="fullEvent fltrht">Full View</a>
+             <div class='clear'></div>
             </div>
-          </div>
-          <div class="form-group col-xs-12 col-sm-6 col-md-6">
-            <label class="col-lg-4 pdng5">Parliament Constituency:</label>
-            <div class="col-lg-8 pdng5">
-              <select class="form-control">
-                <option>ID Card Type</option>
-                <option>Male</option>
-                <option>Female</option>
-                <option>Other</option>
-              </select>
+           </li>
+           <li>
+            <div class="fltlft eventLeft">
+             <div class="calMonth">MAY</div>
+             <div class="calDate">24</div>
             </div>
-          </div>
-          <div class="form-group col-xs-12 col-sm-6 col-md-6">
-            <label class="col-lg-4 pdng5">Assembly Constituency:</label>
-            <div class="col-lg-8 pdng5">
-              <select class="form-control">
-                <option>ID Card Type</option>
-                <option>Male</option>
-                <option>Female</option>
-                <option>Other</option>
-              </select>
+            <div class="fltrht evntRight">
+             <p>Jayalalitha's acquittal: A Travesty of Justice <br />-Swaraj Abhiyan Press Note</p>
+             <p class="time mrgnpdng">@ 8:00 am - 11:00 am</p>
+             <a href="singleevent.php" class="fullEvent fltrht">Full View</a>
+             <div class='clear'></div>
             </div>
-          </div>
-          <div class="clear"></div>
+           </li>
+           <li>
+            <div class="fltlft eventLeft">
+             <div class="calMonth">MAY</div>
+             <div class="calDate">06</div>
+            </div>
+            <div class="fltrht evntRight">
+             <p>Jayalalitha's acquittal: A Travesty of Justice <br />-Swaraj Abhiyan Press Note</p>
+             <p class="time mrgnpdng">@ 8:00 am - 11:00 am</p>
+             <a href="singleevent.php" class="fullEvent fltrht">Full View</a>
+             <div class='clear'></div>
+            </div>
+           </li>
+           <li>
+            <div class="fltlft eventLeft">
+             <div class="calMonth">MAY</div>
+             <div class="calDate">17</div>
+            </div>
+            <div class="fltrht evntRight">
+             <p>Jayalalitha's acquittal: A Travesty of Justice <br />-Swaraj Abhiyan Press Note</p>
+             <p class="time mrgnpdng">@ 8:00 am - 11:00 am</p>
+             <a href="singleevent.php" class="fullEvent fltrht">Full View</a>
+             <div class='clear'></div>
+            </div>
+           </li>
+           <li>
+            <div class="fltlft eventLeft">
+             <div class="calMonth">MAY</div>
+             <div class="calDate">24</div>
+            </div>
+            <div class="fltrht evntRight">
+             <p>Jayalalitha's acquittal: A Travesty of Justice <br />-Swaraj Abhiyan Press Note</p>
+             <p class="time mrgnpdng">@ 8:00 am - 11:00 am</p>
+             <a href="singleevent.php" class="fullEvent fltrht">Full View</a>
+             <div class='clear'></div>
+            </div>
+           </li>
+           <li>
+            <div class="fltlft eventLeft">
+             <div class="calMonth">MAY</div>
+             <div class="calDate">06</div>
+            </div>
+            <div class="fltrht evntRight">
+             <p>Jayalalitha's acquittal: A Travesty of Justice <br />-Swaraj Abhiyan Press Note</p>
+             <p class="time mrgnpdng">@ 8:00 am - 11:00 am</p>
+             <a href="singleevent.php" class="fullEvent fltrht">Full View</a>
+             <div class='clear'></div>
+            </div>
+           </li>
+           <li>
+            <div class="fltlft eventLeft">
+             <div class="calMonth">MAY</div>
+             <div class="calDate">24</div>
+            </div>
+            <div class="fltrht evntRight">
+             <p>Jayalalitha's acquittal: A Travesty of Justice <br />-Swaraj Abhiyan Press Note</p>
+             <p class="time mrgnpdng">@ 8:00 am - 11:00 am</p>
+             <a href="singleevent.php" class="fullEvent fltrht">Full View</a>
+             <div class='clear'></div>
+            </div>
+           </li>
+           <div class="clear"></div>
+          </ul>
+         </div>
         </div>
-        <input type="button" value="Next" class="btnnxtprv nxtbtn1 fltrht" name="fonticn_rav" />
-        <input type="button" value="Previous" class="prevBtn btnnxtprv fltrht"  name="fonticn_pd"/>
-        <div class="clear"></div>
-      </div>
-
-      <!------ Register as Voters-------->
-      <div class="rgstrvtr" style="display:none;">
-        <div class="cntnr clear">
-          <p class="hdng">Register as Voters</p>
-          <div class="form-group col-xs-12 col-sm-6 col-md-6">
-            <label class="col-lg-4 pdng5">State:</label>
-            <div class="col-lg-8 pdng5">
-              <select class="form-control">
-                <option>ID Card Type</option>
-                <option>Male</option>
-                <option>Female</option>
-                <option>Other</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group col-xs-12 col-sm-6 col-md-6">
-            <label class="col-lg-4 pdng5">District:</label>
-            <div class="col-lg-8 pdng5">
-              <select class="form-control">
-                <option>ID Card Type</option>
-                <option>Male</option>
-                <option>Female</option>
-                <option>Other</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group col-xs-12 col-sm-6 col-md-6">
-            <label class="col-lg-4 pdng5">Parliament Constituency:</label>
-            <div class="col-lg-8 pdng5">
-              <select class="form-control">
-                <option>ID Card Type</option>
-                <option>Male</option>
-                <option>Female</option>
-                <option>Other</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group col-xs-12 col-sm-6 col-md-6">
-            <label class="col-lg-4 pdng5">Assembly Constituency:</label>
-            <div class="col-lg-8 pdng5">
-              <select class="form-control">
-                <option>ID Card Type</option>
-                <option>Male</option>
-                <option>Female</option>
-                <option>Other</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group col-xs-12 col-sm-6 col-md-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-2">
-            <label><input type="checkbox" nm="chkbx" class="chkbx" />&nbsp; I Want to be Volunteer</label>
-          </div>
-          <div class='clear'></div>
-        </div>
-       <div align='center' class="relPostn sgnupbtnrespcont">
-          <input type="submit" value="SUBMIT" class="btnDonate" />
-        <input type="button" value="Previous" class="prevBtn1 absPostn btnnxtprv" style="right: 0px;"  name="fonticn_cl"/>
-        <div class='clear'></div>
        </div>
-      </div>  
-    </form>
-  </div>
-</div>
-<script type="text/javascript" src="js/jquery1.9.1.js"></script>
-<script type="text/javascript" src="js/jquery.validate.js"></script>
-<script type="text/javascript">
-//--------------------------- Before Signup form -----------------------------
-          function validateForm() {
-            var validator = $("#noticeform").validate({
-              rules: {
-                "email": {
-                  required: function() {
-                    if ($("#phone").val()) {
-                      return false;
-                    } else {
-                      return true;
-                    }
-                  },
-                  email: true
-                },
-                "phone": {
-                  required: function() {
-                    if ($("#email").val()) {
-                      return false;
-                    } else {
-                      return true;
-                    }
+       <!-- *******************  include rightpannel.php ************************ -->  
+       <?php
+       include 'rightpannel.php';
+       ?>     
+      </div>
+      <?php
+      /*       * *****************  include footer.php *********************** */
+      include 'footer.php';
+      ?>
+      <script type="text/javascript">
+          $j(function () {
+              //    ----------------------------- upcoming event animation---------------------
+              var getLftPos, evntLiWdth, evntUlWidth, lastIndex;
+              function eventLiwidth() {
+                  getLftPos = $j('.ulEvent').position().left;
+                  if ($j(window).width() <= 450) {
+                      evntLiWdth = parseInt($j('.eventcont').width() - 20);
+                  } else if ($j(window).width() <= 480) {
+                      evntLiWdth = parseInt($j('.eventcont').width() - 26) / 2;
+                  } else if ($j(window).width() <= 600) {
+                      evntLiWdth = parseInt($j('.eventcont').width() - 30) / 2;
+                  } else if ($j(window).width() <= 768) {
+                      evntLiWdth = parseInt($j('.eventcont').width() - 50) / 3;
+                  } else if ($j(window).width() > 600) {
+                      evntLiWdth = parseInt($j('.eventcont').width() - 55) / 3;
                   }
-                }
-              },
-              messages: {
-                "email": {
-                  required: "<font color='red'>This field required</font>"
-                },
-                "phone": {
-                  required: "<font color='red'>This field required</font>"
-                }
+                  $j('.ulEvent li').width(evntLiWdth);
+                  evntUlWidth = parseInt(evntLiWdth + 20) * parseInt($j('.ulEvent li').length);
+                  $j('.ulEvent').width(evntUlWidth);
+                  lastIndex = evntUlWidth - parseInt(evntLiWdth + 20) * 3;
               }
-            });
-            var x = validator.form();
-            if (x && emailexists) {
-              if ($("#shw_emailexist").html().length > 0 && $("#shw_phoneexist").html().length > 0) {
-                return false;
-              } else if($("#shw_emailexist").html().length > 0) {
-                return false;
-              }else if($("#shw_phoneexist").html().length > 0){
-                return false;
-              }else{
-                $(".entryGate").fadeOut(500);
-                $(".signupformCont").fadeIn(500).animate({top: $j(window).scrollTop()+160},80);
-//                $("#pre_signup").prop("disabled", true);
-                return true;
-              }
-            } else {
-              $(".entryGate").prop('style', 'display:block;');
-//              $("#pre_signup").removeAttr("disabled");
-              $(".error").first().focus();
-              return false;
-            }
-          }
-          var emailexists = true;
-          function chkExist(type) {
-            emailexists = false;
-            var email = $("#email").val();
-            var phone = $("#phone").val();
-            if (email != '' && phone != '') {
-              var url = "checkExist.php?email=" + email + "&phone=" + phone;
-            } else if (email != "") {
-              var url = "checkExist.php?email=" + email;
-            } else {
-              var url = "checkExist.php?phone=" + phone;
-            }
-            $.post(url, function(res) {
-              if (parseInt(res) <= 1 && $("#"+type).val()!='') {
-                $("#shw_" + type + "exist").html("<font color='red'>This " + type + " is already exist.</font>");
-                emailexists = false;
-              } else {
-                $("#shw_" + type + "exist").html("");
-                emailexists = true;
-              }
-            });
-          }
-          
-//          -------------------------- Log in form validation --------------------
-          function validatelogin() {
-            var validator = $("#loginForm").validate({
-              rules: {
-                "username": {
-                  required: true
-                  //,email:true
-                },
-                "password": {
-                  required: true
-                }
-              },
-              messages: {
-                "username": {
-                  required: "<font color='red'>This field required</font>"
-                  //email: "<font color='red'>Please enter an email address</font>"
-                },
-                "password": {
-                  required: "<font color='red'>This field required</font>"
-                }
-              }
-            });
-            var x = validator.form();
-            return x;
-        }
-//          -------------------------- Personal Details form validation --------------------
-          function validatepersonal() {
-            var validator = $("#personaldetails").validate({
-              rules: {
-                "prsnlemail": {
-                  required: true,
-                  email:true
-                },
-                "prsnlphone": {
-                  required: true
-                }
-              },
-              messages: {
-                "prsnlemail": {
-                  required: "<font color='red'>This field required</font>",
-                  email: "<font color='red'>Please enter an email address</font>"
-                },
-                "prsnlphone": {
-                  required: "<font color='red'>This field required</font>"
-                }
-              }
-            });
-            var x = validator.form();
-            return x;
-        }
-</script>
- </body>
+              eventLiwidth();
+              $j(window).resize(function () {
+                  eventLiwidth();
+              });
+    //    ----------------------------- upcoming event next button function ---------------------
+              $j('.nxtIco').on('click', function () {
+                  if (getLftPos >= lastIndex) {
+                      $j('.ulEvent').stop().animate({left: '-' + lastIndex}, 800);
+                  } else {
+                      getLftPos = getLftPos + parseInt($j('.ulEvent li').width() + 20);
+                      $j('.ulEvent').stop().animate({left: '-' + parseInt(getLftPos)}, 800);
+                  }
+              });
+
+    //    ----------------------------- upcoming event prev button function ---------------------
+              $j('.prvIco').on('click', function () {
+                  if (getLftPos <= 0) {
+                      $j('.ulEvent').stop().animate({left: 0}, 800);
+                  } else {
+                      getLftPos = getLftPos - parseInt($j('.ulEvent li').width() + 20);
+                      $j('.ulEvent').stop().animate({left: '-' + parseInt(getLftPos)}, 800);
+                  }
+              });
+
+          });
+      </script>
+     </body>
+ <?php } ?>
 </html>

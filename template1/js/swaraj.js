@@ -4,21 +4,7 @@ function topHeight() {
     setTimeout(function () {
         $j('.divGaltop').height($j('header').height() + 20);
     }, 10);
-}
-//---------------------Set loader---------------------
-//function startLoader(){
-//    setTimeout(function(){
-//        $j('.startingLoader').fadeOut(800);
-//    },5000);
-//}
-//---------------------News gallery width auto adjust---------------------
-//function galWidth(){
-//if($j(window).width()>600){
-//        $j('.galleryContnr ul li').animate({width: $j('.galleryContnr ').width()/2},10);
-//    }else{
-//        $j('.galleryContnr ul li').animate({width: $j('.galleryContnr ').width()},10);
-//    }
-//}
+} 
 //---------------------Menu active---------------------
 function activeMenu() {
 
@@ -45,15 +31,15 @@ $j(function () {
     });
 
 //    -----------------------------Common function---------------------
-    $j(document).on('click', function () {
-        hideoverlay();
-    });
+//    $j(document).on('click', function () {
+//        hideoverlay();
+//    });
     $j('.memberName, .fnClose, .btnsgninfn, .btnsgnupfn, .contSubscrib').click(function (e) {
         e.stopPropagation();
     });
     $j(window).resize(function () {
         topHeight();
-        eventLiwidth();
+//        eventLiwidth();
 //    galWidth()
         if ($j(this).width() <= 992) {
             $j('.ftrMenuCont').hide();
@@ -85,7 +71,7 @@ $j(function () {
     });
     $j('.ulMainMenu>li').hover(function (e) {
         e.stopPropagation();
-        $j(this).find('.ulSub').stop().slideDown(500);
+        $j(this).find('.ulSub').slideDown(500);
 
     }, function (e) {
         e.stopPropagation();
@@ -119,75 +105,46 @@ $j(function () {
     $j('.mapIco').click(function (e) {
         e.stopPropagation();
         hideoverlay();
-        if (ovrlyinout == 1) {
-            ovrlyinout = 0;
             showoverlay();
-        } else {
-            ovrlyinout = 1;
-            hideoverlay();
-        }
+//        if (ovrlyinout == 1) {
+//            ovrlyinout = 0;
+//            showoverlay();
+//        } else {
+//            ovrlyinout = 1;
+//            hideoverlay();
+//        }
         $j('.mapCont').fadeToggle(800).animate({top: $j(window).scrollTop() + 160}, 800);
     });
 //    -----------------------------show popup---------------------
-    /*$j('.btnsgnupfn').click(function (e) {
+    $j('.btnsgnupfn').click(function (e) {
         hideoverlay();
         hideform();
-//        showoverlay();
-        $j(this).addClass('active');
-//        $j('.entryGate').fadeIn(500).animate({top: $j(window).scrollTop() + 120}, 800);
-        $j('.entryGate').fadeIn(500);
-//        $j('.entryGate').find('#shw_emailexist, #shw_phoneexist').html('');
+        showoverlay();
         clearField();
-    });*/
-//    $j('.btnsgninfn').click(function (e) {
-//        e.stopPropagation();
-//        hideoverlay();
-//        showoverlay();
-//        $j(this).addClass('active');
-//        $j('.signinformCont').fadeIn(500).animate({top: $j(window).scrollTop() + 160}, 80);
-//        clearField();
-//    });
-    $j('.btnCancel').click(function () {
-        $j(this).closest('.fnClose').fadeOut(500);
-        hideoverlay();
+        $j(this).addClass('active');
+        $j('.entryGate').fadeToggle(800).animate({top: $j(window).scrollTop() + 160}, 800);
     });
+    $j('.btnsgninfn').click(function(e){
+    e.stopPropagation();
+    hideoverlay();
+        hideform();
+    showoverlay();
+    clearField();
+    $j(this).addClass('active');
+    $j('.signinformCont').stop().fadeIn(500).animate({top: $j(window).scrollTop()+160},80);
+});
+//    $j('.btnCancel').click(function () {
+//        $j(this).closest('.fnClose').fadeOut(500);
+//        hideoverlay();
+//    });
     $j('.respSubscribeBtn').click(function (e) {
         e.stopPropagation();
         hideoverlay();
         showoverlay();
         $j('.contSubscrib').fadeIn(500).animate({top: $j(window).scrollTop() + 160}, 80);
     });
-//---------------------------signup js----------------
-//---------------------------previous btn function----------------
-    $j('.prevBtn').click(function () {
-        var getName = $j(this).attr('name');
-        $j('.khammanKlass').removeClass('active').not($j('.' + getName).addClass('active'));
-        $j('.prsnldtl').slideDown(500);
-        $j('.crntlvng').slideUp(500);
-    });
-    $j('.prevBtn1').click(function () {
-        var getName = $j(this).attr('name');
-        $j('.khammanKlass').removeClass('active').not($j('.' + getName).addClass('active'));
-        $j('.crntlvng').slideDown(500);
-        $j('.rgstrvtr').slideUp(500);
-    });
-
-//---------------------------next btn function----------------
-    $j('.nxtbtn').click(function () {
-        var getName = $j(this).attr('name');
-        $j('.khammanKlass').removeClass('active').not($j('.' + getName).addClass('active'));
-        $j('.prsnldtl').fadeOut(200);
-        $j('.crntlvng').delay(2).fadeIn(500);
-    });
-    $j('.nxtbtn1').click(function () {
-        var getName = $j(this).attr('name');
-        $j('.khammanKlass').removeClass('active').not($j('.' + getName).addClass('active'));
-        $j('.crntlvng').fadeOut(200);
-        $j('.rgstrvtr').delay(2).fadeIn(500);
-    });
-
     $j('.closeicn,.sbmitbtn').click(function () {
-        $j('.signupformCont').fadeOut(500);
+        $j('.signupformCont, .signinformCont, .entryGate').fadeOut(500);
         hideoverlay();
     });
 //    -----------------------------Polls view---------------------
@@ -232,8 +189,12 @@ $j(function () {
     $j(document).on('mouseout','.memberName', function(){
         $j('body').find('.membDtlPupup').remove();
     });
+    $j('ul.ulSub li ul').prev('a').addClass('hvSbMenu');
 });
 //    -----------------------------show popup in javascript---------------------
+function showmsg(){
+    $('.loginMessage').animate({top: 180},800).delay(4000).fadeOut(800).animate({top: -50},'fast');
+}
 function clearField() {
     $j('.signupformCont, .signinformCont, .entryGate').find('\
         input[type="email"], \n\
@@ -250,11 +211,11 @@ function hideoverlay() {
     $j('.bdyovrly').fadeOut(500);
     if ($j(window).width() <= 600) {
         $j('.contSubscrib').fadeOut(500);
-        $j('.btnSignIn, .btnSignUp').removeClass('active');
     }
-    $j('.ulMainMenu').slideUp(500);
-//    if ($j(window).width() > 1200) {
-//    }
+        $j('.btnSignIn, .btnSignUp').removeClass('active');
+    if ($j(window).width() <= 1200) {
+     $j('.ulMainMenu').slideUp(500);
+    }
 }
 function hideform() {
     $j('.fnClose').fadeOut(500);
