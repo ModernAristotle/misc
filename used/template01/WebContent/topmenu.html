@@ -1,4 +1,23 @@
 
+<style type="text/css">
+.mapClose{
+    border: 1px solid #eeeeee;
+    padding: 5px 3px;
+    transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+}
+.mapClose:hover{
+    box-shadow: 0px 0px 5px #269abc;
+    -o-box-shadow: 0px 0px 5px #269abc;
+    -ms-box-shadow: 0px 0px 5px #269abc;
+    -moz-box-shadow: 0px 0px 5px #269abc;
+    -webkit-box-shadow: 0px 0px 5px #269abc;
+}
+</style>
+
 <script type="text/javascript">
     function validateForm() {
 
@@ -256,7 +275,7 @@
 
 
 <!-- **********************  include header.php ************************ -->
-<div class="signinformCont center fnClose">
+<div class="signinformCont center fnClose" style="display:none;">
 	<div class="frmHdng">
 		<h3 class="mrgnpdng" align="center">Sign in here</h3>
 	</div>
@@ -358,6 +377,7 @@
 				<div id="icon3" class="fltlft fonticn_rav khammanKlass"></div>
 				<p class="fltlft pdb">Volunteer</p>
 			</div>
+            <div class="clearfix"></div>
 		</div>
 		<form action="javascript:void(0);" id="userForm" method="post" name="frm" enctype="multipart/form-data" onsubmit="return submitForm();">
 			<div class="prsnldtl">
@@ -689,7 +709,7 @@
     </div>
      -->
 <div class="mapCont center fnClose">
-	<h1 style="margin: 0px; padding: 10px;">Select a site(UNDER CONSTRUCTION)</h1>
+	<h1 style="margin: 0px; padding: 10px;">Select a site(UNDER CONSTRUCTION)<a style="font-size: 12px;" href="javascript:void(0)" class="fltrht mapClose" onclick="funClose();">Close</a></h1>
 	<div class="relPostn">
 		<div class="mapInfo absPostn">
 			<label><input type="radio" id="radioNatSite" checked="checked" /> <b>National site</b></label>
@@ -3012,7 +3032,7 @@
  </svg>
 	</div>
 </div>
-<div class="bdyovrly">&nbsp;</div>
+<!-- <div class="bdyovrly">&nbsp;</div> -->
 <header>
 	<div class="hdrContnr center relPostn">
 		<a class="logo fltlft" href="/"> <img src="http://static.swarajabhiyan.org.s3-us-west-2.amazonaws.com/templates/prod/1/images/logo.png" height="71" width="124" />
@@ -3045,7 +3065,7 @@
 				 -->
 			</div>
 			<div class="fltrht contSigninup hidInMob">
-				{{#if LoggedInUserPlugin}} <input type="button" class="btnBg btnStyle" value="My Account" onclick="ga('send','event', 'Registeration', 'MyAccount', 'Position', 'Top'); $(location).attr('href','/user/editprofile');" /> <input type="button"
+				{{#if LoggedInUserPlugin.loggedIn}} <input type="button" class="btnBg btnStyle" value="My Account" onclick="ga('send','event', 'Registeration', 'MyAccount', 'Position', 'Top'); $(location).attr('href','/user/editprofile');" /> <input type="button"
 					class="btnBg btnStyle" value="Sign Out" onclick="logout();" /> {{else}} <input type="button" class="btnSignUp btnsgnupfn btnBg btnStyle" value="Sign Up"  onclick="ga('send','event', 'Registeration', 'SignUp', 'Position', 'Top');return true;"/> <input
 					type="button" class="btnSignIn btnsgninfn btnBg btnStyle relPostn" value="Sign In" onclick="ga('send','event', 'Registeration', 'SignIn', 'Position', 'Top');return true;" /> {{/if}}
 			</div>
@@ -3540,4 +3560,16 @@ function showRegistration(){
 {{#if ParameterPlugin.register}}
 showRegistration();
 {{/if}}
+
+	function funClose(){
+		 $j('.mapCont').fadeOut(800);
+    }
+	   $j('.btnsgninfn').click(function (e) {      
+           e.stopPropagation();        
+           hideoverlay();      
+           showoverlay();      
+           $j(this).addClass('active');        
+           $j('.signinformCont').fadeIn(500).animate({top: $j(window).scrollTop() + 160}, 80);     
+           clearField();       
+       });
     </script>

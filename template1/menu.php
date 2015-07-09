@@ -20,7 +20,7 @@
       <!--<div class="submenuCont">-->
 	   <ul class="ulSub mrgnpdng">
       <li>
-      <a href="javascript:void(0)">Leadership</a>
+       <a href="javascript:void(0)"><span class="fa fa-long-arrow-right">&nbsp;</span>Leadership</a>
       <ul class="subLavelul mrgnpdng">
       <li>
       <a href="javascript:void(0)">Submenu 1</a>
@@ -40,10 +40,10 @@
       </ul>
       </li>
             <li>
-      <a href="javascript:void(0)">Our Mission</a>
+      <a href="javascript:void(0)"><span class="fa fa-long-arrow-right">&nbsp;</span>Our Mission</a>
       </li>
             <li>
-      <a href="javascript:void(0)">Public Forum</a>
+      <a href="javascript:void(0)"><span class="fa fa-long-arrow-right">&nbsp;</span>Public Forum</a>
       </li>
       </ul>
 	  <!--</div>-->

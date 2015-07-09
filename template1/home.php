@@ -3,6 +3,30 @@
  <!-- **********************  include common.php ************************ -->
  <?php
  include 'common.php';
+ session_start();
+ if(isset($_SESSION['message'])){
+     echo $_SESSION['message'];
+     unset($_SESSION['message']);
+ }
+ $user_array = array("rakesh@gmail.com","akshaya@gmail.com","pati@gmail.com","monalisa@gmail.com","upasana@gmail.com","runu@gmail.com","manjari@gmail.com");
+ $pass_array = array("rakesh111111","akshaya111111","pati111111","monalisa111111","upasana111111","runu111111","manjari111111");
+ if(isset($_REQUEST['username']) && isset($_REQUEST['password'])){
+     $ukey = array_search($_REQUEST['username'],$user_array);
+    if($ukey>=0){
+     $password = $pass_array[$ukey];
+    }else{
+        $_SESSION['message'] = "Username And password is wrong";
+        header("location:index.php");
+    }
+     if($password == $_REQUEST['password'] ){
+         $_SESSION['username'] = $_REQUEST['username'];
+         $_SESSION['password'] = $_REQUEST['password'];
+         $_SESSION['message'] = "Successfully Logged In";
+     }else{
+         $_SESSION['message'] = "Username And password is wrong";
+         header("location:index.php");
+     }
+ }
  ?>
  <body>
 <!--<div class="startingLoader" style="position: fixed; height: 100%; width: 100%; z-index: 100000; background: #2C71BF; left: 0px; top: 0px;">
@@ -132,7 +156,11 @@
       </div>
       <br />
       <p class='paraCasturvote absPostn'>
-       Please <a href="javascript:void(0)" class="linkSignin">Sign in</a> to vote
+       <?php if(isset($_SESSION['username']) && isset($_SESSION['password']) ) {?>
+      <p style="display: none;">Please <a href="index.php" class="linkSignin">Sign In</a> to vote</p>
+         <?php }else{ ?>
+          <p>Please <a href="index.php" class="linkSignin">Sign In</a> to vote</p>
+          <?php } ?>
        &nbsp;<button type="button" class="voteurCast">Cast your Vote</button>
       </p>
       <div class="clear"></div>
@@ -277,90 +305,6 @@
          <div class='clear'></div>
         </div>
        </li>
-<!--       <li>
-        <div class="fltlft eventLeft">
-         <div class="calMonth">MAY</div>
-         <div class="calDate">17</div>
-        </div>
-        <div class="fltrht evntRight">
-         <p>Jayalalitha's acquittal: A Travesty of Justice <br />-Swaraj Abhiyan Press Note</p>
-         <p class="time mrgnpdng">@ 8:00 am - 11:00 am</p>
-         <a href="singleevent.php" class="fullEvent fltrht">Full View</a>
-         <div class='clear'></div>
-        </div>
-       </li>
-       <li>
-        <div class="fltlft eventLeft">
-         <div class="calMonth">MAY</div>
-         <div class="calDate">24</div>
-        </div>
-        <div class="fltrht evntRight">
-         <p>Jayalalitha's acquittal: A Travesty of Justice <br />-Swaraj Abhiyan Press Note</p>
-         <p class="time mrgnpdng">@ 8:00 am - 11:00 am</p>
-         <a href="singleevent.php" class="fullEvent fltrht">Full View</a>
-         <div class='clear'></div>
-        </div>
-       </li>
-       <li>
-        <div class="fltlft eventLeft">
-         <div class="calMonth">MAY</div>
-         <div class="calDate">06</div>
-        </div>
-        <div class="fltrht evntRight">
-         <p>Jayalalitha's acquittal: A Travesty of Justice <br />-Swaraj Abhiyan Press Note</p>
-         <p class="time mrgnpdng">@ 8:00 am - 11:00 am</p>
-         <a href="singleevent.php" class="fullEvent fltrht">Full View</a>
-         <div class='clear'></div>
-        </div>
-       </li>
-       <li>
-        <div class="fltlft eventLeft">
-         <div class="calMonth">MAY</div>
-         <div class="calDate">17</div>
-        </div>
-        <div class="fltrht evntRight">
-         <p>Jayalalitha's acquittal: A Travesty of Justice <br />-Swaraj Abhiyan Press Note</p>
-         <p class="time mrgnpdng">@ 8:00 am - 11:00 am</p>
-         <a href="singleevent.php" class="fullEvent fltrht">Full View</a>
-         <div class='clear'></div>
-        </div>
-       </li>
-       <li>
-        <div class="fltlft eventLeft">
-         <div class="calMonth">MAY</div>
-         <div class="calDate">24</div>
-        </div>
-        <div class="fltrht evntRight">
-         <p>Jayalalitha's acquittal: A Travesty of Justice <br />-Swaraj Abhiyan Press Note</p>
-         <p class="time mrgnpdng">@ 8:00 am - 11:00 am</p>
-         <a href="singleevent.php" class="fullEvent fltrht">Full View</a>
-         <div class='clear'></div>
-        </div>
-       </li>
-       <li>
-        <div class="fltlft eventLeft">
-         <div class="calMonth">MAY</div>
-         <div class="calDate">06</div>
-        </div>
-        <div class="fltrht evntRight">
-         <p>Jayalalitha's acquittal: A Travesty of Justice <br />-Swaraj Abhiyan Press Note</p>
-         <p class="time mrgnpdng">@ 8:00 am - 11:00 am</p>
-         <a href="singleevent.php" class="fullEvent fltrht">Full View</a>
-         <div class='clear'></div>
-        </div>
-       </li>
-       <li>
-        <div class="fltlft eventLeft">
-         <div class="calMonth">MAY</div>
-         <div class="calDate">24</div>
-        </div>
-        <div class="fltrht evntRight">
-         <p>Jayalalitha's acquittal: A Travesty of Justice <br />-Swaraj Abhiyan Press Note</p>
-         <p class="time mrgnpdng">@ 8:00 am - 11:00 am</p>
-         <a href="singleevent.php" class="fullEvent fltrht">Full View</a>
-         <div class='clear'></div>
-        </div>
-       </li>-->
        <div class="clear"></div>
       </ul>
      </div>
@@ -397,7 +341,9 @@ function eventLiwidth(){
     $j('.ulEvent').width(evntUlWidth);
     lastIndex = evntUlWidth - parseInt(evntLiWdth + 20) * 3;
 }eventLiwidth();
-
+$j(window).resize(function () {
+        eventLiwidth();
+    });
 //    ----------------------------- upcoming event next button function ---------------------
     $j('.nxtIco').on('click', function () {
         if (getLftPos >= lastIndex) {

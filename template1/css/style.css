@@ -2,7 +2,7 @@
     font-family: 'URW Gothic L Book';
     src: url('ufonts.com_urw-gothic-l-book.ttf') format('truetype')
 }
-/*================================ Loader ======================*/
+/*================================ Loader ======================*/ 
 /*.spinner {
   margin: 22% auto;
   position: fixed;
@@ -71,7 +71,7 @@ a, a:active, a:link{color: inherit !important; text-decoration: none !important;
 html,body{height: 88%;}
 body{font-size: 13px; font-family: sans !important; letter-spacing: 0.2px;}
 .ulMainMenu, h1, h2, h3, h4, h5, h6{font-family: URW Gothic L Book !important;}
-.upcomEvent, body{background: url('../images/bg.png') repeat;}
+.upcomEvent, body{background: url('../images/bg_1.png') repeat;}
 header{background: #ffffff; padding: 10px; position: fixed; z-index: 9999; width: 100%; box-shadow: 1px 0px 3px #000000; top: 0px; left: 0px;}
 .ftrContnr, .maincontainer, .hdrContnr{max-width: 1000px; width: 95%;}
 .hdrToolContnr{width: 60%; left: 0px; right: 0px; padding-right: 6px;}
@@ -84,21 +84,23 @@ header{background: #ffffff; padding: 10px; position: fixed; z-index: 9999; width
 .ulOtherNews li{border-bottom: 1px solid #eeeeee;}
 .ulOtherNews li:last-of-type{border-bottom: none;}
 /*================================ Common Statements======================*/
-.btnSignIn, .txtSearch{
+.txtSearch{
     border-radius: 5px 0px 0px 5px;
     -o-border-radius: 5px 0px 0px 5px;
     -moz-border-radius: 5px 0px 0px 5px;
     -ms-border-radius: 5px 0px 0px 5px;
     -webkit-border-radius: 5px 0px 0px 5px;
 }
-.btnSubmit,.btnSignUp{
+.btnSubmit{
     border-radius: 0px 5px 5px 0px;
     -o-border-radius: 0px 5px 5px 0px;
     -ms-border-radius: 0px 5px 5px 0px;
     -moz-border-radius: 0px 5px 5px 0px;
     -webkit-border-radius: 0px 5px 5px 0px;
 }
-.btnviewAll,.voteCast,.voteurCast{
+.btnSignIn,.btnSignUp, 
+.btnviewAll,.voteCast,
+.voteurCast{
     border-radius: 5px;
     -o-border-radius: 5px;
     -ms-border-radius: 5px;
@@ -366,10 +368,12 @@ ul{margin:0pc; padding:0px;}
     padding: 5px 10px;
     border: none;
 }
+a.btnStyle{
+    color: #ffffff !important;
+    font-weight: bold !important;
+}
 .btnSubmit{left: -5px;}
 .btnSignIn{left: -2px;}
-/*.btnSignIn:hover, .btnBg{background: #2C71BF;}*/
-/*.btnSignIn:hover, .btnSignIn.active{background: #F4F4F5; color: #31363C;}*/
 .btn-danger,.btn-danger{
     background: #4AA1D9 !important; 
     border: none !important;
@@ -441,11 +445,6 @@ ul{margin:0pc; padding:0px;}
 }
 /*.submenuCont{display: none; overflow: hidden;}*/
 .ulSub{
-/*    border-radius: 0px 0px 20px 20px;
-    -o-border-radius: 0px 0px 20px 20px;
-    -ms-border-radius: 0px 0px 20px 20px;
-    -moz-border-radius: 0px 0px 20px 20px;
-    -webkit-border-radius: 0px 0px 20px 20px;*/
     top: 39px;
     width: 230px;
     display: none;
@@ -467,6 +466,9 @@ ul{margin:0pc; padding:0px;}
     padding-top: 7px;
     padding-bottom: 7px;
 }
+.ulSub>li>a{padding-left: 7px;}
+.ulSub>li>a span{font-size: 14px; font-style: none !important; margin-right: 5px;}
+/*.ulSub>li>a:hover span{font-size: 12px;}*/
 .subLavelul{
     left: 100%; 
     top: 0px; 
@@ -797,7 +799,7 @@ label.error{font-size: 12px; color: #ff0000;}
     -webkit-box-shadow: 0px 0px 10px -4px #616161;
 }
 table.tblMemberDetails tr td{vertical-align: top;}
-table.tblMemberDetails tr:nth-of-type(even) td{background: #EBEAEA;}
+table.tblMemberDetails tr:nth-of-type(even) td{background: #DEEBEB;}
 .membPhoto, .membPhoto > div{
     width:130px;
     height: 140px;
