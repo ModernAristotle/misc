@@ -1,24 +1,10 @@
-var $j = $.noConflict();
+//var $j = $.noConflict();
 //---------------------Set Top Height---------------------
 function topHeight() {
     setTimeout(function () {
-        $j('.divGaltop').height($j('header').height() + 20);
+        $('.divGaltop').height($('header').height() + 20);
     }, 10);
-}
-//---------------------Set loader---------------------
-//function startLoader(){
-//    setTimeout(function(){
-//        $j('.startingLoader').fadeOut(800);
-//    },5000);
-//}
-//---------------------News gallery width auto adjust---------------------
-//function galWidth(){
-//if($j(window).width()>600){
-//        $j('.galleryContnr ul li').animate({width: $j('.galleryContnr ').width()/2},10);
-//    }else{
-//        $j('.galleryContnr ul li').animate({width: $j('.galleryContnr ').width()},10);
-//    }
-//}
+} 
 //---------------------Menu active---------------------
 function activeMenu() {
 
@@ -26,191 +12,186 @@ function activeMenu() {
     var temp = getPage.split('/');
     var pageName = temp[temp.length - 1].split('.php');
     if (pageName.length <= 1) {
-        $j("#index").addClass("active");
+        $("#index").addClass("active");
     } else {
-        $j('.ulMainMenu li a').removeClass('active');
-        $j('.ulMainMenu li a#' + pageName[0]).addClass('active');
+        $('.ulMainMenu li a').removeClass('active');
+        $('.ulMainMenu li a#' + pageName[0]).addClass('active');
     }
 }
-$j(function () {
+$(function () {
     activeMenu();
 //    galWidth();
 //        startLoader();
     topHeight();
 //    -----------------------------gallery function---------------------
-    $j("#slider").easySlider({
+    $("#slider").easySlider({
         auto: true,
         continuous: true,
         controlsShow: true
     });
 
 //    -----------------------------Common function---------------------
-    $j(document).on('click', function () {
-        hideoverlay();
-    });
-    $j('.memberName, .fnClose, .btnsgninfn, .btnsgnupfn, .contSubscrib').click(function (e) {
+//    $(document).on('click', function () {
+//        hideoverlay();
+//    });
+    $('.memberName, .fnClose, .btnsgninfn, .btnsgnupfn, .contSubscrib').click(function (e) {
         e.stopPropagation();
     });
-    $j(window).resize(function () {
+    $(window).resize(function () {
         topHeight();
-        eventLiwidth();
+//        eventLiwidth();
 //    galWidth()
-        if ($j(this).width() <= 992) {
-            $j('.ftrMenuCont').hide();
+        if ($(this).width() <= 992) {
+            $('.ftrMenuCont').hide();
         } else {
-            $j('.ftrMenuCont').show();
+            $('.ftrMenuCont').show();
         }
-        if ($j(this).width() <= 1200) {
-            $j('.ulMainmenu').hide();
+        if ($(this).width() <= 1200) {
+            $('.ulMainmenu').hide();
         } else {
-            $j('.ulMainmenu').show();
+            $('.ulMainmenu').show();
         }
     });
 
 //    -----------------------------Main menu function---------------------
     setTimeout(function () {
-        $j('.fldTitle').fadeIn(800);
-        if ($j(window).width() <= 992 && $j(window).width() > 768) {
-            $j('.frmcntnr .divField .tblFldTitle').fadeIn(800);
+        $('.fldTitle').fadeIn(800);
+        if ($(window).width() <= 992 && $(window).width() > 768) {
+            $('.frmcntnr .divField .tblFldTitle').fadeIn(800);
         }
     }, 1000);
-    $j('.ulMainMenu li a').on('click', function () {
-        $j('.ulMainMenu li a').removeClass('active').not($j(this).addClass('active'));
+    $('.ulMainMenu li a').on('click', function () {
+        $('.ulMainMenu li a').removeClass('active').not($(this).addClass('active'));
     });
 //    -----------------------------Main menu function---------------------
-    $j('.respmenuBtn').click(function (e) {
+    $('.respmenuBtn').click(function (e) {
         e.stopPropagation();
         hideoverlay();
-        $j('.ulMainMenu').stop().slideToggle(500);
+        $('.ulMainMenu').stop().slideToggle(500);
     });
-    $j('.ulMainMenu>li').hover(function (e) {
+    $('.ulMainMenu>li').hover(function (e) {
         e.stopPropagation();
-        $j(this).find('.ulSub').stop().slideDown(500);
+        $(this).find('.ulSub').slideDown(500);
 
     }, function (e) {
         e.stopPropagation();
-        $j(this).find('.ulSub').stop().slideUp(500);
+        $(this).find('.ulSub').stop().slideUp(500);
     });
-    $j('.ulMainMenu li').click(function (e) {
+    $('.ulMainMenu li').click(function (e) {
         e.stopPropagation();
     });
 //    -----------------------------footer menu animation---------------------
-    $j('.ulFtrMain li h3').click(function () {
+    $('.ulFtrMain li h3').click(function () {
         hideoverlay();
-        if ($j(window).width() <= 992) {
-            $j('.ftrMenuCont').stop().slideUp(500).not($j(this).next('.ftrMenuCont').stop().slideToggle(500));
+        if ($(window).width() <= 992) {
+            $('.ftrMenuCont').stop().slideUp(500).not($(this).next('.ftrMenuCont').stop().slideToggle(500));
         }
     });
 //    -----------------------------link2top function---------------------
-    $j('.link2Top').hide();
-    $j(window).scroll(function () {
-        if ($j(this).scrollTop() > 0) {
-            $j('.link2Top').fadeIn(400);
+    $('.link2Top').hide();
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 0) {
+            $('.link2Top').fadeIn(400);
         } else {
-            $j('.link2Top').fadeOut(400);
+            $('.link2Top').fadeOut(400);
         }
     });
-    $j('.link2Top').click(function () {
-        $j('html, body').animate({scrollTop: 0}, 800);
+    $('.link2Top').click(function () {
+        $('html, body').animate({scrollTop: 0}, 800);
     });
 
 //    -----------------------------show Map---------------------
     var ovrlyinout = 1;
-    $j('.mapIco').click(function (e) {
+    $('.mapIco').click(function (e) {
         e.stopPropagation();
-        hideoverlay();
-        if (ovrlyinout == 1) {
-            ovrlyinout = 0;
+//        hideoverlay();
             showoverlay();
-        } else {
-            ovrlyinout = 1;
-            hideoverlay();
-        }
-        $j('.mapCont').fadeToggle(800).animate({top: $j(window).scrollTop() + 160}, 800);
+//        if (ovrlyinout == 1) {
+//            ovrlyinout = 0;
+//            showoverlay();
+//        } else {
+//            ovrlyinout = 1;
+//            hideoverlay();
+//        }
+        $('.mapCont').stop().fadeToggle(800).animate({top: $(window).scrollTop() + 160}, 80);
     });
 //    -----------------------------show popup---------------------
-    /*$j('.btnsgnupfn').click(function (e) {
-        hideoverlay();
-        hideform();
-//        showoverlay();
-        $j(this).addClass('active');
-//        $j('.entryGate').fadeIn(500).animate({top: $j(window).scrollTop() + 120}, 800);
-        $j('.entryGate').fadeIn(500);
-//        $j('.entryGate').find('#shw_emailexist, #shw_phoneexist').html('');
-        clearField();
-    });*/
-//    $j('.btnsgninfn').click(function (e) {
-//        e.stopPropagation();
-//        hideoverlay();
-//        showoverlay();
-//        $j(this).addClass('active');
-//        $j('.signinformCont').fadeIn(500).animate({top: $j(window).scrollTop() + 160}, 80);
-//        clearField();
-//    });
-    $j('.btnCancel').click(function () {
-        $j(this).closest('.fnClose').fadeOut(500);
-        hideoverlay();
+    $('.btnsgnupfn').click(function (e) {
+        showoverlay();
+        $('.entryGate').stop().fadeIn(800).css({top: $(window).scrollTop() + 160}, 80);
+        $(this).addClass('active');
+        clearField();return false;
     });
-    $j('.respSubscribeBtn').click(function (e) {
+    $('.btnsgninfn').click(function(e){
+    e.stopPropagation();
+//    hideoverlay();
+//        hideform();
+    showoverlay();
+    clearField();
+    $(this).addClass('active');
+    $('.signinformCont').stop().fadeIn(500).animate({top: $(window).scrollTop()+160},80);
+});
+//---------------------------previous btn function----------------
+    $('#cardType').change(function(){
+        $(this).next('input').val('');
+        if($(this).val()>0){
+            $(this).next('input').removeAttr('disabled');
+        }else{
+            $(this).next('input').attr('disabled','disabled');
+        }
+    });
+//---------------------------previous btn function----------------
+             $('.prevBtn').click(function () {
+                 var getName = $(this).attr('name');
+                 $('.khammanKlass').removeClass('active').not($('.' + getName).addClass('active'));
+                 $('.crntlvng').slideUp(500, function () {
+                     $('.prsnldtl').slideDown(500);
+                 });
+             });
+             $('.prevBtn1').click(function () {
+                 var getName = $(this).attr('name');
+                 $('.khammanKlass').removeClass('active').not($('.' + getName).addClass('active'));
+                 $('.rgstrvtr').slideUp(500, function () {
+                     $('.crntlvng').slideDown(500);
+                 });
+             });
+             
+//    ----------------------------- resp subscription btn ---------------------
+    $('.respSubscribeBtn').click(function (e) {
         e.stopPropagation();
         hideoverlay();
         showoverlay();
-        $j('.contSubscrib').fadeIn(500).animate({top: $j(window).scrollTop() + 160}, 80);
+        $('.contSubscrib').fadeIn(500).animate({top: $(window).scrollTop() + 160}, 80);
     });
-//---------------------------signup js----------------
-//---------------------------previous btn function----------------
-    $j('.prevBtn').click(function () {
-        var getName = $j(this).attr('name');
-        $j('.khammanKlass').removeClass('active').not($j('.' + getName).addClass('active'));
-        $j('.prsnldtl').slideDown(500);
-        $j('.crntlvng').slideUp(500);
-    });
-    $j('.prevBtn1').click(function () {
-        var getName = $j(this).attr('name');
-        $j('.khammanKlass').removeClass('active').not($j('.' + getName).addClass('active'));
-        $j('.crntlvng').slideDown(500);
-        $j('.rgstrvtr').slideUp(500);
-    });
-
-//---------------------------next btn function----------------
-    $j('.nxtbtn').click(function () {
-        var getName = $j(this).attr('name');
-        $j('.khammanKlass').removeClass('active').not($j('.' + getName).addClass('active'));
-        $j('.prsnldtl').fadeOut(200);
-        $j('.crntlvng').delay(2).fadeIn(500);
-    });
-    $j('.nxtbtn1').click(function () {
-        var getName = $j(this).attr('name');
-        $j('.khammanKlass').removeClass('active').not($j('.' + getName).addClass('active'));
-        $j('.crntlvng').fadeOut(200);
-        $j('.rgstrvtr').delay(2).fadeIn(500);
-    });
-
-    $j('.closeicn,.sbmitbtn').click(function () {
-        $j('.signupformCont').fadeOut(500);
+    $('.closeicn,.sbmitbtn').click(function () {
+        $('.signupformCont, .signinformCont, .entryGate').fadeOut(500);
         hideoverlay();
     });
+    $('.closeicn').click(function(){
+       var getUrl=window.location.href;
+       window.location.href=getUrl;
+    });
 //    -----------------------------Polls view---------------------
-    $j(document).on('click', '.accordian', function () {
-        if ($j(this).hasClass('accoOff')) {
-            $j(this).find('.plsVer').removeClass('plsVeract').attr('title', 'Expand');
-            $j(this).removeClass('accoOff');
+    $(document).on('click', '.accordian', function () {
+        if ($(this).hasClass('accoOff')) {
+            $(this).find('.plsVer').removeClass('plsVeract').attr('title', 'Expand');
+            $(this).removeClass('accoOff');
         } else {
-            $j(this).find('.plsVer').addClass('plsVeract').attr('title', 'Collapse');
-            $j('.accordian').removeClass('accoOff').not($j(this).addClass('accoOff'));
+            $(this).find('.plsVer').addClass('plsVeract').attr('title', 'Collapse');
+            $('.accordian').removeClass('accoOff').not($(this).addClass('accoOff'));
         }
-        $j('.pollsCont').slideUp(500).not($j(this).next('.pollsCont').stop().slideToggle(500));
+        $('.pollsCont').slideUp(500).not($(this).next('.pollsCont').stop().slideToggle(500));
     });
 
     //    ----------------------------- Member detail popup ---------------------
-    $j(document).on('mouseenter','.memberName', function(e){
-        var getThsOffset=$j(this).offset();
-        var getMembName=$j(this).closest('tr').find('.memberName').html();
-        var getMembImg=$j(this).closest('td').find('input[type="hidden"]').attr('value');
-        var getMembEmail=$j(this).closest('tr').find('.memberEmail').html();
-        var getMembAddress=$j(this).closest('tr').find('.memberAddress').html();
-        var getMembPhone=$j(this).closest('tr').find('.memberPhone').html();
-        $j('.maincontainer').after('\n\
+    $(document).on('mouseenter','.memberName', function(e){
+        var getThsOffset=$(this).offset();
+        var getMembName=$(this).closest('tr').find('.memberName').html();
+        var getMembImg=$(this).closest('td').find('input[type="hidden"]').attr('value');
+        var getMembEmail=$(this).closest('tr').find('.memberEmail').html();
+        var getMembAddress=$(this).closest('tr').find('.memberAddress').html();
+        var getMembPhone=$(this).closest('tr').find('.memberPhone').html();
+        $('.maincontainer').after('\n\
             <div class="membDtlPupup fnClose absPostn">\n\
             <div class="relPostn"><p class="closeicn">X</p></div>\n\
             <div style="display: table-row;">\n\
@@ -227,15 +208,26 @@ $j(function () {
             </div>\n\
             </div>'
         );
-                        $j('.membDtlPupup').css({left: getThsOffset.left+20, top: getThsOffset.top+30}).stop().fadeIn(500);
+                        $('.membDtlPupup').css({left: getThsOffset.left+20, top: getThsOffset.top+30}).stop().fadeIn(500);
     });
-    $j(document).on('mouseout','.memberName', function(){
-        $j('body').find('.membDtlPupup').remove();
+    $(document).on('mouseout','.memberName', function(){
+        $('body').find('.membDtlPupup').remove();
+    });
+    if($(window).width<=1200){
+        $('ul.ulMainMenu li ul').prev('a').addClass('hvSbMenu');
+    }else{
+        $('ul.ulSub li ul').prev('a').addClass('hvSbMenu');
+    }
+    $('ul.ulSub li').hover(function(){
+        $(this).find('.subLavelul').show(600);
+    },
+    function(){
+        $(this).find('.subLavelul').stop().hide(600);
     });
 });
 //    -----------------------------show popup in javascript---------------------
 function clearField() {
-    $j('.signupformCont, .signinformCont, .entryGate').find('\
+    $('.signupformCont, .signinformCont, .entryGate').find('\
         input[type="email"], \n\
         input[type="text"],  \n\
         input[type="number"],  \n\
@@ -243,21 +235,21 @@ function clearField() {
         textarea').val('');
 }
 function showoverlay() {
-    $j('.fnClose').fadeOut();
-    $j('.bdyovrly').fadeIn('fast');
+    $('.fnClose').fadeOut();
+    $('.bdyovrly').fadeIn('fast');
 }
 function hideoverlay() {
-    $j('.bdyovrly').fadeOut(500);
-    if ($j(window).width() <= 600) {
-        $j('.contSubscrib').fadeOut(500);
-        $j('.btnSignIn, .btnSignUp').removeClass('active');
+    $('.bdyovrly').fadeOut(500);
+    if ($(window).width() <= 600) {
+        $('.contSubscrib').fadeOut(500);
     }
-    $j('.ulMainMenu').slideUp(500);
-//    if ($j(window).width() > 1200) {
-//    }
+        $('.btnSignIn, .btnSignUp').removeClass('active');
+    if ($(window).width() <= 1200) {
+     $('.ulMainMenu').slideUp(500);
+    }
 }
 function hideform() {
-    $j('.fnClose').fadeOut(500);
+    $('.fnClose').fadeOut(500);
 }
 
 
@@ -323,3 +315,4 @@ jQuery(document).ready(function ($) {
     $(window).bind("orientationchange", ScaleSlider);
     //responsive code end
 });
+

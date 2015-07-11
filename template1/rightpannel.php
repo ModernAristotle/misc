@@ -1,4 +1,4 @@
-<div class="rhtContnr col-xs-12 col-sm-12 col-md-4">
+<div class="rhtContnr col-xs-12 col-sm-12 col-md-4" style='padding-right: 0px;'>
  <ul class="rhtButn mrgnpdng col-xs-12 col-md-12 col-sm-12" style="padding: 0px;">
   <li class="col-sm-5 col-xs-12 col-md-12 col-sm-offset-1 col-md-offset-0">
    <a href='javascript:void(0)' class="btnsgnupfn">

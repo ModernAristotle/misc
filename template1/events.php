@@ -1,5 +1,5 @@
 <html>
- <!-- **********************  include common.php ************************ -->
+ <!-- **********************  include common_php ************************ -->
  <?php
  include 'common.php';
  ?>
@@ -8,7 +8,7 @@
   <div class="mapCont center fnClose">
    <img src="mapimages/map-lines.png" style="max-width: 421px; width: 100%;" class="mapBorder" />
   </div>
- <!-- **********************  include header.php ************************ -->
+ <!-- **********************  include header_php ************************ -->
  <?php
  include 'header.php';
  ?>
@@ -59,6 +59,6 @@
   ?>  
   <a class="link2Top fa fa-eject" style="color: #2B64B5 !important;"></a>
   <!--================================popup section=========================-->
- </body>
-    <script type="text/javascript" src="js/jssor.slider.mini.js"></script>
+ </body> 
 </html>
+
