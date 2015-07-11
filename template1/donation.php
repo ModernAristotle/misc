@@ -41,7 +41,7 @@
   </div>
     </div>
 	<form method='get' action="javascript:void(0)" class="form-inline">
-         <div class="prsnldtl">
+         <div class="donate_prsnldtl">
          <div class="cntnr clear">
            <p class="hdng">Personal Details</p>
             <div class="form-group col-xs-12 col-sm-6 col-md-6">
@@ -109,13 +109,13 @@
             </div>
            <div class="clear"></div>
            </div>
-    <input type="button" value="Next" class="nxtbtn btnnxtprv fltrht"  name="fonticn_cl"/>
+    <input type="button" value="Next" class="btnnxtprv fltrht"  name="fonticn_cl"/>
     <div class="clear"></div>
     </div>
     <div class="clear"></div>
 
    <!------ currently living-------->
-   <div class="crntlvng"  style="display:none;">
+   <div class="donate_crntlvng"  style="display:none;">
     <div class="cntnr clear">
      <p class="hdng">Currently Living</p>
      <div class="form-group col-xs-12 col-sm-6 col-md-6">
@@ -165,12 +165,12 @@
        <div class='clear'></div>
          </div>
         <input type="button" value="Previous" class="prevBtn btnnxtprv fltlft"  name="fonticn_pd"/>
-       <input type="button" value="Next" class="nxtbtn1 btnnxtprv fltrht" name="fonticn_rav" />
+       <input type="button" value="Next" class="btnnxtprv fltrht" name="fonticn_rav" />
        <div class='clear'></div>
    </div>
      
      <!------ Payment Details-------->
-     <div class="rgstrvtr" style="display:none;">
+     <div class="donate_rgstrvtr" style="display:none;">
      <div class="cntnr clear">
            <p class="hdng">Payment Details</p>
              <div class="form-group col-xs-12 col-sm-6 col-md-6">
